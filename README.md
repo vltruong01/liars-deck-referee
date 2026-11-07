@@ -64,3 +64,6 @@ Latest executed tool/browser audit: [docs/QA_AUDIT.md](docs/QA_AUDIT.md). Includ
 
 
 Mobile character studio: per-player hats, eyewear, mouth accessories, suit/tie palettes and bow ties. Open Customize during setup or Style in Manage Players; cosmetic edits keep revolver progress. See [mobile QA and screenshots](docs/MOBILE_QA_REPORT.md).
+
+
+Cinematic polish: two rear seats plus one at each table end, three outfit silhouettes and articulated execution. Use **New Match ? Edit current players** to change the ongoing group without losing progress. See [current cinematic QA](docs/CINEMATIC_QA_REPORT.md).

@@ -1,0 +1,13 @@
+{
+  "playwright": {
+    "startTime": "2026-11-07T11:03:50.106Z",
+    "duration": 184716.59,
+    "expected": 23,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "validTraces": 23,
+  "selectedTrace": "test-results\\playwright\\cinematic-cinematic-667x37-519c5-ared-suspense-and-reactions\\trace.zip",
+  "unitTests": 39
+}

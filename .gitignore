@@ -7,3 +7,4 @@ test-results/
 !.env.example
 docs/qa-audit/baseline.html
 docs/mobile-qa/draft-*.png
+docs/cinematic-qa/draft-*.png

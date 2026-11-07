@@ -4,7 +4,7 @@ import {createHash} from 'node:crypto';
 import {KEY} from '../src/engine.js';
 
 const url='https://vltruong01.github.io/liars-deck-referee/';
-const out='docs/mobile-qa';await mkdir(out,{recursive:true});
+const out=process.env.QA_OUTPUT_DIR||'docs/cinematic-qa';await mkdir(out,{recursive:true});
 const browser=await chromium.launch({channel:'chrome',headless:false});
 try {
   const context=await browser.newContext({viewport:{width:844,height:390},hasTouch:true});
@@ -16,6 +16,7 @@ try {
   await page.getByRole('button',{name:'Customize player 1',exact:true}).click();
   await page.locator('#tab-hat').click();await page.locator('[data-option="top-hat"]').click();
   await page.locator('#tab-eyes').click();await page.locator('[data-option="sunglasses"]').click();
+  await page.locator('#tab-outfit').click();await page.locator('[data-option="western"]').click();
   await page.locator('#tab-mouth').click();await page.locator('[data-option="cigar"]').click();
   await page.screenshot({path:`${out}/live-customization.png`});await page.locator('#style-save').click();
   await page.getByRole('button',{name:'START GAME'}).click();await expect(page.locator('.scene-frame')).toHaveCSS('opacity','1');
@@ -26,7 +27,7 @@ try {
   const outcome=await page.locator('#result').innerText();await page.screenshot({path:`${out}/live-result.png`});
   await expect(page.locator('#execution')).toBeHidden({timeout:7000});
   const before=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),KEY);expect(before.players[0].shots).toBe(1);
-  await page.locator('#manage-button').click();await page.locator('[data-customize-player="p1"]').click();
+  await page.locator('#new-match').click();await page.locator('#manage-button').click();await page.locator('[data-customize-player="p1"]').click();
   await page.locator('#tab-eyes').click();await page.locator('[data-option="monocle"]').click();await page.locator('#style-save').click();
   const after=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),KEY);
   expect(after.players[0]).toEqual({...before.players[0],appearance:{...before.players[0].appearance,eyes:'monocle'}});

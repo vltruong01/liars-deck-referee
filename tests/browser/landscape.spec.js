@@ -82,7 +82,7 @@ for(const [width,height] of sizes)test(`${width}x${height}: table, each seat, FI
     if(count===2)await screenshot(page,`two-player-${width}x${height}`);
   }
   await page.locator('#settings-button').tap();await inside(page,'#settings-dialog, #volume, #settings-dialog .primary');await noOverflow(page,['#settings-dialog']);await page.getByRole('button',{name:'DONE'}).tap();
-  await page.locator('#manage-button').tap();await inside(page,'#manage-dialog, #reset-all');await inside(page,'#manage-list input, .manage-actions button',44);await noOverflow(page,['#manage-dialog']);
+  await page.locator('#new-match').tap();await page.locator('#manage-button').tap();await inside(page,'#manage-dialog, #reset-all');await inside(page,'#manage-list input, .manage-actions button',44);await noOverflow(page,['#manage-dialog']);
   expect(errors).toEqual([]);
 });
 
@@ -95,7 +95,7 @@ test('fatal effect, pending recovery, resets, winner and offline local release',
   await expect(page.locator('#execution')).toBeHidden({timeout:7000});await expect(page.locator('[data-execute="p1"]')).toBeDisabled();
   const pending=fire(createMatch(entries,()=>0),'p2',1);await loadMatch(page,pending);
   await expect(page.locator('#result')).toContainText('SAVED RESULT');await page.locator('#return-button').tap();await expect(page.locator('#execution')).toBeHidden();
-  await page.locator('#manage-button').tap();await page.locator('[data-reset="p2"]').tap();await page.locator('#confirm-yes').tap();
+  await page.locator('#new-match').tap();await page.locator('#manage-button').tap();await page.locator('[data-reset="p2"]').tap();await page.locator('#confirm-yes').tap();
   expect(await page.evaluate(key=>JSON.parse(localStorage.getItem(key)).players[1].shots,KEY)).toBe(0);
   await page.getByRole('button',{name:'Close player management'}).tap();
   const won=createMatch(entries.slice(0,2),()=>0);won.players[0].dead=true;won.players[0].shots=1;await loadMatch(page,won);

@@ -14,7 +14,7 @@ describe('cosmetics preserve existing matches',()=>{
   });
   it('changes exactly one appearance after shooting, and keeps it on reset',()=>{
     const state=completeShot(fire(createMatch(entries,()=>5),'p1',1));
-    const next=customize(state,'p1','bear',{hat:'top-hat',eyes:'monocle',mouth:'cigar',bow:true});
+    const next=customize(state,'p1','bear',{hat:'top-hat',eyes:'monocle',mouth:'cigar',outfit:'western',bow:true});
     expect(next.players[1]).toEqual(state.players[1]);
     const {skin,appearance,...progress}=next.players[0];
     const {skin:oldSkin,appearance:oldAppearance,...oldProgress}=state.players[0];

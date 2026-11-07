@@ -49,3 +49,6 @@ Latest executed tool/browser audit: [docs/QA_AUDIT.md](docs/QA_AUDIT.md). Includ
 ## Mobile character studio verification
 
 The later mobile/customization update passed 39 Vitest and 16 Playwright tests, with five-size opened screenshot review and original eight-size regression. See [MOBILE_QA_REPORT.md](docs/MOBILE_QA_REPORT.md) for actual evidence, corrected geometry/collapse defects and the Responsively installation-policy blocker.
+
+
+2026-11-07 cinematic polish: 39 Vitest and 23 Playwright tests passed. See [current visual QA and release evidence](docs/CINEMATIC_QA_REPORT.md).

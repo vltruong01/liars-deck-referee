@@ -21,17 +21,21 @@ export function portrait(id, decorative = true, appearance = {}) {
   return `<svg class="portrait" preserveAspectRatio="xMidYMax meet" viewBox="-20 -45 280 365" data-skin="${s.id}" ${decorative?'aria-hidden="true"':`role="img" aria-label="${s.name}"`} xmlns="http://www.w3.org/2000/svg">
   <defs><linearGradient id="${n}coat" x2=".8" y2="1"><stop stop-color="${s.coat}"/><stop offset="1" stop-color="#111918"/></linearGradient><linearGradient id="${n}head" x2=".8" y2="1"><stop stop-color="${s.color}"/><stop offset="1" stop-color="#342f2b"/></linearGradient></defs>
   <ellipse cx="120" cy="296" rx="100" ry="12" fill="#000" opacity=".4"/>
-  <path d="m26 310 9-80 48-35 75 0 49 35 9 80Z" fill="url(#${n}coat)" stroke="#b69c6d" stroke-opacity=".2"/>
-  <path d="m87 193 33 31 32-31 12 117H75Z" fill="#c1b699"/>${a.bow?`<path d="m120 228-25-12v27l25-10 25 10v-27Z" fill="${colors[a.tie]}"/><circle cx="120" cy="230" r="6" fill="${colors[a.tie]}"/>`:`<path d="m120 224-13 17 13 52 13-52Z" fill="${colors[a.tie]}"/>`}
-  <path d="m82 193-18 30 30 3-13 21 39 52-18-82m54-24 19 30-29 3 13 21-39 52 17-82" fill="${s.coat}" stroke="#b69c6d" stroke-opacity=".25"/>
+  <g class="outfit" data-outfit="${a.outfit}" transform="translate(120 0) scale(${s.id==='bear'?1.13:s.id==='hare'?.88:s.id==='raven'?.92:1} 1) translate(-120 0)">
+  ${a.outfit==='western'?`<path d="M18 310 31 220 80 190 157 190 211 223 225 310 147 310 120 274 91 310Z" fill="url(#${n}coat)" stroke="#bba278" stroke-width="2"/><path d="m35 221 43-25 42 31 39-31 46 25-28 21-17-19-40 16-41-16-19 19Z" fill="#aa8a5e"/><path d="M84 235 77 310M156 235l7 75" stroke="#201d17" stroke-width="5"/><path d="M170 250h20v22h-20Z" fill="#26302b"/><path d="m93 294 54 0v14H93Z" fill="#211e1a"/><rect x="111" y="294" width="21" height="14" fill="#bda063"/>`:
+  a.outfit==='vest'?`<path d="M23 305 29 225 83 192H156L211 225 219 305Z" fill="#c5bea6" stroke="#424c42" stroke-width="3"/><path d="m31 242 35 4-7 48-34-6m183-46-35 4 7 48 34-6" fill="#ebe1c8"/><path d="m81 193 39 34 37-34 17 112-40 5-14-25-14 25-40-5Z" fill="url(#${n}coat)" stroke="#bba278" stroke-width="2"/><path d="M120 232v52m-35-17h19m35 0h20" stroke="#9e8960" stroke-width="2"/><circle cx="126" cy="250" r="3" fill="#cfb579"/><circle cx="126" cy="272" r="3" fill="#cfb579"/>`:
+  `<path d="m26 310 9-80 48-35 75 0 49 35 9 80Z" fill="url(#${n}coat)" stroke="#b69c6d" stroke-opacity=".45"/><path d="m87 193 33 31 32-31 12 117H75Z" fill="#d1c6aa"/><path d="m82 193-18 30 30 3-13 21 39 52-18-82m54-24 19 30-29 3 13 21-39 52 17-82" fill="${s.coat}" stroke="#c5ac7c" stroke-opacity=".55"/>`}
+  ${a.bow?`<path d="m120 228-25-12v27l25-10 25 10v-27Z" fill="${colors[a.tie]}"/><circle cx="120" cy="230" r="6" fill="${colors[a.tie]}"/>`:`<path d="m120 224-11 14 11 48 11-48Z" fill="${colors[a.tie]}"/>`}
+  ${['left','right'].map(side=>`<g class="idle-arm-${side}"><path d="${side==='left'?'M43 238 38 275 82 288':'M197 238 202 275 158 288'}" fill="none" stroke="#101d18" stroke-width="25" stroke-linecap="round"/><path d="${side==='left'?'M43 238 40 272 84 286':'M197 238 200 272 156 286'}" fill="none" stroke="${a.outfit==='vest'?'#c5bea6':s.coat}" stroke-width="19" stroke-linecap="round"/></g>`).join('')}
+  <path class="idle-hand-left" d="m81 278 22 3 6 11-28 2" fill="${s.color}" stroke="#222e27" stroke-width="2"/><path class="idle-hand-right" d="m158 278-22 3-6 11 28 2" fill="${s.color}" stroke="#222e27" stroke-width="2"/>
+  </g>
   <g fill="url(#${n}head)" stroke="#151a18" stroke-width="3" stroke-linejoin="round">${heads[s.id]}</g>
+  <path d="${s.id==='hare'?'M77 109q12-11 25 1m32 0q15-10 31 0':s.id==='bear'?'M77 109l26 6m31 0 28-6':'M76 109l28 8m31 0 28-8'}" fill="none" stroke="#222d26" stroke-width="5" stroke-linecap="round"/>
+  <path d="M74 95 83 85M157 86l8 10" stroke="#e2d6b0" stroke-opacity=".35" stroke-width="3"/>
   <path d="m77 111 24 8-5 7-18-7m85-8-24 8 5 7 18-7" fill="#1b2020"/>
   <path d="m83 118 12 3m62-3-12 3" stroke="#f2d99a" stroke-width="3"/>
   ${s.id==='raven'?'':`<path d="m108 149 24 0-12 12Z" fill="#1d2523"/><path d="M120 160v11m-12 1 12 4 12-4" fill="none" stroke="#222825" stroke-width="2"/>`}
   ${accessories(s.id,a)}
-  <path d="m44 268 41 7-5 25-45-8m160-24-41 7 5 25 45-8" fill="${s.coat}" stroke="#a68c68" stroke-opacity=".3"/>
-  <path d="m82 277 20 0 7 14-29 5m74-19-16 0-9 14 28 5" fill="${s.color}"/>
-  <path d="M169 240h21v3h-21" stroke="#aa8358" stroke-width="2"/><circle cx="179" cy="263" r="2" fill="#b5996b"/>
   </svg>`;
 }
 
@@ -84,8 +88,20 @@ export function revolver() {
 
 // Art and gun share a fixed rig coordinate system, so they resize together.
 export function executionRig(player) {
- return `<svg class="character-rig" viewBox="0 0 480 410" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+ const coat=colors[normalizeAppearance(player.appearance).suit]||skins.find(s=>s.id===player.skin)?.coat||'#344a44';
+ return `<svg class="character-rig" viewBox="0 0 480 430" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+ <ellipse class="rig-shadow" cx="245" cy="401" rx="115" ry="14" fill="#000" opacity=".6"/>
+ <g class="rig-actor">
  <svg class="portrait" x="105" y="20" width="280" height="365" viewBox="-20 -45 280 365">${portrait(player.skin,true,player.appearance).replace(/^<svg[^>]*>/,'').replace(/<\/svg>$/,'')}</svg>
- <g class="weapon-arm" transform="translate(0 0)"><path d="M284 303Q420 330 434 270L432 239" fill="none" stroke="#18281f" stroke-width="33" stroke-linecap="round"/><path d="M284 300Q420 316 430 272L429 245" fill="none" stroke="#506250" stroke-width="22" stroke-linecap="round"/><path d="m421 244 8-25 18 0 9 26-7 15-21-2Z" fill="#a99b7a" stroke="#24342a" stroke-width="3"/>
- <svg id="gun" x="270" y="172" width="205" height="112" viewBox="0 0 640 350"><g transform="translate(640 0) scale(-1 1)">${revolver().replace(/^<svg[^>]*>/,'').replace(/<\/svg>$/,'')}</g></svg></g></svg>`;
+ <g class="upper-arm weapon-arm">
+ <path d="M292 250 370 290" stroke="#111c18" stroke-width="32" stroke-linecap="round"/><path d="M292 250 370 290" stroke="${coat}" stroke-width="25" stroke-linecap="round"/><path d="M296 244 357 275" stroke="#c1b28d" stroke-opacity=".35" stroke-width="3"/>
+ <circle cx="370" cy="290" r="14" fill="${coat}" stroke="#1a251e" stroke-width="3"/>
+ <g class="forearm">
+ <path d="M370 290 409 227" stroke="#14221b" stroke-width="27" stroke-linecap="round"/><path d="M370 287 409 227" stroke="${coat}" stroke-width="20" stroke-linecap="round"/><path d="m401 228 13 8" stroke="#d9ccb1" stroke-width="9"/>
+ <g class="hand-rig">
+ <svg id="gun" x="258" y="147" width="190" height="104" viewBox="0 0 640 350"><g transform="translate(640 0) scale(-1 1)">${revolver().replace(/^<svg[^>]*>/,'').replace(/<\/svg>$/,'')}</g></svg>
+ <path d="m400 221 5-15q3-5 8-2l9 7-2 23q-8 10-18 0Z" fill="#ad9e7d" stroke="#26352b" stroke-width="3"/>
+ <path d="m405 218 13 5m-14 1 13 5m-12 1 11 4" stroke="#6b6552" stroke-width="2"/>
+ <path d="M409 213q-12-12-18-6l-5 7" fill="none" stroke="#c2b18c" stroke-width="7" stroke-linecap="round"/>
+ </g></g></g></g></svg>`;
 }

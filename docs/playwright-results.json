@@ -100,6 +100,294 @@
   },
   "suites": [
     {
+      "title": "cinematic.spec.js",
+      "file": "cinematic.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "cinematic 667x375: staging, joint raise, shared suspense and reactions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 20009,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T11:03:51.161Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\cinematic-cinematic-667x37-519c5-ared-suspense-and-reactions\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "312ce2600e58970fadfd-76ab6309ae4d27fc7848",
+          "file": "cinematic.spec.js",
+          "line": 17,
+          "column": 81
+        },
+        {
+          "title": "cinematic 740x360: staging, joint raise, shared suspense and reactions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 20038,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T11:03:51.162Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\cinematic-cinematic-740x36-3ddfc-ared-suspense-and-reactions\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "312ce2600e58970fadfd-6cb88048a7ffd1a2ec44",
+          "file": "cinematic.spec.js",
+          "line": 17,
+          "column": 81
+        },
+        {
+          "title": "cinematic 844x390: staging, joint raise, shared suspense and reactions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 20041,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T11:03:51.161Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\cinematic-cinematic-844x39-686d5-ared-suspense-and-reactions\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "312ce2600e58970fadfd-3f4770c71d57bea69841",
+          "file": "cinematic.spec.js",
+          "line": 17,
+          "column": 81
+        },
+        {
+          "title": "cinematic 932x430: staging, joint raise, shared suspense and reactions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 19663,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T11:04:12.466Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\cinematic-cinematic-932x43-200d9-ared-suspense-and-reactions\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "312ce2600e58970fadfd-d411e167368f8848225b",
+          "file": "cinematic.spec.js",
+          "line": 17,
+          "column": 81
+        },
+        {
+          "title": "cinematic 1366x768: staging, joint raise, shared suspense and reactions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 20617,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T11:04:12.536Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\cinematic-cinematic-1366x7-5b3aa-ared-suspense-and-reactions\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "312ce2600e58970fadfd-12e2bfad4cf0b27bca92",
+          "file": "cinematic.spec.js",
+          "line": 17,
+          "column": 81
+        },
+        {
+          "title": "mouth accessories and outfit silhouettes: all six species and inward mirroring",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1734,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T11:04:12.676Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\cinematic-mouth-accessorie-b148a-pecies-and-inward-mirroring\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "312ce2600e58970fadfd-6f6d1b42c2a5988e9fd4",
+          "file": "cinematic.spec.js",
+          "line": 50,
+          "column": 1
+        },
+        {
+          "title": "generated breathing renders locally and ends before the common reveal silence",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 651,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T11:04:14.488Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\cinematic-generated-breath-fce0e-e-the-common-reveal-silence\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "312ce2600e58970fadfd-3280b99265ae8d143a6a",
+          "file": "cinematic.spec.js",
+          "line": 69,
+          "column": 1
+        }
+      ]
+    },
+    {
       "title": "customization.spec.js",
       "file": "customization.spec.js",
       "column": 0,
@@ -118,15 +406,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
-                  "parallelIndex": 0,
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 33556,
+                  "duration": 33606,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T10:07:48.507Z",
+                  "startTime": "2026-11-07T11:04:15.272Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -158,15 +446,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
-                  "parallelIndex": 1,
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 33541,
+                  "duration": 33928,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T10:07:48.492Z",
+                  "startTime": "2026-11-07T11:04:32.957Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -201,12 +489,12 @@
                   "workerIndex": 2,
                   "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 33245,
+                  "duration": 34267,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T10:07:48.507Z",
+                  "startTime": "2026-11-07T11:04:34.049Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -238,15 +526,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 2,
-                  "parallelIndex": 2,
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 31720,
+                  "duration": 34382,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T10:08:23.849Z",
+                  "startTime": "2026-11-07T11:04:50.654Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -278,15 +566,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
-                  "parallelIndex": 1,
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 34450,
+                  "duration": 35546,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T10:08:23.955Z",
+                  "startTime": "2026-11-07T11:05:08.855Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -318,15 +606,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
-                  "parallelIndex": 0,
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 5174,
+                  "duration": 5004,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T10:08:24.309Z",
+                  "startTime": "2026-11-07T11:05:10.204Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -366,15 +654,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
-                  "parallelIndex": 0,
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 26246,
+                  "duration": 27284,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T10:08:29.772Z",
+                  "startTime": "2026-11-07T11:05:15.540Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -406,15 +694,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 2,
-                  "parallelIndex": 2,
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 26457,
+                  "duration": 27300,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T10:08:57.042Z",
+                  "startTime": "2026-11-07T11:05:26.884Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -446,15 +734,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
-                  "parallelIndex": 0,
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 26622,
+                  "duration": 27549,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T10:08:57.543Z",
+                  "startTime": "2026-11-07T11:05:44.140Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -486,15 +774,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
-                  "parallelIndex": 1,
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 26319,
+                  "duration": 26973,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T10:08:59.944Z",
+                  "startTime": "2026-11-07T11:05:46.100Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -526,15 +814,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 2,
-                  "parallelIndex": 2,
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 26119,
+                  "duration": 27212,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T10:09:25.037Z",
+                  "startTime": "2026-11-07T11:05:55.963Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -566,15 +854,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
-                  "parallelIndex": 0,
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 26205,
+                  "duration": 26810,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T10:09:25.655Z",
+                  "startTime": "2026-11-07T11:06:13.019Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -606,15 +894,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
-                  "parallelIndex": 1,
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 26629,
+                  "duration": 27348,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T10:09:28.165Z",
+                  "startTime": "2026-11-07T11:06:14.687Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -646,15 +934,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 2,
-                  "parallelIndex": 2,
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 29021,
+                  "duration": 28166,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T10:09:52.461Z",
+                  "startTime": "2026-11-07T11:06:24.731Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -686,15 +974,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
-                  "parallelIndex": 0,
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 11345,
+                  "duration": 11684,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T10:09:52.783Z",
+                  "startTime": "2026-11-07T11:06:40.786Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -726,15 +1014,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
-                  "parallelIndex": 1,
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3021,
+                  "duration": 3168,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T10:09:55.922Z",
+                  "startTime": "2026-11-07T11:06:43.125Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -758,9 +1046,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-11-07T10:07:46.770Z",
-    "duration": 157658.264,
-    "expected": 16,
+    "startTime": "2026-11-07T11:03:50.106Z",
+    "duration": 184716.59,
+    "expected": 23,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

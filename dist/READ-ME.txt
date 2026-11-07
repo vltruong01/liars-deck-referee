@@ -5,7 +5,7 @@ TIENG VIET
 2. Nhap dup PLAY.cmd hoac Liars-Deck.html, mo bang Chrome/Edge/Firefox.
 3. Chon 2-4 nguoi, nhap ten, chon nhan vat va bam START GAME.
 4. Choi bai that. Nguoi thua chon nhan vat cua minh va bam FIRE.
-5. Manage players: sua ten, reset tung nguoi. New match: bat dau lai.
+5. New Match > Edit current players: sua ten/ngoai hinh, reset tung nguoi. Confirm: bat dau lai.
 Khong can Internet, Node hay cai dat thu vien.
 Giu nguyen vi tri file va dung cung trinh duyet de tiep tuc van da luu.
 Khong xoa du lieu trinh duyet neu muon giu van choi.
@@ -15,7 +15,7 @@ Open Liars-Deck.html directly in a modern browser. No installation or Internet r
 Choose 2-4 players, names and skins, then start. Play cards physically; select the
 loser of a challenge and press FIRE. Each player has an independent six-chamber
 revolver with one bullet; blanks never reshuffle it. Last survivor wins.
-Use the gear for volume/reduced effects and Manage players for names/resets.
+Use the gear for volume/reduced effects. New Match > Edit current players opens names, appearance and revolver resets; Confirm replaces the group.
 Progress saves automatically in this browser for this file location.
 A refresh during a shot recovers its committed result.
 Phones: transfer the HTML to a browser that supports local HTML with JavaScript.

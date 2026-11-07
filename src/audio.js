@@ -34,6 +34,21 @@ export class AudioDirector {
   select() { this.tone(145,.5,.08,'sine',0,55); this.noise(.15,.07,1500); }
   cock() { this.noise(.085,.35,5500); this.tone(760,.08,.08,'triangle'); }
   heartbeat() { this.tone(65,.18,.3,'sine',0,34); this.tone(60,.19,.2,'sine',.23,30); }
+  breathe() {
+    if(!this.ctx)return;
+    const t=this.ctx.currentTime, duration=1.02;
+    const buffer=this.ctx.createBuffer(1,Math.ceil(this.ctx.sampleRate*duration),this.ctx.sampleRate);
+    const samples=buffer.getChannelData(0);
+    for(let i=0;i<samples.length;i++){
+      const u=i/samples.length;
+      // Two soft, asymmetric air envelopes: inhale then a longer nervous exhale.
+      const envelope=u<.36?Math.sin(Math.PI*u/.36)*.5:Math.sin(Math.PI*(u-.36)/.64)*.85;
+      samples[i]=(Math.random()*2-1)*Math.max(0,envelope);
+    }
+    const air=this.ctx.createBufferSource(),filter=this.ctx.createBiquadFilter(),gain=this.ctx.createGain();
+    air.buffer=buffer;filter.type='bandpass';filter.frequency.setValueAtTime(950,t);filter.frequency.linearRampToValueAtTime(520,t+duration);filter.Q.value=.65;
+    gain.gain.value=.16;air.connect(filter);filter.connect(gain);gain.connect(this.master);air.start(t);
+  }
   click() { this.noise(.045,.55,6500); this.tone(1300,.035,.12,'triangle',.01,180); }
   bang() {
     this.noise(.065,.95,11000); this.noise(.65,.6,3400,.025);

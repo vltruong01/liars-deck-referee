@@ -5,10 +5,10 @@ import {choices} from '../../src/appearance.js';
 
 const sizes=[[667,375],[740,360],[844,390],[932,430],[1366,768]];
 const looks=[
-  {skin:'wolf',hat:'top-hat',eyes:'sunglasses',mouth:'cigar',suit:'forest',tie:'gold',bow:true},
-  {skin:'hare',hat:'cowboy',eyes:'round',mouth:'cigarette',suit:'wine',tie:'ivory'},
-  {skin:'fox',hat:'cap',eyes:'monocle',mouth:'toothpick',suit:'navy',tie:'teal'},
-  {skin:'bear',hat:'mafia',eyes:'eyepatch',mouth:'none',suit:'ivory',tie:'wine'},
+  {skin:'wolf',hat:'top-hat',eyes:'sunglasses',mouth:'cigar',outfit:'classic',suit:'forest',tie:'gold',bow:true},
+  {skin:'hare',hat:'cowboy',eyes:'round',mouth:'cigarette',outfit:'vest',suit:'wine',tie:'ivory'},
+  {skin:'fox',hat:'cap',eyes:'monocle',mouth:'toothpick',outfit:'western',suit:'navy',tie:'teal'},
+  {skin:'bear',hat:'mafia',eyes:'eyepatch',mouth:'none',outfit:'vest',suit:'ivory',tie:'wine'},
 ];
 const out='docs/mobile-qa';
 async function screenshot(page,name){await mkdir(out,{recursive:true});await page.screenshot({path:`${out}/${name}.png`});}
@@ -39,7 +39,7 @@ for(const [width,height] of sizes)test(`customization ${width}x${height}: four i
     await page.locator(`#name-${i}`).fill(['Alexandria Longname XXIV','Rabbit','Fox','Bear'][i]);
     await page.getByRole('button',{name:`Customize player ${i+1}`,exact:true}).click();
     const look=looks[i];
-    for(const [category,value] of Object.entries({animal:look.skin,hat:look.hat,eyes:look.eyes,mouth:look.mouth,suit:look.suit,tie:look.tie})){
+    for(const [category,value] of Object.entries({animal:look.skin,hat:look.hat,eyes:look.eyes,mouth:look.mouth,outfit:look.outfit,suit:look.suit,tie:look.tie})){
       await page.locator(`#tab-${category}`).click();await page.locator(`[data-option="${value}"]`).click();
       await bounds(page,'.style-tabs button, .style-option, #style-save, #style-random, #style-cancel',44);
       await noScroll(page,'#appearance-dialog, .editor-body, .editor-controls, #style-options');
@@ -78,7 +78,7 @@ for(const [width,height] of sizes)test(`customization ${width}x${height}: four i
     await expect(page.locator('#execution')).toBeHidden({timeout:7000});expect(Date.now()-revealed).toBeGreaterThanOrEqual(2000);
     if(!fatal){
       const progress=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),KEY);
-      await page.locator('#manage-button').click();await page.locator('[data-customize-player="p1"]').click();
+      await page.locator('#new-match').click();await page.locator('#manage-button').click();await page.locator('[data-customize-player="p1"]').click();
       await page.locator('#tab-hat').click();await page.locator('[data-option="fedora"]').click();await page.locator('#style-save').click();
       const edited=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),KEY);
       expect(edited.players[0]).toEqual({...progress.players[0],appearance:{...progress.players[0].appearance,hat:'fedora'}});expect(edited.players.slice(1)).toEqual(progress.players.slice(1));expect(edited.nextShot).toBe(progress.nextShot);

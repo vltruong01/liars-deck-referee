@@ -73,3 +73,6 @@ Executed `node scripts/verify-live.mjs` against [the public website](https://vlt
 ## Remaining limits
 
 Responsively desktop/MCP inspection remains blocked as described above; Playwright is the actual responsive evidence. No physical phone, mobile Safari or virtual-keyboard check was available. Cigarette/cigar smoke is optional and was not added; there is no ambient smoke animation to conflict with reduced motion. Existing reduced-motion/flashing controls remain tested. Offline file viewing still requires a browser that runs local JavaScript.
+
+
+Subsequent targeted seating/art/animation work supersedes this snapshot where noted: [CINEMATIC_QA_REPORT.md](CINEMATIC_QA_REPORT.md).

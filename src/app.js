@@ -2,6 +2,7 @@ import { gsap } from 'gsap';
 import { createMatch, customize, fire, completeShot, rename, resetPlayer, resetMatch, living, winner, load, persist, KEY } from './engine.js';
 import { skins, portrait, roomArt, executionRig } from './art.js';
 import { choices, colors, normalizeAppearance, randomAppearance, label } from './appearance.js';
+import { seatPosition } from './staging.js';
 import { AudioDirector } from './audio.js';
 
 const $ = selector => document.querySelector(selector);
@@ -24,7 +25,8 @@ function toast(message) { clearTimeout(toastTimer); $('#toast').textContent=mess
 function attempt(action) { try { return action(); } catch(error) { toast(error.message); return false; } }
 function commit(next) { state=persist(storage,next,state); return true; }
 function showDialog(id) { const el=$(`#${id}`); if(!el.open) el.showModal(); }
-function confirm(title,description,action) { $('#confirm-title').textContent=title; $('#confirm-description').textContent=description; confirmAction=action; showDialog('confirm-dialog'); $('#confirm-cancel').focus(); }
+function confirm(title,description,action) { $('#manage-button').hidden=true; $('#confirm-title').textContent=title; $('#confirm-description').textContent=description; confirmAction=action; showDialog('confirm-dialog'); $('#confirm-cancel').focus(); }
+$('#manage-button').onclick=()=>{$('#confirm-dialog').close();openManagement();};
 $('#confirm-cancel').onclick=()=>$('#confirm-dialog').close();
 $('#confirm-yes').onclick=()=>{ const action=confirmAction; $('#confirm-dialog').close(); if(action) attempt(action); };
 $('#confirm-dialog').addEventListener('close',()=>{confirmAction=null;});
@@ -98,7 +100,7 @@ function setupCard(p,i) { return `<article class="setup-player"><span class="sea
 function captureDraft(){document.querySelectorAll('[data-draft]').forEach(input=>draft[Number(input.dataset.draft)].name=input.value);}
 
 let editor=null, category='animal';
-const categories=['animal','hat','eyes','mouth','suit','tie'];
+const categories=['animal','hat','eyes','mouth','outfit','suit','tie'];
 function openAppearance(target) {
   const p=typeof target==='number'?draft[target]:state.players.find(p=>p.id===target);
   editor={target,skin:p.skin,appearance:normalizeAppearance(p.appearance)}; category='animal';
@@ -113,7 +115,7 @@ function openAppearance(target) {
   document.querySelectorAll('[data-category]').forEach(b=>b.onclick=()=>{category=b.dataset.category;renderAppearance();});
   document.querySelector('.style-tabs').onkeydown=e=>{
     if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();
-    const i=categories.indexOf(category);category=categories[e.key==='Home'?0:e.key==='End'?5:(i+(e.key==='ArrowRight'?1:5))%6];renderAppearance();$(`#tab-${category}`).focus();
+    const i=categories.indexOf(category);category=categories[e.key==='Home'?0:e.key==='End'?categories.length-1:(i+(e.key==='ArrowRight'?1:categories.length-1))%categories.length];renderAppearance();$(`#tab-${category}`).focus();
   };
   renderAppearance();showDialog('appearance-dialog');
 }
@@ -131,17 +133,16 @@ function renderAppearance() {
 function renderTable() {
   const w=winner(state),alive=living(state).length;
   app.innerHTML=`<section class="bar-page ${w?'has-winner':''}">
-    <div class="bar-heading"><h1 class="sr-only">Match table</h1><div class="bar-tools"><span class="alive-count"><i class="live-dot"></i> ${alive}/${state.players.length} ALIVE</span><button class="text-button" id="manage-button">MANAGE PLAYERS</button><button class="outline" id="new-match">NEW MATCH &#8599;</button></div></div>
+    <div class="bar-heading"><h1 class="sr-only">Match table</h1><div class="bar-tools"><button class="outline" id="new-match">NEW MATCH &#8599;</button></div></div>
     ${w?`<div class="winner-banner"><h2><span>${escapeText(w.name)}</span> takes the table.</h2><button class="primary" id="play-again">PLAY AGAIN <b>&#8594;</b></button></div>`:''}
     <div class="scene-frame"><div class="scene" data-count="${state.players.length}">${roomArt()}<div class="stage-fit"><div class="room-camera">
     <div class="table" aria-hidden="true"><div class="table-felt"><div class="table-emblem">&#9824;<span>THE LAST CALL</span></div><div class="cards"><div class="card">&#9824;</div><div class="card">&#9830;</div><div class="card">&#9827;</div></div><div class="glass"></div></div></div>
-    ${state.players.map((p,i)=>`<button class="seat ${p.dead?'dead':''}" data-seat="${i+1}" data-execute="${p.id}" ${p.dead||w?'disabled':''} aria-label="${escapeText(p.name)}, ${p.dead?'eliminated':`${p.shots} shots taken. Select for execution`}" title="${escapeText(p.name)}"><span class="seat-character">${portrait(p.skin,true,p.appearance)}</span><span class="seat-name"><strong>${escapeText(p.name)}</strong><small>${p.dead?'&#10005; ELIMINATED':`&#9679; ALIVE &middot; ${p.shots}/6 PULLS`}</small></span></button>`).join('')}
+    ${state.players.map((p,i)=>`<button class="seat ${p.dead?'dead':''}" data-seat="${i+1}" data-position="${seatPosition(state.players.length,i).position}" style="${seatPosition(state.players.length,i).style}" data-execute="${p.id}" ${p.dead||w?'disabled':''} aria-label="${escapeText(p.name)}, ${p.dead?'eliminated':`${p.shots} shots taken. Select for execution`}" title="${escapeText(p.name)}"><span class="seat-character">${portrait(p.skin,true,p.appearance)}</span><span class="seat-name"><strong>${escapeText(p.name)}</strong><small>${p.dead?'&#10005; ELIMINATED':`&#9679; ALIVE &middot; ${p.shots}/6 PULLS`}</small></span></button>`).join('')}
     </div></div></div></div>
     </section>`;
   observeStage();
   document.querySelectorAll('[data-execute]').forEach(b=>b.onclick=()=>selectPlayer(b.dataset.execute));
-  $('#manage-button').onclick=openManagement;
-  $('#new-match').onclick=()=>confirm('A different company?','End this match and return to player setup? Current progress will be replaced when you start the new game.',()=>{draft=state.players.map(p=>({name:p.name,skin:p.skin,appearance:p.appearance}));while(draft.length<4)draft.push({name:`Player ${draft.length+1}`,skin:skins[draft.length].id});count=state.players.length;renderSetup();});
+  $('#new-match').onclick=()=>{confirm('A different company?','End this match and return to player setup? Current progress will be replaced when you start the new game.',()=>{draft=state.players.map(p=>({name:p.name,skin:p.skin,appearance:p.appearance}));while(draft.length<4)draft.push({name:`Player ${draft.length+1}`,skin:skins[draft.length].id});count=state.players.length;renderSetup();});$('#manage-button').hidden=false;};
   if(w) $('#play-again').onclick=()=>confirm('Another night?','Reload every revolver with one freshly randomized bullet. Keep the same names and characters?',()=>{commit(resetMatch(state));renderTable();});
 }
 function lastEvent() { if(!state.last) return 'All revolvers loaded. <span>Make your first move.</span>';const p=state.players.find(p=>p.id===state.last.playerId);return `<span>${escapeText(p.name)}</span> ${state.last.fatal?'was eliminated':'survived'} · pull ${state.last.shot}/6`; }
@@ -183,10 +184,15 @@ function selectPlayer(id, recovering=false) {
   $('#fire-button').disabled=true;$('#fire-button').hidden=false;$('.fire-controls').style.visibility='visible';
   $('#cancel-execution').hidden=false;$('#cancel-execution').disabled=false;$('#execution-settings').disabled=false;$('#execution-fullscreen').disabled=false;
   $('#return-button').hidden=true;$('#result').textContent='';
-  gsap.set(['#result','.blood-mark','.impact'],{opacity:0});gsap.set('.weapon-arm',{rotation:38,y:15,svgOrigin:'284 303'});
+  execution.dataset.outcome='';
+  gsap.set(['#result','.blood-mark','.impact'],{opacity:0});
+  gsap.set('.upper-arm',{rotation:28,svgOrigin:'292 250'});gsap.set('.forearm',{rotation:65,svgOrigin:'370 290'});
   execution.hidden=false;app.inert=true;$('.topbar').inert=true;execution.focus();
   gsap.fromTo(execution,{opacity:0},{opacity:1,duration:prefs.reducedMotion?.12:.35});
-  gsap.to('.weapon-arm',{rotation:0,y:-20,svgOrigin:'284 303',duration:prefs.reducedMotion?.12:.8,delay:prefs.reducedMotion?0:.18,ease:'power2.inOut',onComplete:()=>{if(entryId===entrySequence&&!recovering&&!returning&&selected===id){execution.dataset.phase='ready';$('#fire-button').disabled=false;$('#fire-button').focus({preventScroll:true});}}});
+  const enter=gsap.timeline();shotTimeline=enter;
+  enter.to('.upper-arm',{rotation:0,svgOrigin:'292 250',duration:prefs.reducedMotion?.12:.8,ease:'power2.inOut'},prefs.reducedMotion?0:.12)
+    .to('.forearm',{rotation:0,svgOrigin:'370 290',duration:prefs.reducedMotion?.12:.72,ease:'power2.inOut'},prefs.reducedMotion?0:.2)
+    .call(()=>{if(entryId===entrySequence&&!recovering&&!returning&&selected===id){execution.dataset.phase='ready';$('#fire-button').disabled=false;$('#fire-button').focus({preventScroll:true});}},[],prefs.reducedMotion?.13:.93);
   if(recovering){$('#cancel-execution').hidden=true;$('#fire-button').hidden=true;reveal(state.pending,true);}
 }
 
@@ -202,20 +208,22 @@ $('#fire-button').onclick=()=>{
     const timeline=gsap.timeline();shotTimeline=timeline;
     // Exactly the same sequence, sound, duration and controls for both outcomes.
     timeline.call(()=>audio.cock(),[],0)
-      .to('.weapon-arm',{y:prefs.reducedMotion?-20:-23,rotation:0,duration:.45,ease:'power2.inOut'},0)
-      .to('.cylinder',{y:3,duration:.17,yoyo:true,repeat:1},.1)
-      .to('.hammer',{rotation:-18,svgOrigin:'110 119',duration:.28},.15)
-      .call(()=>audio.heartbeat(),[],.43)
-      .to('.weapon-arm',{y:-20,rotation:0,duration:.4},.55)
-      .call(()=>audio.heartbeat(),[],1.05)
-      .to('.trigger',{x:-3,duration:.15},1.35)
-      .call(()=>reveal(result),[],1.55);
+      .to('.hand-rig',{x:prefs.reducedMotion?0:-1,duration:.35},0)
+      .to('.cylinder',{y:2,duration:.12,yoyo:true,repeat:1},.12)
+      .to('.hammer',{rotation:-16,svgOrigin:'110 119',duration:.25},.15)
+      .call(()=>audio.breathe(),[],.45)
+      .call(()=>audio.heartbeat(),[],.5)
+      .to('.upper-arm',{rotation:prefs.reducedMotion?0:-1.2,svgOrigin:'292 250',duration:.55,yoyo:true,repeat:1,ease:'sine.inOut'},.4)
+      .call(()=>audio.heartbeat(),[],1.08)
+      // Breath has ended by 1.48; the room is almost silent before the trigger.
+      .to('.trigger',{x:-3,duration:.14},1.89)
+      .call(()=>reveal(result),[],2.05);
   });
 };
 
 function reveal(result,recovering=false) {
   const fatal=result.fatal,p=state.players.find(p=>p.id===result.playerId);
-  execution.dataset.phase='result';
+  execution.dataset.phase='result';execution.dataset.outcome=fatal?'fatal':'blank';
   $('.fire-controls').style.visibility='hidden';$('#cancel-execution').disabled=true;$('#execution-settings').disabled=true;$('#execution-fullscreen').disabled=true;
   $('#execution-eyebrow').textContent=recovering?'RECOVERED FROM YOUR SAVED MATCH':'THE HOUSE HAS SPOKEN';
   $('#execution-subtitle').textContent=fatal?'A debt paid in full.':'Not tonight.';
@@ -225,15 +233,24 @@ function reveal(result,recovering=false) {
     if(fatal)audio.bang();else audio.click();
     if(fatal&&!prefs.reducedFlashing) {
       gsap.to('.muzzle',{opacity:1,duration:.025,repeat:1,yoyo:true});
-      gsap.fromTo('.impact',{opacity:.52},{opacity:0,duration:.5});
+      gsap.fromTo('.impact',{opacity:.65},{opacity:0,duration:.42});
       gsap.to('.blood-mark',{opacity:.85,duration:.25});
     }
     if(!prefs.reducedMotion){
-      gsap.to('.weapon-arm',{rotation:-5,y:-23,svgOrigin:'284 303',duration:.07,yoyo:true,repeat:1});
-      if(fatal){gsap.to('.execution-stage',{x:5,duration:.045,repeat:7,yoyo:true,onComplete:()=>gsap.set('.execution-stage',{x:0})});gsap.to('#execution-portrait .character-rig',{rotation:7,y:3,scale:.9,opacity:.45,duration:.8,delay:.2,ease:'power2.in'});}
-      else gsap.to('#execution-portrait .character-rig',{y:9,rotation:-3,duration:.2,yoyo:true,repeat:1,delay:.1});
-    }else if(fatal)gsap.to('#execution-portrait .character-rig',{opacity:.45,duration:.5});
-  } else if(fatal) gsap.set('#execution-portrait .character-rig',{opacity:.45});
+      gsap.to('.forearm',{rotation:-7,svgOrigin:'370 290',duration:.06,yoyo:true,repeat:1});
+      if(fatal){
+        gsap.to('.execution-stage',{x:4,duration:.035,repeat:5,yoyo:true,onComplete:()=>gsap.set('.execution-stage',{x:0})});
+        gsap.to('.rig-actor',{rotation:-4,svgOrigin:'245 300',duration:.09,yoyo:true,repeat:1});
+        gsap.to('.rig-actor',{rotation:-18,y:16,scale:.78,opacity:.65,svgOrigin:'245 300',duration:.65,delay:.28,ease:'power3.in'});
+        gsap.to('.upper-arm',{rotation:24,svgOrigin:'292 250',duration:.65,delay:.28});
+        gsap.to('.forearm',{rotation:32,svgOrigin:'370 290',duration:.65,delay:.3});
+      } else {
+        gsap.to('.rig-actor',{y:3,duration:.09,yoyo:true,repeat:1});
+        gsap.to('.upper-arm',{rotation:9,svgOrigin:'292 250',duration:.65,delay:.4,ease:'power2.out'});
+        gsap.to('.forearm',{rotation:10,svgOrigin:'370 290',duration:.65,delay:.4});
+      }
+    }else if(fatal)gsap.to('.rig-actor',{opacity:.5,duration:.35});
+  } else if(fatal) gsap.set('.rig-actor',{opacity:.5});
   gsap.to('#result',{opacity:1,duration:.5,delay:recovering?0:.3});
   gsap.delayedCall(recovering?.3:.85,()=>{$('#return-button').hidden=false;$('#return-button').focus();});
   if(!recovering) shotTimeline=gsap.delayedCall(fatal?4.2:3.4,returnToTable);

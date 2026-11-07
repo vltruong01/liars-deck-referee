@@ -2,6 +2,7 @@ export const choices = {
   hat: ['none','fedora','cowboy','top-hat','cap','mafia'],
   eyes: ['none','sunglasses','round','monocle','eyepatch'],
   mouth: ['none','cigarette','cigar','toothpick'],
+  outfit: ['classic','vest','western'],
   suit: ['original','forest','wine','navy','ivory','charcoal'],
   tie: ['wine','gold','teal','ivory','black'],
 };
@@ -16,7 +17,7 @@ export function randomAppearance(random=Math.random) {
 export const label = value => value.split('-').map(s=>s[0].toUpperCase()+s.slice(1)).join(' ');
 
 // Anchors stay in the same local coordinate system as the animal's head.
-const anchors={wolf:{hat:67,mouth:173},fox:{hat:67,mouth:173},hare:{hat:87,mouth:175},bear:{hat:79,mouth:174},raven:{hat:70,mouth:158},stag:{hat:88,mouth:177}};
+const anchors={wolf:{hat:67,mouth:174,x:132,tilt:-12},fox:{hat:67,mouth:173,x:132,tilt:-14},hare:{hat:87,mouth:176,x:132,tilt:-8},bear:{hat:79,mouth:175,x:135,tilt:-10},raven:{hat:70,mouth:155,x:151,tilt:-8},stag:{hat:88,mouth:178,x:132,tilt:-16}};
 export function accessories(skin, appearance) {
   const a=normalizeAppearance(appearance),anchor=anchors[skin]||anchors.wolf;
   const hats={
@@ -28,6 +29,6 @@ export function accessories(skin, appearance) {
     mafia:'<path d="M72-3 80-48 111-57 133-50 159-47 168-3Z" fill="#d2c3a2"/><path d="M77-18H165V-5H74Z" fill="#282e2c"/><path d="M42 1Q120-13 199 1L186 12H55Z" fill="#b7aa8b"/>',
   };
   const eyes={none:'',sunglasses:'<path d="M72 112H106L103 137H80ZM134 112H169L161 137H136Z" fill="#101c20" stroke="#d3ba83" stroke-width="3"/><path d="M106 119H134M66 115H74M169 115H175" stroke="#d3ba83" stroke-width="3"/><path d="m80 117 18 0m42 0h18" stroke="#728a85" stroke-width="2"/>',round:'<g fill="#9bb5b522" stroke="#d4c599" stroke-width="3"><circle cx="91" cy="124" r="18"/><circle cx="150" cy="124" r="18"/><path d="M109 121Q120 115 132 121M64 119H73M168 119H176"/></g>',monocle:'<circle cx="150" cy="124" r="19" fill="#d2e4d922" stroke="#d4b575" stroke-width="4"/><path d="M167 135Q183 170 166 206" fill="none" stroke="#bd9758" stroke-width="2"/>',eyepatch:'<path d="M68 102 175 137" stroke="#272c29" stroke-width="7"/><path d="M132 112Q152 105 170 117L165 138Q146 149 134 133Z" fill="#1b2423" stroke="#857960" stroke-width="2"/>'};
-  const mouths={none:'',cigarette:'<path d="M133 0 190 8" stroke="#d4cdb6" stroke-width="8"/><path d="m177 6 14 2" stroke="#c47148" stroke-width="8"/>',cigar:'<path d="m132 0 61 10" stroke="#6c4130" stroke-width="14" stroke-linecap="round"/><path d="m165 5 9 2" stroke="#c4a25f" stroke-width="15"/><path d="m190 9 6 1" stroke="#c56b40" stroke-width="12"/>',toothpick:'<path d="m132 0 62-12" stroke="#d0bd83" stroke-width="3"/>'};
-  return `<g class="accessory eyewear" data-eyes="${a.eyes}">${eyes[a.eyes]}</g><g class="accessory headwear" data-hat="${a.hat}" transform="translate(0 ${anchor.hat})" stroke="#18231d" stroke-width="2" stroke-linejoin="round">${hats[a.hat]}</g><g class="accessory mouthwear" data-mouth="${a.mouth}" transform="translate(0 ${anchor.mouth})">${mouths[a.mouth]}</g>`;
+  const mouths={none:'',cigarette:'<path d="M0 0H50" stroke="#e4decb" stroke-width="7"/><path d="M0 0H11" stroke="#b78d57" stroke-width="8"/><path d="M47 0H52" stroke="#ec8a48" stroke-width="7"/>',cigar:'<path d="M0 0H51" stroke="#794c32" stroke-width="12" stroke-linecap="round"/><path d="M22 0H30" stroke="#d3b36e" stroke-width="13"/><path d="M49 0H54" stroke="#d97945" stroke-width="11"/>',toothpick:'<path d="M0 0 56-3" stroke="#e3cb94" stroke-width="3"/>'};
+  return `<g class="accessory eyewear" data-eyes="${a.eyes}">${eyes[a.eyes]}</g><g class="accessory headwear" data-hat="${a.hat}" transform="translate(0 ${anchor.hat})" stroke="#18231d" stroke-width="2" stroke-linejoin="round">${hats[a.hat]}</g><g class="accessory mouthwear" data-mouth="${a.mouth}" transform="translate(${anchor.x} ${anchor.mouth}) rotate(${anchor.tilt})">${mouths[a.mouth]}</g>`;
 }

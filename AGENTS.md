@@ -11,3 +11,6 @@
 - Use focused correction checks first, then one full Vitest and Playwright regression after final UI fixes. Preserve valid traces when needed. Do not weaken checks to hide bugs.
 - Update OpenSpec tasks/specs and a concise QA report with actual screenshot paths, opened-image observations, test counts and limits. Do not archive incomplete changes.
 - Publish only a verified build to the existing GitHub Pages workflow; verify the live URL and artifact after deployment. Keep credentials, dependencies and local skill installations out of Git.
+- Preserve the four-player spatial arrangement: P1/P2 behind the upper-left/upper-right table edge, P3 left end, P4 right end. Use the shared percentage seat map, tabletop/portrait layers and separate labels; do not restore a flat character row.
+- The table HUD exposes New Match only; edit the ongoing group through its protected dialog. Preserve all cosmetic/progress editing there.
+- Inspect shoulder/elbow/hand/gun poses at intermediate timestamps and both outcome reactions, not only the ready/result endpoints. In timing tests schedule pre-reveal probes inside the page so expensive screenshot capture does not distort the assertion.

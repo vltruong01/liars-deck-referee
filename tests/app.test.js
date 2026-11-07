@@ -47,7 +47,7 @@ describe('shared screen controller',()=>{
     expect($('#execution').hidden).toBe(false);expect($('#execution-name').textContent).toBe('Alice');
     $('#fire-button').click();$('#fire-button').click();
     expect(saved().players[0].shots).toBe(1);expect(saved().pending.fatal).toBe(fatal);
-    expect($('#result').textContent).toBe('');await advance(1500);expect($('#result').textContent).toBe('');
+    expect($('#result').textContent).toBe('');await advance(2000);expect($('#result').textContent).toBe('');
     await advance(60);expect($('#result').textContent).toContain(fatal?'ELIMINATED':'SURVIVED');
     await advance(5000);expect($('#execution').hidden).toBe(true);expect(saved().pending).toBeNull();
     expect($('[data-execute="p1"]').disabled).toBe(fatal);expect(saved().players[1].shots).toBe(0);
@@ -71,7 +71,7 @@ describe('shared screen controller',()=>{
     await advance(1000);expect($('#fire-button').disabled).toBe(false);
   });
   it('saves names without changing progress and only resets after confirmation',async()=>{
-    await boot(createMatch(entries,()=>5));$('#manage-button').click();
+    await boot(createMatch(entries,()=>5));$('#new-match').click();$('#manage-button').click();
     const old=saved().players;$('#edit-p1').value='New name';submit('[data-rename="p1"]');
     expect(saved().players[0]).toEqual({...old[0],name:'New name'});
     $('[data-reset="p1"]').click();expect(saved().revision).toBe(1);$('#confirm-cancel').click();
