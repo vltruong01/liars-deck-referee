@@ -6,23 +6,23 @@
   "checks": [
     {
       "fraction": 25,
-      "shoulderGap": 0.000029086717093066577,
-      "elbowGap": 0.0000065279791158491986
+      "shoulderGap": 0.0000234010029236069,
+      "elbowGap": 0.00003818769657517111
     },
     {
       "fraction": 50,
-      "shoulderGap": 0.000011589559058667287,
-      "elbowGap": 0.000016250617199620932
+      "shoulderGap": 0.000010921973297267332,
+      "elbowGap": 0.000023069093788465416
     },
     {
       "fraction": 75,
-      "shoulderGap": 0.000007701407360287266,
-      "elbowGap": 0.0000043912722131001325
+      "shoulderGap": 0.0000027275044663105054,
+      "elbowGap": 0.000020353992592130867
     },
     {
       "fraction": 100,
       "shoulderGap": 0,
-      "elbowGap": 3.1073177668926796e-10
+      "elbowGap": 0
     },
     {
       "player": 1,

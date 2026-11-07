@@ -113,7 +113,7 @@ Execution SHALL use a connected shoulder, upper arm, elbow, forearm, wrist/hand 
 - **THEN** a blank clicks and visibly relaxes, while fatal impact synchronizes flash, camera impulse, red/black dimming, recoil and stylized collapse with muffled/ringing aftermath; readable named result feedback precedes automatic return.
 
 ### Requirement: Continuous two-arm rig and stable cinematic return
-Characters SHALL contain exactly two anatomical arm groups in their shared renderer. The existing right shoulder, elbow, wrist, hand and grip SHALL transition continuously from idle to aiming without a separate added arm or CSS concealment. Execution SHALL use a compact name/SHOT n/6 HUD and DIED status, with no ALIVE labels. Table plates SHALL use name and n/6 or DIED.
+Characters SHALL contain exactly two anatomical arm groups in their shared renderer. The existing right shoulder, elbow, wrist, hand and grip SHALL transition continuously from idle to aiming without a separate added arm or CSS concealment. Execution SHALL show name/SHOT n/6 centered immediately above the head, using 18-24px name text and 12-14px shot text, plus DIED after elimination, without ALIVE labels. Table plates SHALL use name and n/6 or DIED.
 
 #### Scenario: Fatal reveal and automatic return
 - **WHEN** the durable fatal result is revealed after the shared anticipation

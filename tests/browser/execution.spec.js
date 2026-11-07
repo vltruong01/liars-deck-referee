@@ -48,7 +48,10 @@ for(const [width,height]of [[667,375],[740,360],[844,390],[932,430],[1366,768]])
     }
     await page.clock.runFor(32);await expect(page.locator('#execution')).toHaveAttribute('data-phase','ready');expect(new Set(poses).size).toBe(4);
     await expect(page.locator('#execution-name')).toHaveText(players[i].name);await snap(`ready-p${i+1}`);
-    const nameSize=await page.locator('#execution-name').evaluate(e=>parseFloat(getComputedStyle(e).fontSize));expect(nameSize).toBeLessThanOrEqual(16);
+    const nameSize=await page.locator('#execution-name').evaluate(e=>parseFloat(getComputedStyle(e).fontSize));expect(nameSize).toBeGreaterThanOrEqual(18);expect(nameSize).toBeLessThanOrEqual(24);
+    const overhead=await page.evaluate(()=>{const h=document.querySelector('.execution-hud').getBoundingClientRect(),face=document.querySelector('#execution-portrait .character-head').getBoundingClientRect();const top=Math.min(face.top,...[...document.querySelectorAll('#execution-portrait .headwear')].filter(e=>e.children.length).map(e=>e.getBoundingClientRect().top));return {center:Math.abs(h.x+h.width/2-face.x-face.width/2),gap:top-h.bottom};});
+    expect(overhead.center).toBeLessThan(1);expect(overhead.gap).toBeGreaterThanOrEqual(4);expect(overhead.gap).toBeLessThanOrEqual(12);
+
     await expect(page.locator('#execution-status')).toBeHidden();
     await page.locator('#fire-button').click({force:true});await page.locator('#fire-button').evaluate(e=>e.click());
     await page.clock.runFor(2400);await joints(page);await expect(page.locator('#execution')).toHaveAttribute('data-phase','firing');expect(await page.locator('#result').textContent()).toBe('');
@@ -62,8 +65,8 @@ for(const [width,height]of [[667,375],[740,360],[844,390],[932,430],[1366,768]])
       await expect(page.locator('.death-portrait .portrait')).toHaveAttribute('data-skin',players[i].skin);
       await expect(page.locator('.death-portrait .headwear')).toHaveAttribute('data-hat',players[i].appearance.hat);
       // The reaction timeline must never animate the separate reveal portrait.
-      await expect(page.locator('.death-portrait .upper-arm')).toHaveAttribute('transform','rotate(40 185 224)');
-      await expect(page.locator('.death-portrait .forearm')).toHaveAttribute('transform','rotate(130 222 224)');
+      await expect(page.locator('.death-portrait .upper-arm')).toHaveAttribute('transform','rotate(76 185 224)');
+      await expect(page.locator('.death-portrait .forearm')).toHaveAttribute('transform','rotate(136 222 224)');
       const silhouette=await page.locator('.death-portrait>.portrait').evaluate(svg=>{
         const r=svg.getBoundingClientRect();
         // A transformed group bbox can include empty rotated corners. Sample

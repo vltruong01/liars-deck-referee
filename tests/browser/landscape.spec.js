@@ -41,7 +41,7 @@ async function tableChecks(page,count){await expect(page.locator('.seat')).toHav
 async function executionChecks(page){
   await inside(page,'#execution-name, #execution-portrait .portrait, #gun, #shot-label, #execution-hint');
   await inside(page,'#fire-button, #cancel-execution, #execution-settings, #execution-fullscreen',44);
-  await separated(page,'#gun, .execution-action');await separated(page,'#execution-name, #execution-portrait .portrait');
+  await separated(page,'#gun, .execution-action');await separated(page,'#execution-name, #execution-portrait .character-head');
   await noOverflow(page,['#execution','.execution-layout','.execution-subject','.execution-action']);
 }
 

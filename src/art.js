@@ -29,7 +29,7 @@ export function portrait(id, decorative = true, appearance = {}, armed = false) 
   <g class="arm arm-left" data-arm="left"><path d="M49 225 40 272 84 286" fill="none" stroke="#101d18" stroke-width="25" stroke-linecap="round"/><path d="M49 225 40 272 84 286" fill="none" stroke="${a.outfit==='vest'?'#c5bea6':s.coat}" stroke-width="19" stroke-linecap="round"/><path d="m81 278 22 3 6 11-28 2" fill="${s.color}" stroke="#222e27" stroke-width="2"/></g>
   ${rightArm(s,a,armed)}
   </g>
-  <g fill="url(#${n}head)" stroke="#151a18" stroke-width="3" stroke-linejoin="round">${heads[s.id]}</g>
+  <g class="character-head" fill="url(#${n}head)" stroke="#151a18" stroke-width="3" stroke-linejoin="round">${heads[s.id]}</g>
   <path d="${s.id==='hare'?'M77 109q12-11 25 1m32 0q15-10 31 0':s.id==='bear'?'M77 109l26 6m31 0 28-6':'M76 109l28 8m31 0 28-8'}" fill="none" stroke="#222d26" stroke-width="5" stroke-linecap="round"/>
   <path d="M74 95 83 85M157 86l8 10" stroke="#e2d6b0" stroke-opacity=".35" stroke-width="3"/>
   <path d="m77 111 24 8-5 7-18-7m85-8-24 8 5 7 18-7" fill="#1b2020"/>
@@ -90,16 +90,17 @@ export function revolver() {
 // All joints use portrait-local coordinates, including species shoulder scaling.
 function rightArm(s,a,armed) {
  const sleeve=a.outfit==='vest'?'#c5bea6':s.coat;
- return `<g class="arm arm-right upper-arm" data-arm="right" transform="rotate(40 185 224)">
+ return `<g class="arm arm-right upper-arm" data-arm="right" transform="rotate(76 185 224)">
  <path d="M185 224H222" stroke="#111c18" stroke-width="25" stroke-linecap="round"/><path d="M185 224H222" stroke="${sleeve}" stroke-width="19" stroke-linecap="round"/>
  <circle cx="222" cy="224" r="11" fill="${sleeve}" stroke="#1a251e" stroke-width="2"/>
- <g class="forearm" transform="rotate(130 222 224)">
+ <g class="forearm" transform="rotate(136 222 224)">
  <path d="M222 224 255 174" stroke="#14221b" stroke-width="22" stroke-linecap="round"/><path d="M222 224 255 174" stroke="${sleeve}" stroke-width="16" stroke-linecap="round"/><path d="m248 175 13 8" stroke="#d9ccb1" stroke-width="7"/>
  <g class="hand-rig">
  ${armed?`<svg id="gun" x="141" y="106" width="140" height="77" viewBox="0 0 640 350"><g transform="translate(640 0) scale(-1 1)">${revolver().replace(/^<svg[^>]*>/,'').replace(/<\/svg>$/,'')}</g></svg>`:''}
- <path d="m248 171 4-12q3-4 7-2l7 6-2 18q-6 8-15 0Z" fill="${s.color}" stroke="#26352b" stroke-width="2"/>
+ ${armed?`<path d="m248 171 4-12q3-4 7-2l7 6-2 18q-6 8-15 0Z" fill="${s.color}" stroke="#26352b" stroke-width="2"/>
  <path d="m252 168 10 5m-10 0 10 5m-9 0 8 4" stroke="#6b6552" stroke-width="1.5"/>
- <path d="M255 164q-10-10-15-5l-4 5" fill="none" stroke="${s.color}" stroke-width="5" stroke-linecap="round"/>
+ <path d="M255 164q-10-10-15-5l-4 5" fill="none" stroke="${s.color}" stroke-width="5" stroke-linecap="round"/>`:
+ `<g transform="rotate(-212 255 174)"><path d="m259 167-23 3-8 10 31 1Z" fill="${s.color}" stroke="#26352b" stroke-width="2"/><path d="m236 175 15-2m-13 6 14-2" fill="none" stroke="#26352b" stroke-opacity=".45" stroke-width="1"/></g>`}
  </g></g></g>`;
 }
 export function executionRig(player) {

@@ -22,3 +22,6 @@ The final idle right forearm is folded 130 degrees with a 40-degree shoulder; a 
 
 ## Compact nameplate follow-up
 Table nameplates size to their text instead of the full seat width, capped at 180px or the seat width. Height is 26px on small screens and 28px on desktop. Keep the seat geometry and large character hit areas unchanged.
+
+## Relaxed idle arms and overhead execution HUD
+Idle right shoulder/forearm fold inward at 76/136 degrees, with a relaxed open hand resting across the waist instead of a vertical curled gun grip. Armed hand geometry, aiming target and firing reaction timelines remain intact. Execution uses a centered overhead name/shot panel with 18-24px names and 12-14px shot counts. Keep the newly compact table plates.

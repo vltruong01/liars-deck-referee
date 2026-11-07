@@ -54,6 +54,16 @@ document.addEventListener('fullscreenchange',()=>{
   $('#fullscreen-button').setAttribute('aria-label',active?'Exit fullscreen':'Enter fullscreen');
   $('#fullscreen-button').setAttribute('aria-pressed',String(active));
 });
+function placeExecutionHud() {
+  if(execution.hidden||!['entering','ready','firing'].includes(execution.dataset.phase))return;
+  const subject=$('.execution-subject'),hud=$('.execution-hud'),head=$('#execution-portrait .character-head');
+  if(!head)return;
+  const parts=[head,...execution.querySelectorAll('#execution-portrait .headwear')].filter(e=>e.children.length);
+  const boxes=parts.map(e=>e.getBoundingClientRect()),r=subject.getBoundingClientRect(),face=head.getBoundingClientRect();
+  const center=face.x+face.width/2-r.x,half=hud.offsetWidth/2;
+  hud.style.left=`${Math.max(half,Math.min(r.width-half,center))}px`;
+  hud.style.top=`${Math.max(0,Math.min(...boxes.map(b=>b.top))-r.top-hud.offsetHeight-8)}px`;
+}
 function fitStage() {
   const scene=$('.scene'), fit=$('.stage-fit');if(!scene||!fit)return;
   const scale=1;
@@ -64,7 +74,7 @@ function observeStage() {
   if(typeof ResizeObserver!=='undefined'){stageObserver=new ResizeObserver(fitStage);stageObserver.observe($('.scene'));}
   fitStage();
 }
-window.addEventListener('resize',fitStage);
+window.addEventListener('resize',()=>{fitStage();placeExecutionHud();});
 $('#volume').value=String(Math.round(prefs.volume*100)); $('#volume-value').value=`${Math.round(prefs.volume*100)}%`;
 $('#reduced-flashing').checked=prefs.reducedFlashing; $('#reduced-motion').checked=prefs.reducedMotion;
 function savePrefs() { attempt(()=>storage.setItem('liars-deck.settings',JSON.stringify(prefs))); }
@@ -183,13 +193,13 @@ function selectPlayer(id, recovering=false) {
   gsap.set(['#result','.blood-mark','.impact'],{opacity:0});
   gsap.set('.execution-stage',{clearProps:'transform'});
   gsap.set(execution,{clearProps:'transform',opacity:0});
-  execution.hidden=false;app.inert=true;$('.topbar').inert=true;execution.focus();
+  execution.hidden=false;placeExecutionHud();app.inert=true;$('.topbar').inert=true;execution.focus();
   // The same right arm starts in the same idle pose as the table portrait.
   entryTimeline=gsap.timeline();
   entryTimeline.to(execution,{opacity:1,duration:.1},0)
     .to('#execution-portrait .upper-arm',{rotation:0,svgOrigin:'185 224',duration:prefs.reducedMotion?.12:.8,ease:'power2.inOut'},prefs.reducedMotion?0:.12)
     .to('#execution-portrait .forearm',{rotation:0,svgOrigin:'222 224',duration:prefs.reducedMotion?.12:.8,ease:'power2.inOut'},prefs.reducedMotion?0:.12)
-    .call(()=>{if(entryId===entrySequence&&!recovering&&!returning&&selected===id){execution.dataset.phase='ready';$('#fire-button').disabled=false;$('#fire-button').focus({preventScroll:true});}},[],prefs.reducedMotion?.13:.93);
+    .call(()=>{if(entryId===entrySequence&&!recovering&&!returning&&selected===id){execution.dataset.phase='ready';placeExecutionHud();$('#fire-button').disabled=false;$('#fire-button').focus({preventScroll:true});}},[],prefs.reducedMotion?.13:.93);
   if(recovering){entryTimeline.kill();gsap.set(execution,{opacity:1});gsap.set('#execution-portrait .upper-arm',{rotation:0,svgOrigin:'185 224'});gsap.set('#execution-portrait .forearm',{rotation:0,svgOrigin:'222 224'});$('#cancel-execution').hidden=true;$('#fire-button').hidden=true;reveal(state.pending,true);}
 }
 

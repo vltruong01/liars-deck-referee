@@ -12,3 +12,5 @@
 - [x] 5.4 Sync specs, build offline release, update QA, commit/push/deploy and verify live bytes and gameplay.
 
 - [ ] 6.1 Shrink table nameplates to content-sized centered labels; inspect mobile/desktop and publish verified build.
+
+- [ ] 7.1 Relax idle hands across the waist and center a larger shooting name/shot HUD above the head; preserve aiming/reactions, inspect and deploy.
