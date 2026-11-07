@@ -1,5 +1,7 @@
 # GitHub Pages
 
+Latest mobile character studio deployment: source `67576a8`, Pages `1dee5310a799406c378644e95f846ec6e40ce2fd`, verified 2026-11-07. 39 Vitest / 16 Playwright tests passed. The live HTML matches the tested artifact byte-for-byte; headed Chrome verified setup, customization, a shot, automatic return and cosmetic editing without lost progress. See [current QA evidence](MOBILE_QA_REPORT.md).
+
 Repository: https://github.com/vltruong01/liars-deck-referee
 
 Website: https://vltruong01.github.io/liars-deck-referee/

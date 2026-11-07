@@ -62,7 +62,13 @@ UI UX Pro Max's installed skill and UX search were actually read/run; applied pr
 
 Final regression: **39/39 Vitest, 16/16 Playwright**, zero failures, skips or flaky tests. Strict OpenSpec validation: **4 passed, 0 failed** ([output](mobile-qa/openspec-validation.txt)). All sixteen final trace ZIPs passed `zipfile.testzip()` ([manifest](mobile-qa/trace-manifest.json)); a complete [667×375 customization trace](mobile-qa/customization-trace.zip) is retained with this report. Open with `npx playwright show-trace docs/mobile-qa/customization-trace.zip`.
 
-The corrected standalone HTML and index match exactly; ZIP integrity and ZIP-to-dist contents passed ([release evidence](mobile-qa/release-integrity.json)). Deployment verification is appended after checking the live publication.
+The corrected standalone HTML and index match exactly; ZIP integrity and ZIP-to-dist contents passed ([release evidence](mobile-qa/release-integrity.json)).
+
+### Live deployment verified
+
+Source commit `67576a8` and `gh-pages` commit `1dee5310a799406c378644e95f846ec6e40ce2fd` were pushed to the existing repository. [Pages API evidence](mobile-qa/deployment-pages.json) reports `built`, HTTPS enforced, no build error. [Live HTTP evidence](mobile-qa/deployment-http.json) confirms HTTP 200 and 149,555 bytes matching the tested HTML exactly (SHA-256 `9b39de69c6a008617871a696ae15da145abd50a678fd8ae817be97bbd4d45388`).
+
+Executed `node scripts/verify-live.mjs` against [the public website](https://vltruong01.github.io/liars-deck-referee/) in **headed Chrome at 844×390**. Actual touch/keyboard name entry, cosmetic Save, four-player setup, FIRE, survival feedback, automatic return, appearance editing after a shot and reload persistence passed; shot count remained one and browser errors were empty. [Machine-readable result](mobile-qa/live-verification.json). Opened and visually inspected all four live images: [editor](mobile-qa/live-customization.png), [table](mobile-qa/live-table.png), [execution](mobile-qa/live-execution.png), [result](mobile-qa/live-result.png). Both deterministic outcomes and all five viewport sizes were verified locally in the full suite.
 
 ## Remaining limits
 
