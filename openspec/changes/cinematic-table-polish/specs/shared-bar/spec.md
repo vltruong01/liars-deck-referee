@@ -15,7 +15,7 @@ The shared character renderer SHALL support classic, vest/rolled sleeves and wes
 - **THEN** its attachment, direction and layering remain aligned and inside the silhouette bounds.
 
 ### Requirement: Articulated suspense and outcome reactions
-Execution SHALL use a connected shoulder, upper arm, elbow, forearm, wrist/hand and revolver hierarchy. Both results SHALL share a locked 2-second anticipation with synchronized generated breathing, mechanical cues, heartbeat and near-silence before reveal. Reduced motion SHALL simplify movements.
+Execution SHALL use a connected shoulder, upper arm, elbow, forearm, wrist/hand and revolver hierarchy. Both results SHALL share a locked 2.85-second anticipation with synchronized generated breathing, mechanical cues, heartbeat and near-silence before reveal. Reduced motion SHALL simplify movements.
 
 #### Scenario: Contrasting outcomes
 - **WHEN** the predetermined shot is revealed
@@ -29,3 +29,14 @@ The table SHALL use a compact header and in-stage New Match control; current-pla
 #### Scenario: Recognizable outcome and automatic return
 - **WHEN** FIRE commits survival or elimination
 - **THEN** the result is committed once, receives the same anticipation and at least two seconds of fully visible result feedback, then returns automatically without requiring a return-button press.
+
+### Requirement: Continuous two-arm rig and stable cinematic return
+Characters SHALL contain exactly two anatomical arm groups in their shared renderer. The existing right shoulder, elbow, wrist, hand and grip SHALL transition continuously from idle to aiming without a separate added arm or CSS concealment. Execution SHALL use a compact name/SHOT n/6 HUD and DIED status, with no ALIVE labels. Table plates SHALL use name and n/6 or DIED.
+
+#### Scenario: Fatal reveal and automatic return
+- **WHEN** the durable fatal result is revealed after the shared anticipation
+- **THEN** impact and collapse precede a centered large customized portrait with a red X and name/DIED, held fully readable for two seconds before automatic return; blank feedback returns without an X.
+
+#### Scenario: Interrupted entry and repeated execution
+- **WHEN** entry is cancelled or consecutive players are selected and fired
+- **THEN** stale callbacks are cancelled, the execution alone owns camera motion, and a stable unscaled table is prepared before revealing it with no offset or zoom frame.

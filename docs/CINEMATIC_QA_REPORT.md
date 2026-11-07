@@ -58,3 +58,6 @@ Also opened [six species × three mouth accessories and three clothing styles](c
 - Opened actual live screenshots: [customization](cinematic-qa/live-customization.png), [table](cinematic-qa/live-table.png), [ready](cinematic-qa/live-execution.png), [result](cinematic-qa/live-result.png). The released offline ZIP remains identical to dist.
 
 All six cinematic-table-polish tasks are complete. The change remains available for review without archiving. Physical-device/Safari testing and subjective audio listening remain outside this verification.
+
+
+Follow-up: the two-arm rig, compact HUD, death reveal and camera correction are documented in [Execution QA](EXECUTION_QA_REPORT.md); its latest evidence supersedes the earlier execution behavior above.

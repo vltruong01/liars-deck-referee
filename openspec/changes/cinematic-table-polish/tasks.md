@@ -5,3 +5,8 @@
 - [x] 2.3 Implement articulated joints, shaped breathing/shared anticipation and contrasting aftermath.
 - [x] 3.1 Capture and open five-size before/after, all seats and intermediate animation frames; correct defects and extend regression.
 - [x] 4.1 Run full tests/build/spec validation, refresh ZIP, commit/push, deploy and verify exact live artifact/gameplay.
+
+- [x] 5.1 Refactor one shared two-arm rig with continuous idle-to-aim joints; fix camera ownership and transition cleanup.
+- [x] 5.2 Replace large headings/status with compact HUD, 2.85-second common anticipation and centered customized DIED/X reveal.
+- [x] 5.3 Inspect five-size fractional raise/outcome/return frames and consecutive executions; extend regression and run full suites.
+- [ ] 5.4 Sync specs, build offline release, update QA, commit/push/deploy and verify live bytes and gameplay.

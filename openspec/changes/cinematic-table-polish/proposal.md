@@ -10,3 +10,6 @@ Seat two players behind the table and one at each end; simplify HUD to New Match
 
 # Impact
 Original SVG/CSS/WebAudio/GSAP and tests; no new runtime dependency, engine probability changes or installation retries.
+
+## Execution correction follow-up
+Replace layered execution artwork with the same two-arm SVG rig used for idle portraits; compact name/shot/DIED HUD; 2.85-second common suspense; centered customized death portrait with stamped red X; owned transition cleanup and stable table before fade-out. Preserve all mechanics and saved progress.

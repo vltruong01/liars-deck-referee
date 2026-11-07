@@ -67,3 +67,5 @@ Mobile character studio: per-player hats, eyewear, mouth accessories, suit/tie p
 
 
 Cinematic polish: two rear seats plus one at each table end, three outfit silhouettes and articulated execution. Use **New Match ? Edit current players** to change the ongoing group without losing progress. See [current cinematic QA](docs/CINEMATIC_QA_REPORT.md).
+
+Execution correction: shared two-arm SVG rig, compact SHOT/DIED HUD, 2.85-second suspense, centered customized red-X reveal and stable automatic camera return. See [execution QA](docs/EXECUTION_QA_REPORT.md).

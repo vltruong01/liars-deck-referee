@@ -59,9 +59,7 @@ for(const [width,height] of sizes)test(`${width}x${height}: table, each seat, FI
   for(let i=1;i<=4;i++){
     await ready(page,`p${i}`);await executionChecks(page);
     expect(await page.locator('#execution-name').textContent()).toBe(entries[i-1].name.slice(0,24));
-    const origin=await page.locator('.room-camera').evaluate((el,id)=>{const seat=document.querySelector(`[data-execute="${id}"]`);return{origin:getComputedStyle(el).transformOrigin.split(' ').map(parseFloat),matrix:getComputedStyle(el).transform,x:seat.offsetLeft+seat.offsetWidth/2,y:seat.offsetTop+seat.offsetHeight/2};},`p${i}`);
-    expect(origin.matrix).not.toBe('none');
-    expect(origin.origin[0]).toBeCloseTo(origin.x,0);expect(origin.origin[1]).toBeCloseTo(origin.y,0);
+    await expect(page.locator('.room-camera')).toHaveCSS('transform','none');
     if(i===1)await screenshot(page,`execution-${width}x${height}`);
     await page.locator('#cancel-execution').tap();await expect(page.locator('#execution')).toBeHidden();
   }
@@ -69,8 +67,8 @@ for(const [width,height] of sizes)test(`${width}x${height}: table, each seat, FI
   await loadMatch(page,createMatch(entries,()=>5));await ready(page,'p1');
   await page.locator('#fire-button').tap();await expect(page.locator('#fire-button')).toBeDisabled();
   await expect(page.locator('#cancel-execution')).toBeDisabled();await expect(page.locator('#execution-settings')).toBeDisabled();
-  await expect(page.locator('#result')).toContainText('SURVIVED');await expect(page.locator('#return-button')).toBeVisible();
-  await inside(page,'#result, #return-button');await noOverflow(page,['#execution','.execution-action']);
+  await expect(page.locator('#result')).toContainText('SURVIVED');await expect(page.locator('#return-button')).toBeHidden();
+  await inside(page,'#result');await noOverflow(page,['#execution','.execution-action']);
   if(width===667||width===844)await screenshot(page,`survived-${width}x${height}`);
   await expect(page.locator('#execution')).toBeHidden({timeout:7000});
   expect(await page.evaluate(key=>JSON.parse(localStorage.getItem(key)).players[0].shots,KEY)).toBe(1);
@@ -90,8 +88,8 @@ test('fatal effect, pending recovery, resets, winner and offline local release',
   await page.setViewportSize({width:667,height:375});
   await context.setOffline(true);
   await loadMatch(page,createMatch(entries,()=>0));await ready(page,'p1');await page.locator('#fire-button').tap();
-  await expect(page.locator('#result')).toContainText('ELIMINATED');await expect(page.locator('#return-button')).toBeVisible();
-  await screenshot(page,'eliminated-667x375');await inside(page,'#result, #return-button, #execution-portrait .portrait');
+  await expect(page.locator('#result')).toContainText('DIED');await expect(page.locator('#return-button')).toBeHidden();
+  await screenshot(page,'eliminated-667x375');await inside(page,'#result, #execution-portrait .portrait');
   await expect(page.locator('#execution')).toBeHidden({timeout:7000});await expect(page.locator('[data-execute="p1"]')).toBeDisabled();
   const pending=fire(createMatch(entries,()=>0),'p2',1);await loadMatch(page,pending);
   await expect(page.locator('#result')).toContainText('SAVED RESULT');await page.locator('#return-button').tap();await expect(page.locator('#execution')).toBeHidden();

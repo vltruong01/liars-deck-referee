@@ -1,10 +1,10 @@
 import {chromium,expect} from '@playwright/test';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
-import {KEY} from '../src/engine.js';
+import {KEY,createMatch} from '../src/engine.js';
 
 const url='https://vltruong01.github.io/liars-deck-referee/';
-const out=process.env.QA_OUTPUT_DIR||'docs/cinematic-qa';await mkdir(out,{recursive:true});
+const out=process.env.QA_OUTPUT_DIR||'docs/execution-qa';await mkdir(out,{recursive:true});
 const browser=await chromium.launch({channel:'chrome',headless:false});
 try {
   const context=await browser.newContext({viewport:{width:844,height:390},hasTouch:true});
@@ -22,8 +22,8 @@ try {
   await page.getByRole('button',{name:'START GAME'}).click();await expect(page.locator('.scene-frame')).toHaveCSS('opacity','1');
   await page.screenshot({path:`${out}/live-table.png`});await page.locator('[data-execute="p1"]').click();
   await expect(page.locator('#execution')).toHaveAttribute('data-phase','ready');
-  await page.screenshot({path:`${out}/live-execution.png`});await page.locator('#fire-button').click();
-  await expect(page.locator('#result')).toContainText(/SURVIVED|ELIMINATED/);await expect(page.locator('#result')).toHaveCSS('opacity','1');
+  await expect(page.locator('#execution-portrait [data-arm]')).toHaveCount(2);await expect(page.locator('.execution-hud')).toContainText('SHOT 1/6');await expect(page.locator('.seat-name')).not.toContainText(['ALIVE','ALIVE','ALIVE','ALIVE']);await page.screenshot({path:`${out}/live-execution.png`});await page.locator('#fire-button').click();
+  await expect(page.locator('#result')).toContainText(/SURVIVED|DIED/);await expect(page.locator('#result')).toHaveCSS('opacity','1');
   const outcome=await page.locator('#result').innerText();await page.screenshot({path:`${out}/live-result.png`});
   await expect(page.locator('#execution')).toBeHidden({timeout:7000});
   const before=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),KEY);expect(before.players[0].shots).toBe(1);
@@ -33,6 +33,10 @@ try {
   expect(after.players[0]).toEqual({...before.players[0],appearance:{...before.players[0].appearance,eyes:'monocle'}});
   await page.getByRole('button',{name:'Close player management'}).click();await page.reload();
   await expect(page.locator('[data-execute="p1"] .eyewear')).toHaveAttribute('data-eyes','monocle');expect(errors).toEqual([]);
-  const evidence={url,httpStatus:response.status(),htmlBytes:body.length,sha256:createHash('sha256').update(body).digest('hex'),matchesVerifiedDist:true,viewport:[844,390],browser:'headed Chrome',typedName:true,customization:true,shotCount:1,outcome,automaticReturn:true,cosmeticEditPreservesProgress:true,persistence:true,errors};
+  const fatalFixture=createMatch(after.players,()=>0);
+  await page.evaluate(({k,s})=>localStorage.setItem(k,JSON.stringify(s)),{k:KEY,s:fatalFixture});await page.reload();await page.locator('[data-execute="p1"]').click();await expect(page.locator('#execution')).toHaveAttribute('data-phase','ready');await page.locator('#fire-button').click();
+  await expect(page.locator('.death-card')).toContainText('DIED');await expect(page.locator('#result')).toHaveCSS('opacity','1');await expect(page.locator('.death-portrait .eyewear')).toHaveAttribute('data-eyes','monocle');await expect(page.locator('.death-portrait .headwear')).toHaveAttribute('data-hat','top-hat');await expect(page.locator('.death-portrait .upper-arm')).toHaveAttribute('transform','rotate(40 185 224)');await page.screenshot({path:`${out}/live-death.png`});
+  await expect(page.locator('#execution')).toBeHidden({timeout:7000});await expect(page.locator('.room-camera')).toHaveCSS('transform','none');await expect(page.locator('[data-execute="p1"]')).toBeDisabled();await expect(page.locator('[data-execute="p1"]')).toContainText('DIED');expect(errors).toEqual([]);
+  const evidence={url,httpStatus:response.status(),htmlBytes:body.length,sha256:createHash('sha256').update(body).digest('hex'),matchesVerifiedDist:true,viewport:[844,390],browser:'headed Chrome',typedName:true,customization:true,twoArmRig:true,compactHud:true,liveFatalFixture:true,customizedDeathReveal:true,stableTableCamera:true,shotCount:1,outcome,automaticReturn:true,cosmeticEditPreservesProgress:true,persistence:true,errors};
   await writeFile(`${out}/live-verification.json`,JSON.stringify(evidence,null,2));console.log(JSON.stringify(evidence));
 } finally {await browser.close();}

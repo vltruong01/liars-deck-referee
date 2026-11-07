@@ -71,8 +71,8 @@ for(const [width,height] of sizes)test(`customization ${width}x${height}: four i
     await page.evaluate(({key,state})=>localStorage.setItem(key,JSON.stringify(state)),{key:KEY,state:fixture});await page.reload();
     await page.locator('[data-execute="p1"]').click();await expect(page.locator('#execution')).toHaveAttribute('data-phase','ready');
     await page.locator('#fire-button').click();await page.locator('#fire-button').evaluate(b=>b.click());
-    await expect(page.locator('#result')).toContainText(fatal?'ELIMINATED':'SURVIVED');await expect(page.locator('#result')).toHaveCSS('opacity','1');
-    const revealed=Date.now();await silhouette(page,'#execution-portrait .portrait');await bounds(page,'#result, #return-button');
+    await expect(page.locator('#result')).toContainText(fatal?'DIED':'SURVIVED');await expect(page.locator('#result')).toHaveCSS('opacity','1');
+    const revealed=Date.now();await silhouette(page,'#execution-portrait .portrait');await bounds(page,'#result');
     await screenshot(page,`${fatal?'elimination':'survival'}-${suffix}`);
     expect(await page.evaluate(key=>JSON.parse(localStorage.getItem(key)).players[0].shots,KEY)).toBe(1);
     await expect(page.locator('#execution')).toBeHidden({timeout:7000});expect(Date.now()-revealed).toBeGreaterThanOrEqual(2000);

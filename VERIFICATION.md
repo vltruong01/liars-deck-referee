@@ -52,3 +52,5 @@ The later mobile/customization update passed 39 Vitest and 16 Playwright tests, 
 
 
 2026-11-07 cinematic polish: 39 Vitest and 23 Playwright tests passed. See [current visual QA and release evidence](docs/CINEMATIC_QA_REPORT.md).
+
+2026-11-07 execution correction: 39 Vitest and 29 Playwright passed; fractional two-arm rig, death reveal and stable camera evidence in [Execution QA](docs/EXECUTION_QA_REPORT.md).

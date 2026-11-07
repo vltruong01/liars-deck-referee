@@ -1,0 +1,13 @@
+{
+  "vitestPassed": 39,
+  "playwright": {
+    "startTime": "2026-11-07T11:44:03.341Z",
+    "duration": 205745.018,
+    "expected": 29,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "validTraces": 29,
+  "selectedTrace": "test-results\\playwright\\execution-execution-contin-d0213-eated-stable-camera-returns\\trace.zip"
+}

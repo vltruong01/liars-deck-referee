@@ -22,16 +22,16 @@
     <div class="execution-toolbar"><button id="cancel-execution" class="outline execution-back">← TABLE</button><span class="eyebrow">THE LAST CALL · CONSEQUENCE</span><div class="execution-tools"><button class="icon-button" id="execution-fullscreen" aria-label="Toggle fullscreen">⛶</button><button class="icon-button" id="execution-settings" aria-label="Execution sound and accessibility settings">⚙</button></div></div>
     <div class="execution-layout">
     <section class="execution-subject">
-    <div class="execution-heading"><p class="eyebrow" id="execution-eyebrow">THE HOUSE IS WATCHING</p><h1 id="execution-name"></h1><p id="execution-subtitle">One chamber. One consequence.</p></div>
+    <div class="execution-hud"><strong id="execution-name"></strong><span id="shot-label"></span><span id="execution-status" hidden>DIED</span></div>
     <div class="execution-stage"><div id="execution-portrait"></div><div class="spotlight"></div><div class="blood-mark" aria-hidden="true"></div></div>
     </section>
     <section class="execution-action" aria-label="Trigger and outcome">
-    <div class="fire-controls"><p class="shot-label" id="shot-label"></p><button class="primary danger" id="fire-button"><span>FIRE</span><b>↗</b></button><p class="execution-hint" id="execution-hint">Take a breath. Then pull the trigger.</p></div>
-    <div id="result" class="result" aria-live="assertive"></div>
+    <div class="fire-controls"><button class="primary danger" id="fire-button"><span>FIRE</span><b>↗</b></button><p class="execution-hint" id="execution-hint">Take a breath. Then pull the trigger.</p></div>
     <button id="return-button" class="primary return-button" hidden>RETURN TO THE TABLE <b>→</b></button>
     <div class="execution-note">SIX CHAMBERS. ONE BULLET.<br><span>Your cylinder never reshuffles.</span></div>
     </section>
     </div>
+    <div id="result" class="result" aria-live="assertive"></div>
     <div class="impact" aria-hidden="true"></div>
   </div>
   <dialog id="settings-dialog" aria-labelledby="settings-title"><form method="dialog"><button class="dialog-close" aria-label="Close settings">×</button><p class="eyebrow">MAKE YOURSELF COMFORTABLE</p><h2 id="settings-title">Set the mood.</h2><label class="setting-label" for="volume">Sound volume <output id="volume-value">45%</output></label><input id="volume" type="range" min="0" max="100" value="45"><label class="check-row"><input id="reduced-flashing" type="checkbox"><span>Reduced flashing<small>Suppress muzzle flash and red impact.</small></span></label><label class="check-row"><input id="reduced-motion" type="checkbox"><span>Reduced motion<small>Gentle transitions, no camera shake.</small></span></label><p class="muted small">Sound starts after your first interaction. Settings are saved on this device.</p><button class="primary">DONE <b>→</b></button></form></dialog>

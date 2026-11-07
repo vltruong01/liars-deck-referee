@@ -12,7 +12,7 @@ const prefersMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
 let prefs={volume:.45,reducedFlashing:false,reducedMotion:prefersMotion.matches};
 try { const saved=JSON.parse(localStorage.getItem('liars-deck.settings')||'null'); if(saved) prefs={volume:typeof saved.volume==='number'?Math.max(0,Math.min(1,saved.volume)):.45,reducedFlashing:!!saved.reducedFlashing,reducedMotion:!!saved.reducedMotion||prefersMotion.matches}; } catch {}
 audio.setVolume(prefs.volume);
-let state=null, storage, storageError=null, selected=null, busy=false, returning=false, shotTimeline=null, toastTimer=null, confirmAction=null;
+let state=null, storage, storageError=null, selected=null, busy=false, returning=false, shotTimeline=null, entryTimeline=null, reactionTimeline=null, transitionTimeline=null, toastTimer=null, confirmAction=null;
 let count=4, draft=skins.slice(0,4).map((s,i)=>({name:`Player ${i+1}`,skin:s.id}));
 let stageObserver=null, entrySequence=0;
 const DRAFT_KEY='liars-deck.setup.v1';
@@ -137,7 +137,7 @@ function renderTable() {
     ${w?`<div class="winner-banner"><h2><span>${escapeText(w.name)}</span> takes the table.</h2><button class="primary" id="play-again">PLAY AGAIN <b>&#8594;</b></button></div>`:''}
     <div class="scene-frame"><div class="scene" data-count="${state.players.length}">${roomArt()}<div class="stage-fit"><div class="room-camera">
     <div class="table" aria-hidden="true"><div class="table-felt"><div class="table-emblem">&#9824;<span>THE LAST CALL</span></div><div class="cards"><div class="card">&#9824;</div><div class="card">&#9830;</div><div class="card">&#9827;</div></div><div class="glass"></div></div></div>
-    ${state.players.map((p,i)=>`<button class="seat ${p.dead?'dead':''}" data-seat="${i+1}" data-position="${seatPosition(state.players.length,i).position}" style="${seatPosition(state.players.length,i).style}" data-execute="${p.id}" ${p.dead||w?'disabled':''} aria-label="${escapeText(p.name)}, ${p.dead?'eliminated':`${p.shots} shots taken. Select for execution`}" title="${escapeText(p.name)}"><span class="seat-character">${portrait(p.skin,true,p.appearance)}</span><span class="seat-name"><strong>${escapeText(p.name)}</strong><small>${p.dead?'&#10005; ELIMINATED':`&#9679; ALIVE &middot; ${p.shots}/6 PULLS`}</small></span></button>`).join('')}
+    ${state.players.map((p,i)=>`<button class="seat ${p.dead?'dead':''}" data-seat="${i+1}" data-position="${seatPosition(state.players.length,i).position}" style="${seatPosition(state.players.length,i).style}" data-execute="${p.id}" ${p.dead||w?'disabled':''} aria-label="${escapeText(p.name)}, ${p.dead?'DIED':`${p.shots} shots taken. Select for execution`}" title="${escapeText(p.name)}"><span class="seat-character">${portrait(p.skin,true,p.appearance)}</span><span class="seat-name"><strong>${escapeText(p.name)}</strong><small>${p.dead?'DIED':`${p.shots}/6`}</small></span></button>`).join('')}
     </div></div></div></div>
     </section>`;
   observeStage();
@@ -149,7 +149,7 @@ function lastEvent() { if(!state.last) return 'All revolvers loaded. <span>Make 
 
 function openManagement() {
   if(busy)return;
-  $('#manage-list').innerHTML=state.players.map(p=>`<form class="manage-row" data-rename="${p.id}">${portrait(p.skin,true,p.appearance)}<div class="manage-input-group"><label for="edit-${p.id}">${p.dead?'ELIMINATED':'ALIVE'} · ${p.shots}/6 PULLS</label><input type="text" id="edit-${p.id}" maxlength="24" required aria-label="Name for ${escapeText(p.name)}" value="${escapeText(p.name)}"></div><div class="manage-actions"><button type="submit">SAVE NAME</button><button type="button" data-customize-player="${p.id}">STYLE</button><button type="button" data-reset="${p.id}">RESET</button></div></form>`).join('');
+  $('#manage-list').innerHTML=state.players.map(p=>`<form class="manage-row" data-rename="${p.id}">${portrait(p.skin,true,p.appearance)}<div class="manage-input-group"><label for="edit-${p.id}">${p.dead?'DIED':`${p.shots}/6`}</label><input type="text" id="edit-${p.id}" maxlength="24" required aria-label="Name for ${escapeText(p.name)}" value="${escapeText(p.name)}"></div><div class="manage-actions"><button type="submit">SAVE NAME</button><button type="button" data-customize-player="${p.id}">STYLE</button><button type="button" data-reset="${p.id}">RESET</button></div></form>`).join('');
   document.querySelectorAll('[data-rename]').forEach(form=>form.onsubmit=e=>{e.preventDefault();attempt(()=>{commit(rename(state,form.dataset.rename,form.querySelector('input').value));renderTable();toast('Name saved. Revolver progress kept.');});});
   document.querySelectorAll('[data-customize-player]').forEach(b=>b.onclick=()=>openAppearance(b.dataset.customizePlayer));
   document.querySelectorAll('[data-reset]').forEach(b=>b.onclick=()=>{const p=state.players.find(p=>p.id===b.dataset.reset);confirm(`Reset ${p.name}?`,'Bring this player back with zero shots and a newly loaded revolver? Other players keep their progress.',()=>{commit(resetPlayer(state,p.id));renderTable();openManagement();toast('Player reset. A fresh cylinder awaits.');});});
@@ -157,116 +157,114 @@ function openManagement() {
   showDialog('manage-dialog');
 }
 
+// Every animation belongs to this execution and is cancelled before changing views.
+function stopExecutionAnimations() {
+  for(const timeline of [entryTimeline,shotTimeline,reactionTimeline,transitionTimeline])timeline?.kill();
+  entryTimeline=shotTimeline=reactionTimeline=transitionTimeline=null;
+  gsap.killTweensOf([execution,...execution.querySelectorAll('*')]);
+}
+function resetTableCamera() {
+  const camera=$('.room-camera');if(!camera)return;
+  gsap.killTweensOf(camera);gsap.set(camera,{clearProps:'transform,transformOrigin'});
+}
 function selectPlayer(id, recovering=false) {
   if(busy || (!recovering&&(state.pending||winner(state)))) return;
-  const p=state.players.find(p=>p.id===id); if(!p||(!recovering&&p.dead))return;
-  selected=id;busy=true;returning=false;
-  const entryId=++entrySequence;
-  audio.select();
-  const seat=document.querySelector(`[data-execute="${id}"]`), camera=$('.room-camera');
-  if(camera&&!prefs.reducedMotion){
-    // The outer stage owns responsive scaling. The camera only makes a small,
-    // clamped move toward the chosen seat, inside the scene's visual frame.
-    const centerX=seat?seat.offsetLeft+seat.offsetWidth/2:480;
-    const centerY=seat?seat.offsetTop+seat.offsetHeight/2:200;
-    const cw=camera.clientWidth,ch=camera.clientHeight;
-    const focusX=Math.max(5,Math.min(95,centerX/cw*100));
-    const focusY=Math.max(5,Math.min(95,centerY/ch*100));
-    gsap.to(camera,{scale:1.16,x:Math.max(-32,Math.min(32,(cw/2-centerX)*.06)),y:Math.max(-10,Math.min(10,(ch/2-centerY)*.04)),transformOrigin:`${focusX}% ${focusY}%`,duration:.48,ease:'power2.inOut'});
-  }
-  execution.dataset.phase='entering';
-  $('#execution-name').textContent=p.name;
-  $('#execution-eyebrow').textContent=recovering?'THE HOUSE KEPT YOUR RESULT':'THE HOUSE IS WATCHING';
-  $('#execution-subtitle').textContent=recovering?'Your last trigger pull was saved.':'One chamber. One consequence.';
+  const p=state.players.find(p=>p.id===id);if(!p||(!recovering&&p.dead))return;
+  stopExecutionAnimations();resetTableCamera();
+  selected=id;busy=true;returning=false;const entryId=++entrySequence;
+  audio.select();execution.dataset.phase='entering';execution.dataset.outcome='';
+  $('#execution-name').textContent=p.name;$('#execution-name').title=p.name;
+  $('#shot-label').textContent=`SHOT ${recovering?p.shots:p.shots+1}/6`;
+  $('#execution-status').hidden=!recovering||!p.dead;
   $('#execution-portrait').innerHTML=executionRig(p);
-  $('#shot-label').textContent=`TRIGGER PULL ${recovering?p.shots:p.shots+1} OF 6`;
-  $('#execution-hint').textContent='Take a breath. Then pull the trigger.';
   $('#fire-button').disabled=true;$('#fire-button').hidden=false;$('.fire-controls').style.visibility='visible';
   $('#cancel-execution').hidden=false;$('#cancel-execution').disabled=false;$('#execution-settings').disabled=false;$('#execution-fullscreen').disabled=false;
   $('#return-button').hidden=true;$('#result').textContent='';
-  execution.dataset.outcome='';
   gsap.set(['#result','.blood-mark','.impact'],{opacity:0});
-  gsap.set('.upper-arm',{rotation:28,svgOrigin:'292 250'});gsap.set('.forearm',{rotation:65,svgOrigin:'370 290'});
+  gsap.set('.execution-stage',{clearProps:'transform'});
+  gsap.set(execution,{clearProps:'transform',opacity:0});
   execution.hidden=false;app.inert=true;$('.topbar').inert=true;execution.focus();
-  gsap.fromTo(execution,{opacity:0},{opacity:1,duration:prefs.reducedMotion?.12:.35});
-  const enter=gsap.timeline();shotTimeline=enter;
-  enter.to('.upper-arm',{rotation:0,svgOrigin:'292 250',duration:prefs.reducedMotion?.12:.8,ease:'power2.inOut'},prefs.reducedMotion?0:.12)
-    .to('.forearm',{rotation:0,svgOrigin:'370 290',duration:prefs.reducedMotion?.12:.72,ease:'power2.inOut'},prefs.reducedMotion?0:.2)
+  // The same right arm starts in the same idle pose as the table portrait.
+  entryTimeline=gsap.timeline();
+  entryTimeline.to(execution,{opacity:1,duration:.1},0)
+    .to('#execution-portrait .upper-arm',{rotation:0,svgOrigin:'185 224',duration:prefs.reducedMotion?.12:.8,ease:'power2.inOut'},prefs.reducedMotion?0:.12)
+    .to('#execution-portrait .forearm',{rotation:0,svgOrigin:'222 224',duration:prefs.reducedMotion?.12:.8,ease:'power2.inOut'},prefs.reducedMotion?0:.12)
     .call(()=>{if(entryId===entrySequence&&!recovering&&!returning&&selected===id){execution.dataset.phase='ready';$('#fire-button').disabled=false;$('#fire-button').focus({preventScroll:true});}},[],prefs.reducedMotion?.13:.93);
-  if(recovering){$('#cancel-execution').hidden=true;$('#fire-button').hidden=true;reveal(state.pending,true);}
+  if(recovering){entryTimeline.kill();gsap.set(execution,{opacity:1});gsap.set('#execution-portrait .upper-arm',{rotation:0,svgOrigin:'185 224'});gsap.set('#execution-portrait .forearm',{rotation:0,svgOrigin:'222 224'});$('#cancel-execution').hidden=true;$('#fire-button').hidden=true;reveal(state.pending,true);}
 }
 
 $('#fire-button').onclick=()=>{
-  if(!selected||state.pending||$('#fire-button').disabled)return;
+  if(!selected||state.pending||$('#fire-button').disabled||returning)return;
   attempt(()=>{
-    const next=fire(state,selected,state.nextShot);
-    commit(next); // The result is now durable. Animation has no authority over it.
-    const result=state.pending;
+    commit(fire(state,selected,state.nextShot)); // Durable result: animation cannot change it.
+    const result=state.pending,sequence=entrySequence;
     execution.dataset.phase='firing';
-    $('#fire-button').disabled=true;$('#cancel-execution').disabled=true;$('#execution-settings').disabled=true;$('#execution-fullscreen').disabled=true;$('#execution-hint').textContent='The room holds its breath.';
-    $('#execution-eyebrow').textContent='THERE IS NO TAKING IT BACK';
-    const timeline=gsap.timeline();shotTimeline=timeline;
-    // Exactly the same sequence, sound, duration and controls for both outcomes.
-    timeline.call(()=>audio.cock(),[],0)
-      .to('.hand-rig',{x:prefs.reducedMotion?0:-1,duration:.35},0)
-      .to('.cylinder',{y:2,duration:.12,yoyo:true,repeat:1},.12)
-      .to('.hammer',{rotation:-16,svgOrigin:'110 119',duration:.25},.15)
-      .call(()=>audio.breathe(),[],.45)
-      .call(()=>audio.heartbeat(),[],.5)
-      .to('.upper-arm',{rotation:prefs.reducedMotion?0:-1.2,svgOrigin:'292 250',duration:.55,yoyo:true,repeat:1,ease:'sine.inOut'},.4)
-      .call(()=>audio.heartbeat(),[],1.08)
-      // Breath has ended by 1.48; the room is almost silent before the trigger.
-      .to('.trigger',{x:-3,duration:.14},1.89)
-      .call(()=>reveal(result),[],2.05);
+    for(const id of ['fire-button','cancel-execution','execution-settings','execution-fullscreen'])$('#'+id).disabled=true;
+    // Identical grip, trembling, camera, sounds and final silence for either result.
+    shotTimeline=gsap.timeline();
+    shotTimeline.call(()=>audio.cock(),[],0)
+      .to('#execution-portrait .hand-rig',{scale:1.025,svgOrigin:'255 174',duration:.2,yoyo:true,repeat:1},0)
+      .to('#execution-portrait .cylinder',{y:2,duration:.12,yoyo:true,repeat:1},.12)
+      .to('#execution-portrait .hammer',{rotation:-16,svgOrigin:'110 119',duration:.25},.15)
+      .call(()=>audio.breathe(),[],.4)
+      .call(()=>audio.heartbeat(),[],.55)
+      .call(()=>audio.breathe(),[],1.35)
+      .call(()=>audio.heartbeat(),[],1.35)
+      .to('#execution-portrait .forearm',{rotation:prefs.reducedMotion?0:-.65,svgOrigin:'222 224',duration:.16,yoyo:true,repeat:7,ease:'sine.inOut'},.65)
+      .to('.execution-stage',{scale:prefs.reducedMotion?1:1.025,transformOrigin:'50% 55%',duration:2.3,ease:'sine.inOut'},0)
+      // Second breath ends at 2.37; hold near-silence until the 2.85s reveal.
+      .to('#execution-portrait .trigger',{x:-3,duration:.14},2.69)
+      .call(()=>{if(sequence===entrySequence&&!returning)reveal(result);},[],2.85);
   });
 };
 
 function reveal(result,recovering=false) {
-  const fatal=result.fatal,p=state.players.find(p=>p.id===result.playerId);
+  const fatal=result.fatal,p=state.players.find(p=>p.id===result.playerId),sequence=entrySequence;
   execution.dataset.phase='result';execution.dataset.outcome=fatal?'fatal':'blank';
-  $('.fire-controls').style.visibility='hidden';$('#cancel-execution').disabled=true;$('#execution-settings').disabled=true;$('#execution-fullscreen').disabled=true;
-  $('#execution-eyebrow').textContent=recovering?'RECOVERED FROM YOUR SAVED MATCH':'THE HOUSE HAS SPOKEN';
-  $('#execution-subtitle').textContent=fatal?'A debt paid in full.':'Not tonight.';
-  $('#result').innerHTML=`${fatal?'ELIMINATED':'SURVIVED'}<small>${escapeText(p.name)} · ${fatal?'THEIR SEAT IS EMPTY':'STILL IN THE GAME'}${recovering?' · SAVED RESULT':''}</small>`;
+  $('.fire-controls').style.visibility='hidden';$('#execution-status').hidden=!fatal;
+  for(const id of ['cancel-execution','execution-settings','execution-fullscreen'])$('#'+id).disabled=true;
+  $('#result').innerHTML=fatal?`<div class="death-card"><div class="death-portrait">${portrait(p.skin,true,p.appearance)}<svg class="death-x" viewBox="0 0 260 310" aria-hidden="true"><g fill="none" stroke="#b94538" stroke-linecap="square"><path d="M34 48 225 260M220 45 37 263" stroke-width="20"/><path d="M30 54 222 266M226 50 34 255" stroke-width="3" stroke="#dd7052"/></g></svg><i class="death-particles" aria-hidden="true"></i></div><h2>${escapeText(p.name)}</h2><strong>DIED</strong>${recovering?'<small>SAVED RESULT</small>':''}</div>`:`SURVIVED${recovering?'<small>SAVED RESULT</small>':''}`;
   $('#result').style.color=fatal?'#d68570':'#d5c69e';
+  reactionTimeline=gsap.timeline();const timeline=reactionTimeline;
   if(!recovering){
     if(fatal)audio.bang();else audio.click();
-    if(fatal&&!prefs.reducedFlashing) {
-      gsap.to('.muzzle',{opacity:1,duration:.025,repeat:1,yoyo:true});
-      gsap.fromTo('.impact',{opacity:.65},{opacity:0,duration:.42});
-      gsap.to('.blood-mark',{opacity:.85,duration:.25});
-    }
+    if(fatal&&!prefs.reducedFlashing)timeline.to('#execution-portrait .muzzle',{opacity:1,duration:.025,repeat:1,yoyo:true},0).fromTo('.impact',{opacity:.65},{opacity:0,duration:.42},0);
     if(!prefs.reducedMotion){
-      gsap.to('.forearm',{rotation:-7,svgOrigin:'370 290',duration:.06,yoyo:true,repeat:1});
+      timeline.to('#execution-portrait .forearm',{rotation:-6,svgOrigin:'222 224',duration:.06,yoyo:true,repeat:1},0);
       if(fatal){
-        gsap.to('.execution-stage',{x:4,duration:.035,repeat:5,yoyo:true,onComplete:()=>gsap.set('.execution-stage',{x:0})});
-        gsap.to('.rig-actor',{rotation:-4,svgOrigin:'245 300',duration:.09,yoyo:true,repeat:1});
-        gsap.to('.rig-actor',{rotation:-18,y:16,scale:.78,opacity:.65,svgOrigin:'245 300',duration:.65,delay:.28,ease:'power3.in'});
-        gsap.to('.upper-arm',{rotation:24,svgOrigin:'292 250',duration:.65,delay:.28});
-        gsap.to('.forearm',{rotation:32,svgOrigin:'370 290',duration:.65,delay:.3});
-      } else {
-        gsap.to('.rig-actor',{y:3,duration:.09,yoyo:true,repeat:1});
-        gsap.to('.upper-arm',{rotation:9,svgOrigin:'292 250',duration:.65,delay:.4,ease:'power2.out'});
-        gsap.to('.forearm',{rotation:10,svgOrigin:'370 290',duration:.65,delay:.4});
+        timeline.to('.execution-stage',{x:4,duration:.035,repeat:5,yoyo:true},0).set('.execution-stage',{x:0},.22)
+          .to('#execution-portrait .rig-actor',{rotation:-4,svgOrigin:'245 300',duration:.09,yoyo:true,repeat:1},0)
+          .to('#execution-portrait .rig-actor',{rotation:-22,y:20,scale:.82,opacity:.45,svgOrigin:'245 300',duration:.6,ease:'power3.in'},.22)
+          .to('#execution-portrait .upper-arm',{rotation:35,svgOrigin:'185 224',duration:.6},.25)
+          .to('#execution-portrait .forearm',{rotation:65,svgOrigin:'222 224',duration:.6},.25);
+      }else{
+        timeline.to('#execution-portrait .rig-actor',{y:3,duration:.09,yoyo:true,repeat:1},0)
+          .to('#execution-portrait .upper-arm',{rotation:14,svgOrigin:'185 224',duration:.6,ease:'power2.out'},.35)
+          .to('#execution-portrait .forearm',{rotation:22,svgOrigin:'222 224',duration:.6},.35);
       }
-    }else if(fatal)gsap.to('.rig-actor',{opacity:.5,duration:.35});
-  } else if(fatal) gsap.set('.rig-actor',{opacity:.5});
-  gsap.to('#result',{opacity:1,duration:.5,delay:recovering?0:.3});
-  gsap.delayedCall(recovering?.3:.85,()=>{$('#return-button').hidden=false;$('#return-button').focus();});
-  if(!recovering) shotTimeline=gsap.delayedCall(fatal?4.2:3.4,returnToTable);
+    }else if(fatal)timeline.to('#execution-portrait .rig-actor',{opacity:.45,duration:.3},0);
+  }
+  const revealAt=recovering?0:fatal?.95:.25;
+  timeline.to('#result',{opacity:1,duration:.3},revealAt);
+  if(fatal&&!prefs.reducedMotion)timeline.fromTo('#execution .death-x',{scale:1.35,rotation:-8,opacity:0},{scale:1,rotation:0,opacity:1,duration:.22,ease:'power3.in'},revealAt+.08);
+  if(recovering)timeline.call(()=>{$('#return-button').hidden=false;$('#return-button').focus();},[],.35);
+  else timeline.call(()=>{if(sequence===entrySequence)returnToTable();},[],fatal?3.5:2.7);
 }
 
 function returnToTable() {
   if(!busy||returning)return;
   const ok=attempt(()=>{if(state.pending)commit(completeShot(state));return true;});
   if(!ok){$('#return-button').hidden=false;return;}
-  returning=true;entrySequence++;shotTimeline?.kill();shotTimeline=null;
-  gsap.to(execution,{opacity:0,duration:prefs.reducedMotion?.15:.45,onComplete:()=>{
-    execution.hidden=true;app.inert=false;$('.topbar').inert=false;busy=false;returning=false;selected=null;
-    gsap.set(execution,{x:0});renderTable();
+  returning=true;entrySequence++;stopExecutionAnimations();execution.dataset.phase='returning';
+  // Prepare an unscaled destination underneath the still-opaque execution view.
+  renderTable();resetTableCamera();app.inert=true;$('.topbar').inert=true;
+  transitionTimeline=gsap.timeline({onComplete:()=>{
+    execution.hidden=true;gsap.set('.execution-stage',{clearProps:'transform'});gsap.set(execution,{clearProps:'transform'});
+    app.inert=false;$('.topbar').inert=false;busy=false;returning=false;selected=null;execution.dataset.phase='idle';
     const target=winner(state)?$('#play-again'):document.querySelector('.seat:not(:disabled)');target?.focus({preventScroll:true});
-  }});
+  }}).to(execution,{opacity:0,duration:prefs.reducedMotion?.15:.45,ease:'power1.out'});
 }
+
 $('#return-button').onclick=returnToTable;
 $('#cancel-execution').onclick=()=>{if(!state.pending){shotTimeline?.kill();returnToTable();}};
 execution.addEventListener('keydown',e=>{

@@ -1,0 +1,53 @@
+{
+  "viewport": [
+    844,
+    390
+  ],
+  "checks": [
+    {
+      "fraction": 25,
+      "shoulderGap": 0.0000161916057932604,
+      "elbowGap": 0.000003633908339337276
+    },
+    {
+      "fraction": 50,
+      "shoulderGap": 0.000017601884098234363,
+      "elbowGap": 0.000012956660736787567
+    },
+    {
+      "fraction": 75,
+      "shoulderGap": 0.000004287116852434322,
+      "elbowGap": 0.000002444474803501214
+    },
+    {
+      "fraction": 100,
+      "shoulderGap": 0,
+      "elbowGap": 0
+    },
+    {
+      "player": 1,
+      "fatal": false,
+      "returnFrames": 29,
+      "stableCamera": true
+    },
+    {
+      "player": 2,
+      "fatal": true,
+      "returnFrames": 29,
+      "stableCamera": true
+    },
+    {
+      "player": 3,
+      "fatal": false,
+      "returnFrames": 29,
+      "stableCamera": true
+    },
+    {
+      "player": 4,
+      "fatal": true,
+      "returnFrames": 29,
+      "stableCamera": true
+    }
+  ],
+  "errors": []
+}

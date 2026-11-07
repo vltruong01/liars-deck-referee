@@ -14,3 +14,5 @@
 - Preserve the four-player spatial arrangement: P1/P2 behind the upper-left/upper-right table edge, P3 left end, P4 right end. Use the shared percentage seat map, tabletop/portrait layers and separate labels; do not restore a flat character row.
 - The table HUD exposes New Match only; edit the ongoing group through its protected dialog. Preserve all cosmetic/progress editing there.
 - Inspect shoulder/elbow/hand/gun poses at intermediate timestamps and both outcome reactions, not only the ready/result endpoints. In timing tests schedule pre-reveal probes inside the page so expensive screenshot capture does not distort the assertion.
+
+- Keep exactly two shared anatomical arm groups, with the right arm reused from idle to aiming. Scope execution tweens to execution; prepare/reset the destination table under an opaque overlay before revealing it. Inspect fractional raise and return frames plus consecutive shots.

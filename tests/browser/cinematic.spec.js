@@ -11,7 +11,7 @@ const entries=[
 async function snap(page,name){await mkdir(out,{recursive:true});await page.screenshot({path:`${out}/${name}.png`});}
 async function fixture(page,fatal=false,count=4){await page.goto('http://127.0.0.1:4173/');await page.evaluate(({s,k})=>localStorage.setItem(k,JSON.stringify(s)),{s:createMatch(entries.slice(0,count),()=>fatal?0:5),k:KEY});await page.reload();}
 async function visibleArt(page){
-  const checks=await page.locator('#execution-portrait .portrait, #gun, .upper-arm, .forearm, .hand-rig').evaluateAll(els=>els.map(e=>{const b=e.getBBox(),m=e.getScreenCTM();const points=[[b.x,b.y],[b.x+b.width,b.y],[b.x,b.y+b.height],[b.x+b.width,b.y+b.height]].map(([x,y])=>new DOMPoint(x,y).matrixTransform(m));return {cls:e.id||e.getAttribute('class'),points:points.map(p=>[p.x,p.y]),vw:innerWidth,vh:innerHeight};}));
+  const checks=await page.locator('#execution-portrait .portrait, #execution #gun, #execution .upper-arm, #execution .forearm, #execution .hand-rig').evaluateAll(els=>els.map(e=>{const b=e.getBBox(),m=e.getScreenCTM();const points=[[b.x,b.y],[b.x+b.width,b.y],[b.x,b.y+b.height],[b.x+b.width,b.y+b.height]].map(([x,y])=>new DOMPoint(x,y).matrixTransform(m));return {cls:e.id||e.getAttribute('class'),points:points.map(p=>[p.x,p.y]),vw:innerWidth,vh:innerHeight};}));
   for(const c of checks)for(const [x,y]of c.points){expect(x,c.cls).toBeGreaterThanOrEqual(-1);expect(x,c.cls).toBeLessThanOrEqual(c.vw+1);expect(y,c.cls).toBeGreaterThanOrEqual(-1);expect(y,c.cls).toBeLessThanOrEqual(c.vh+1);}
 }
 for(const [width,height]of [[667,375],[740,360],[844,390],[932,430],[1366,768]])test(`cinematic ${width}x${height}: staging, joint raise, shared suspense and reactions`,async({page})=>{
@@ -24,21 +24,25 @@ for(const [width,height]of [[667,375],[740,360],[844,390],[932,430],[1366,768]])
   await page.locator('#new-match').click();await expect(page.locator('#confirm-dialog')).toBeVisible();await page.locator('#confirm-cancel').click();await expect(page.locator('.seat')).toHaveCount(4);
   const sequences=[];
   for(const fatal of [false,true]){
-    await fixture(page,fatal);await page.locator('[data-execute="p1"]').click();
+    await fixture(page,fatal);
+    // Capture the idle joint synchronously on the real click. Under trace load,
+    // a wall-clock 250ms sample can arrive after the entire raise has finished.
+    await page.locator('[data-execute="p1"]').evaluate(e=>e.addEventListener('click',()=>window.qaRaiseStart=document.querySelector('#execution .forearm').getAttribute('transform'),{once:true}));
+    await page.locator('[data-execute="p1"]').click();
     // Explicit intermediate timestamp for visual QA of the joint movement.
-    await page.waitForTimeout(250);const mid=await page.locator('.forearm').getAttribute('transform');
+    await page.waitForTimeout(250);const mid=await page.evaluate(()=>window.qaRaiseStart);
     await snap(page,`${fatal?'fatal':'blank'}-raise-${suffix}`);await visibleArt(page);
     await expect(page.locator('#execution')).toHaveAttribute('data-phase','ready');await visibleArt(page);
-    expect(await page.locator('.forearm').getAttribute('transform')).not.toBe(mid);await snap(page,`ready-${fatal?'fatal':'blank'}-${suffix}`);
+    expect(await page.locator('#execution .forearm').getAttribute('transform')).not.toBe(mid);await snap(page,`ready-${fatal?'fatal':'blank'}-${suffix}`);
     await page.evaluate(()=>{window.qaPhases=[];window.qaStart=performance.now();new MutationObserver(()=>{const phase=document.querySelector('#execution').dataset.phase;window.qaPhases.push({phase,t:performance.now()-window.qaStart});if(phase==='firing')setTimeout(()=>window.qaBeforeReveal={phase:document.querySelector('#execution').dataset.phase,text:document.querySelector('#result').textContent},1600);}).observe(document.querySelector('#execution'),{attributes:true,attributeFilter:['data-phase']});});
     await page.locator('#fire-button').click();await page.locator('#fire-button').evaluate(b=>b.click());
     await page.waitForTimeout(750);expect(await page.locator('#result').textContent()).toBe('');await visibleArt(page);await snap(page,`breath-${fatal?'fatal':'blank'}-${suffix}`);
     await expect(page.locator('#execution')).toHaveAttribute('data-phase','result');
     await page.waitForTimeout(110);await visibleArt(page);await snap(page,`impact-${fatal?'fatal':'blank'}-${suffix}`);
     await expect(page.locator('#result')).toHaveCSS('opacity','1');await page.waitForTimeout(180);await visibleArt(page);await snap(page,`${fatal?'fatal':'blank'}-result-${suffix}`);
-    await expect(page.locator('#result')).toContainText('Alexandria');await expect(page.locator('#execution')).toBeHidden({timeout:7000});
+    await expect(page.locator('#execution-name')).toContainText('Alexandria');if(fatal)await expect(page.locator('#result')).toContainText('DIED');await expect(page.locator('#execution')).toBeHidden({timeout:7000});
     expect(await page.evaluate(()=>window.qaBeforeReveal)).toEqual({phase:'firing',text:''});
-    const phases=await page.evaluate(()=>window.qaPhases);const reveal=phases.find(p=>p.phase==='result').t-phases.find(p=>p.phase==='firing').t;expect(reveal).toBeGreaterThan(1900);expect(reveal).toBeLessThan(2250);sequences.push({fatal,revealMs:reveal});
+    const phases=await page.evaluate(()=>window.qaPhases);const reveal=phases.find(p=>p.phase==='result').t-phases.find(p=>p.phase==='firing').t;expect(reveal).toBeGreaterThan(2650);expect(reveal).toBeLessThan(3150);sequences.push({fatal,revealMs:reveal});
     const state=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)),KEY);expect(state.players[0].shots).toBe(1);expect(state.pending).toBeNull();
     if(fatal){await expect(page.locator('[data-execute="p1"]')).toBeDisabled();await snap(page,`eliminated-table-${suffix}`);}
   }
@@ -62,6 +66,7 @@ test('mouth accessories and outfit silhouettes: all six species and inward mirro
   await page.evaluate(async url=>{
     const {executionRig}=await import(url);
     document.querySelector('#species-contact').innerHTML=['cigarette','cigar','toothpick'].flatMap((mouth,row)=>['wolf','fox','hare','bear','raven','stag'].map(skin=>`<div style="min-height:0">${executionRig({skin,appearance:{mouth,outfit:['classic','vest','western'][row]}})}</div>`)).join('');
+    document.querySelectorAll('.upper-arm').forEach(e=>e.setAttribute('transform','rotate(0 185 224)'));document.querySelectorAll('.forearm').forEach(e=>e.setAttribute('transform','rotate(0 222 224)'));
   },artURL);
   await snap(page,'mouth-execution-contact');
 });

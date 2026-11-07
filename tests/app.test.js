@@ -13,8 +13,13 @@ vi.mock('gsap',()=>{
     }));vars.onComplete?.();
   };
   const tween=(target,vars)=>{const timer=setTimeout(()=>apply(target,vars),1000*((vars.duration||0)+(vars.delay||0)));return{kill:()=>clearTimeout(timer)};};
-  return{gsap:{set:apply,to:tween,from:tween,fromTo:(target,from,to)=>{apply(target,from);return tween(target,to);},delayedCall:(delay,fn)=>{const timer=setTimeout(fn,delay*1000);return{kill:()=>clearTimeout(timer)};},timeline:()=>{
-    const timers=[];const chain={call(fn,args=[],at=0){timers.push(setTimeout(()=>fn(...args),at*1000));return chain;},to(){return chain;},kill(){timers.forEach(clearTimeout);}};return chain;
+  return{gsap:{set:apply,killTweensOf:()=>{},to:tween,from:tween,fromTo:(target,from,to)=>{apply(target,from);return tween(target,to);},delayedCall:(delay,fn)=>{const timer=setTimeout(fn,delay*1000);return{kill:()=>clearTimeout(timer)};},timeline:(options={})=>{
+    const timers=[];const later=(fn,at)=>timers.push(setTimeout(fn,at*1000));
+    const chain={call(fn,args=[],at=0){later(()=>fn(...args),at);return chain;},
+      to(target,vars,at=0){later(()=>{apply(target,vars);options.onComplete?.();},at+(vars.duration||0));return chain;},
+      set(target,vars,at=0){later(()=>apply(target,vars),at);return chain;},
+      fromTo(target,from,to,at=0){later(()=>apply(target,from),at);later(()=>apply(target,to),at+(to.duration||0));return chain;},
+      kill(){timers.forEach(clearTimeout);}};return chain;
   }}};
 });
 const entries=[{name:'Alice',skin:'wolf'},{name:'Bob',skin:'fox'},{name:'Chloe',skin:'hare'},{name:'Dax',skin:'bear'}];
@@ -47,8 +52,8 @@ describe('shared screen controller',()=>{
     expect($('#execution').hidden).toBe(false);expect($('#execution-name').textContent).toBe('Alice');
     $('#fire-button').click();$('#fire-button').click();
     expect(saved().players[0].shots).toBe(1);expect(saved().pending.fatal).toBe(fatal);
-    expect($('#result').textContent).toBe('');await advance(2000);expect($('#result').textContent).toBe('');
-    await advance(60);expect($('#result').textContent).toContain(fatal?'ELIMINATED':'SURVIVED');
+    expect($('#result').textContent).toBe('');await advance(2800);expect($('#result').textContent).toBe('');
+    await advance(60);expect($('#result').textContent).toContain(fatal?'DIED':'SURVIVED');
     await advance(5000);expect($('#execution').hidden).toBe(true);expect(saved().pending).toBeNull();
     expect($('[data-execute="p1"]').disabled).toBe(fatal);expect(saved().players[1].shots).toBe(0);
   });

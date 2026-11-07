@@ -1,0 +1,6 @@
+﻿✓ change/cinematic-table-polish
+✓ change/mobile-character-studio
+✓ spec/roulette-engine
+✓ spec/shared-bar
+✓ change/visual-qa-audit
+Totals: 5 passed, 0 failed (5 items)
