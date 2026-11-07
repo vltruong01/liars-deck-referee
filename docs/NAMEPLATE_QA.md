@@ -6,4 +6,4 @@ Opened actual Chrome screenshots at all five sizes: [667x375](nameplate-qa/table
 
 The smoke check asserted exact 26/28px height, centered alignment, 180px cap and a short-name plate below 80% of seat width. Production build and offline ZIP integrity match ([hash](nameplate-qa/release-integrity.json)). OpenSpec change/main specs updated. Responsively blocker unchanged; no reinstall. No physical-phone/Safari check performed.
 
-39 Vitest and 29 Playwright tests passed; zero failures or skips ([summary](nameplate-qa/test-summary.json)). Live verification follows deployment.
+39 Vitest and 29 Playwright tests passed; zero failures or skips ([summary](nameplate-qa/test-summary.json)). The completed live verification, including retained compact labels, is recorded in [Idle/HUD QA](IDLE_HUD_QA.md).
