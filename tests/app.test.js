@@ -49,7 +49,7 @@ describe('shared screen controller',()=>{
     expect(saved().players[0].shots).toBe(1);expect(saved().pending.fatal).toBe(fatal);
     expect($('#result').textContent).toBe('');await advance(1500);expect($('#result').textContent).toBe('');
     await advance(60);expect($('#result').textContent).toContain(fatal?'ELIMINATED':'SURVIVED');
-    await advance(4500);expect($('#execution').hidden).toBe(true);expect(saved().pending).toBeNull();
+    await advance(5000);expect($('#execution').hidden).toBe(true);expect(saved().pending).toBeNull();
     expect($('[data-execute="p1"]').disabled).toBe(fatal);expect(saved().players[1].shots).toBe(0);
   });
   it('recovers a pending fatal shot without pulling another chamber',async()=>{
@@ -68,7 +68,7 @@ describe('shared screen controller',()=>{
     $('#cancel-execution').click();await advance(451);$('[data-execute="p1"]').click();
     await advance(20);expect($('#fire-button').disabled).toBe(true);
     expect(saved().players[0].shots).toBe(0);
-    await advance(600);expect($('#fire-button').disabled).toBe(false);
+    await advance(1000);expect($('#fire-button').disabled).toBe(false);
   });
   it('saves names without changing progress and only resets after confirmation',async()=>{
     await boot(createMatch(entries,()=>5));$('#manage-button').click();

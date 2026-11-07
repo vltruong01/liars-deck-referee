@@ -61,3 +61,6 @@ Toàn bộ hình phòng, nhân vật, súng và hiệu ứng âm thanh là mã g
 
 
 Latest executed tool/browser audit: [docs/QA_AUDIT.md](docs/QA_AUDIT.md). Includes the 44px management-field correction, final 36/36 Vitest and 10/10 Playwright results, four-state visual review at four sizes, retained trace and deployment blockers.
+
+
+Mobile character studio: per-player hats, eyewear, mouth accessories, suit/tie palettes and bow ties. Open Customize during setup or Style in Manage Players; cosmetic edits keep revolver progress. See [mobile QA and screenshots](docs/MOBILE_QA_REPORT.md).

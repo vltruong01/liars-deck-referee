@@ -1,3 +1,4 @@
+import { normalizeAppearance, colors, accessories } from './appearance.js';
 export const skins = [
   { id:'wolf', name:'The Wolf', role:'THE OLD HAND', color:'#83958d', coat:'#344a44' },
   { id:'fox', name:'The Fox', role:'THE CARD SHARP', color:'#bd7446', coat:'#633f39' },
@@ -7,8 +8,8 @@ export const skins = [
   { id:'stag', name:'The Stag', role:'THE HIGH ROLLER', color:'#b79b77', coat:'#5b3d3d' },
 ];
 let serial = 0;
-export function portrait(id, decorative = true) {
-  const s=skins.find(s=>s.id===id)||skins[0], n=`portrait${serial++}`;
+export function portrait(id, decorative = true, appearance = {}) {
+  const a=normalizeAppearance(appearance), base=skins.find(s=>s.id===id)||skins[0], s={...base,coat:colors[a.suit]||base.coat}, n=`portrait${serial++}`;
   const heads={
     wolf:`<path d="M64 106 48 31 92 66Q120 52 149 66L191 30 176 113 158 159 120 187 82 158Z"/><path d="m52 45 34 36-24 11m115-47-30 34 25 12" fill="#293735"/><path d="m72 120 29 12 19 40 21-40 30-12-20 47-31 20-31-20Z" fill="#b2b7a5"/>`,
     fox:`<path d="M66 111 51 25 100 67Q120 60 142 68L191 26 174 115 156 159 121 187 83 157Z"/><path d="m60 43 29 35-22 19m113-54-29 35 24 17" fill="#382b2b"/><path d="m70 118 42 20 8 37 9-37 43-20-20 43-32 25-30-25Z" fill="#e0c8a4"/>`,
@@ -17,16 +18,17 @@ export function portrait(id, decorative = true) {
     raven:`<path d="m67 104 2-45 23 15 18-29 20 22 27-18 8 35 21 25-16 46-45 35-45-28Z"/><path d="m92 134 28-8 40 24-38 24-29-23Z" fill="#b7a890"/><path d="m120 131 1 34 33-16Z" fill="#696052"/>`,
     stag:`<g fill="none" stroke="#b79b77" stroke-width="9" stroke-linecap="round"><path d="M91 88 62 54 51 12m13 44-29-9-12-22m37 11 17-17m72 69 29-34 10-42m-12 44 29-9 12-22m-36 11-17-17"/></g><path d="m80 90-39-25 10 42 25 10 7 46 37 29 37-29 7-46 25-10 10-42-39 25-19-12-43 0Z"/><path d="m100 134 20 37 20-37-5 40-15 16-16-16Z" fill="#e0c7a2"/>`,
   };
-  return `<svg class="portrait" viewBox="0 0 240 310" ${decorative?'aria-hidden="true"':`role="img" aria-label="${s.name}"`} xmlns="http://www.w3.org/2000/svg">
+  return `<svg class="portrait" preserveAspectRatio="xMidYMax meet" viewBox="-20 -45 280 365" data-skin="${s.id}" ${decorative?'aria-hidden="true"':`role="img" aria-label="${s.name}"`} xmlns="http://www.w3.org/2000/svg">
   <defs><linearGradient id="${n}coat" x2=".8" y2="1"><stop stop-color="${s.coat}"/><stop offset="1" stop-color="#111918"/></linearGradient><linearGradient id="${n}head" x2=".8" y2="1"><stop stop-color="${s.color}"/><stop offset="1" stop-color="#342f2b"/></linearGradient></defs>
   <ellipse cx="120" cy="296" rx="100" ry="12" fill="#000" opacity=".4"/>
   <path d="m26 310 9-80 48-35 75 0 49 35 9 80Z" fill="url(#${n}coat)" stroke="#b69c6d" stroke-opacity=".2"/>
-  <path d="m87 193 33 31 32-31 12 117H75Z" fill="#c1b699"/><path d="m120 224-13 17 13 52 13-52Z" fill="#652d2b"/>
+  <path d="m87 193 33 31 32-31 12 117H75Z" fill="#c1b699"/>${a.bow?`<path d="m120 228-25-12v27l25-10 25 10v-27Z" fill="${colors[a.tie]}"/><circle cx="120" cy="230" r="6" fill="${colors[a.tie]}"/>`:`<path d="m120 224-13 17 13 52 13-52Z" fill="${colors[a.tie]}"/>`}
   <path d="m82 193-18 30 30 3-13 21 39 52-18-82m54-24 19 30-29 3 13 21-39 52 17-82" fill="${s.coat}" stroke="#b69c6d" stroke-opacity=".25"/>
   <g fill="url(#${n}head)" stroke="#151a18" stroke-width="3" stroke-linejoin="round">${heads[s.id]}</g>
   <path d="m77 111 24 8-5 7-18-7m85-8-24 8 5 7 18-7" fill="#1b2020"/>
   <path d="m83 118 12 3m62-3-12 3" stroke="#f2d99a" stroke-width="3"/>
   ${s.id==='raven'?'':`<path d="m108 149 24 0-12 12Z" fill="#1d2523"/><path d="M120 160v11m-12 1 12 4 12-4" fill="none" stroke="#222825" stroke-width="2"/>`}
+  ${accessories(s.id,a)}
   <path d="m44 268 41 7-5 25-45-8m160-24-41 7 5 25 45-8" fill="${s.coat}" stroke="#a68c68" stroke-opacity=".3"/>
   <path d="m82 277 20 0 7 14-29 5m74-19-16 0-9 14 28 5" fill="${s.color}"/>
   <path d="M169 240h21v3h-21" stroke="#aa8358" stroke-width="2"/><circle cx="179" cy="263" r="2" fill="#b5996b"/>
@@ -78,4 +80,12 @@ export function revolver() {
  </g>
  <path class="muzzle" d="m578 126 35-17-13 19 34 8-35 6 15 20-36-22Z" fill="#ffe3a0" opacity="0"/>
  </svg>`;
+}
+
+// Art and gun share a fixed rig coordinate system, so they resize together.
+export function executionRig(player) {
+ return `<svg class="character-rig" viewBox="0 0 480 410" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+ <svg class="portrait" x="105" y="20" width="280" height="365" viewBox="-20 -45 280 365">${portrait(player.skin,true,player.appearance).replace(/^<svg[^>]*>/,'').replace(/<\/svg>$/,'')}</svg>
+ <g class="weapon-arm" transform="translate(0 0)"><path d="M284 303Q420 330 434 270L432 239" fill="none" stroke="#18281f" stroke-width="33" stroke-linecap="round"/><path d="M284 300Q420 316 430 272L429 245" fill="none" stroke="#506250" stroke-width="22" stroke-linecap="round"/><path d="m421 244 8-25 18 0 9 26-7 15-21-2Z" fill="#a99b7a" stroke="#24342a" stroke-width="3"/>
+ <svg id="gun" x="270" y="172" width="205" height="112" viewBox="0 0 640 350"><g transform="translate(640 0) scale(-1 1)">${revolver().replace(/^<svg[^>]*>/,'').replace(/<\/svg>$/,'')}</g></svg></g></svg>`;
 }

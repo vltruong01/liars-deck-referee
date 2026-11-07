@@ -1,0 +1,20 @@
+﻿{
+  "name": "responsively",
+  "enabled": true,
+  "disabled_reason": null,
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@responsively/mcp"
+    ],
+    "env": null,
+    "env_vars": [],
+    "cwd": null
+  },
+  "enabled_tools": null,
+  "disabled_tools": null,
+  "startup_timeout_sec": null,
+  "tool_timeout_sec": null
+}

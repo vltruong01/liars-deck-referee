@@ -1,3 +1,4 @@
+import { normalizeAppearance } from './appearance.js';
 export const KEY = 'liars-deck.match.v1';
 export const SKINS = ['wolf', 'fox', 'hare', 'bear', 'raven', 'stag'];
 const clone = value => JSON.parse(JSON.stringify(value));
@@ -16,7 +17,7 @@ export function createMatch(entries, rng = randomChamber) {
     version: 1, revision: 0, nextShot: 1, pending: null, last: null,
     players: entries.map((p, i) => ({
       id: `p${i + 1}`, name: String(p.name || `Player ${i + 1}`).trim().slice(0, 24) || `Player ${i + 1}`,
-      skin: SKINS.includes(p.skin) ? p.skin : SKINS[i], bullet: rng(), shots: 0, dead: false,
+      skin: SKINS.includes(p.skin) ? p.skin : SKINS[i], appearance: normalizeAppearance(p.appearance), bullet: rng(), shots: 0, dead: false,
     })),
   };
 }
@@ -50,6 +51,12 @@ export function rename(state, id, name) {
   const next = updated(state);
   requireThat(typeof name === 'string' && name.trim().length > 0, 'Enter a player name.');
   playerById(next, id).name = name.trim().slice(0, 24); return next;
+}
+export function customize(state, id, skin, appearance) {
+  requireThat(!state.pending, 'Finish the shot first.');
+  requireThat(SKINS.includes(skin), 'Unknown character.');
+  const next=updated(state), p=playerById(next,id);
+  p.skin=skin; p.appearance=normalizeAppearance(appearance); return next;
 }
 export function resetPlayer(state, id, rng = randomChamber) {
   requireThat(!state.pending, 'Finish the shot first.');
@@ -89,7 +96,7 @@ export function validateState(s) {
 export function load(storage) {
   const raw = storage.getItem(KEY);
   if (raw === null) return null;
-  try { return validateState(JSON.parse(raw)); }
+  try { const state=validateState(JSON.parse(raw)); state.players.forEach(p=>p.appearance=normalizeAppearance(p.appearance)); return state; }
   catch { throw new Error('Saved match cannot be read. It has been preserved. Use “Replace saved match” to start over.'); }
 }
 

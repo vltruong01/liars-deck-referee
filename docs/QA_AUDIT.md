@@ -58,3 +58,6 @@ The first resize/headed attempt reset navigation to `about:blank` and later fell
 **VERIFIED — published website:** [https://vltruong01.github.io/liars-deck-referee/](https://vltruong01.github.io/liars-deck-referee/). Pages reports `built` from `gh-pages` with HTTPS enforced: [API evidence](qa-audit/deployment-pages.json). The create-Pages request returned 409 because GitHub had already enabled Pages for the new branch; the subsequent GET verified the correct source and successful build. HTTP 200 serves 132,105 bytes, matching the verified local HTML byte-for-byte: [HTTP/hash evidence](qa-audit/deployment-http.json). See [deployment instructions](DEPLOYMENT.md).
 
 **NOT USED:** physical phone, Safari/Firefox hands-on verification and subjective speaker/audio assessment; unavailable in this run. Chrome viewport emulation does not verify phone browser chrome, virtual keyboard or device safe-area behavior. Some Windows CLI text logs contain encoding artifacts; screenshots are the rendering evidence. These limits and the agent trace failure must accompany any later publishing decision.
+
+
+Later mobile/customization work is recorded in [MOBILE_QA_REPORT.md](MOBILE_QA_REPORT.md). The earlier whole-engine hash above describes that audit snapshot; the later engine adds cosmetics while preserving randomChamber/fire function text.

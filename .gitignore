@@ -6,3 +6,4 @@ test-results/
 .env.*
 !.env.example
 docs/qa-audit/baseline.html
+docs/mobile-qa/draft-*.png

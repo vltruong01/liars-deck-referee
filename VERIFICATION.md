@@ -44,3 +44,8 @@ Reference repository was cloned outside application source, licensing reviewed, 
 
 
 Latest executed tool/browser audit: [docs/QA_AUDIT.md](docs/QA_AUDIT.md). Includes the 44px management-field correction, final 36/36 Vitest and 10/10 Playwright results, four-state visual review at four sizes, retained trace and deployment blockers.
+
+
+## Mobile character studio verification
+
+The later mobile/customization update passed 39 Vitest and 16 Playwright tests, with five-size opened screenshot review and original eight-size regression. See [MOBILE_QA_REPORT.md](docs/MOBILE_QA_REPORT.md) for actual evidence, corrected geometry/collapse defects and the Responsively installation-policy blocker.

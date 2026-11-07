@@ -1,0 +1,14 @@
+{
+  "viewport": [
+    844,
+    390
+  ],
+  "players": 4,
+  "independentLooks": true,
+  "accessoryBounds": true,
+  "allSeats": true,
+  "bothResults": true,
+  "autoReturn": true,
+  "progressPreserved": true,
+  "errors": []
+}

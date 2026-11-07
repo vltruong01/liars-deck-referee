@@ -91,9 +91,262 @@
     "updateSourceMethod": "patch",
     "version": "1.65.0",
     "workers": 3,
-    "webServer": null
+    "webServer": {
+      "command": "npm run dev",
+      "url": "http://127.0.0.1:4173",
+      "reuseExistingServer": true,
+      "timeout": 15000
+    }
   },
   "suites": [
+    {
+      "title": "customization.spec.js",
+      "file": "customization.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "customization 667x375: four independent looks, rig, results and persistence",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 33255,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T10:02:32.886Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\customization-customizatio-f1dd7-rig-results-and-persistence\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "55ea03d41826aad947eb-f01bb3a6b6f66e46d52e",
+          "file": "customization.spec.js",
+          "line": 34,
+          "column": 35
+        },
+        {
+          "title": "customization 740x360: four independent looks, rig, results and persistence",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 33805,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T10:02:32.886Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\customization-customizatio-1a8d9-rig-results-and-persistence\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "55ea03d41826aad947eb-8c22709a572e599dcaf5",
+          "file": "customization.spec.js",
+          "line": 34,
+          "column": 35
+        },
+        {
+          "title": "customization 844x390: four independent looks, rig, results and persistence",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 33571,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T10:02:32.841Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\customization-customizatio-f9a0f-rig-results-and-persistence\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "55ea03d41826aad947eb-f7b391b50fe9f311ca76",
+          "file": "customization.spec.js",
+          "line": 34,
+          "column": 35
+        },
+        {
+          "title": "customization 932x430: four independent looks, rig, results and persistence",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 31698,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T10:03:08.301Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\customization-customizatio-e7043-rig-results-and-persistence\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "55ea03d41826aad947eb-8cb8d6145dcbd2ba8822",
+          "file": "customization.spec.js",
+          "line": 34,
+          "column": 35
+        },
+        {
+          "title": "customization 1366x768: four independent looks, rig, results and persistence",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 34625,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T10:03:08.341Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\customization-customizatio-7ed5d-rig-results-and-persistence\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "55ea03d41826aad947eb-6f374135b3c03114fef6",
+          "file": "customization.spec.js",
+          "line": 34,
+          "column": 35
+        },
+        {
+          "title": "all six animals fit every hat; randomize and cancel do not mutate saved players",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4867,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T10:03:09.225Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\customization-all-six-anim-49505-do-not-mutate-saved-players\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "55ea03d41826aad947eb-f3fed4a928e049344982",
+          "file": "customization.spec.js",
+          "line": 93,
+          "column": 1
+        }
+      ]
+    },
     {
       "title": "landscape.spec.js",
       "file": "landscape.spec.js",
@@ -113,15 +366,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
-                  "parallelIndex": 0,
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 26382,
+                  "duration": 26297,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T08:30:37.648Z",
+                  "startTime": "2026-11-07T10:03:14.411Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -153,15 +406,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
-                  "parallelIndex": 1,
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 26998,
+                  "duration": 26538,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T08:30:37.648Z",
+                  "startTime": "2026-11-07T10:03:41.489Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -193,15 +446,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 2,
-                  "parallelIndex": 2,
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 26080,
+                  "duration": 26474,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T08:30:37.636Z",
+                  "startTime": "2026-11-07T10:03:42.324Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -236,12 +489,12 @@
                   "workerIndex": 2,
                   "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 26875,
+                  "duration": 26572,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T08:31:06.600Z",
+                  "startTime": "2026-11-07T10:03:44.460Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -276,12 +529,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 26371,
+                  "duration": 26215,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T08:31:06.860Z",
+                  "startTime": "2026-11-07T10:04:09.553Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -316,12 +569,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 25795,
+                  "duration": 26217,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T08:31:08.525Z",
+                  "startTime": "2026-11-07T10:04:10.410Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -353,15 +606,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
-                  "parallelIndex": 0,
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 26715,
+                  "duration": 26636,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T08:31:35.128Z",
+                  "startTime": "2026-11-07T10:04:12.910Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -393,15 +646,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 2,
-                  "parallelIndex": 2,
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 27415,
+                  "duration": 26639,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T08:31:35.670Z",
+                  "startTime": "2026-11-07T10:04:37.023Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -436,12 +689,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 11183,
+                  "duration": 10879,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T08:31:36.148Z",
+                  "startTime": "2026-11-07T10:04:37.658Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -473,15 +726,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
-                  "parallelIndex": 1,
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 2981,
+                  "duration": 3119,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T08:31:48.088Z",
+                  "startTime": "2026-11-07T10:04:40.594Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -505,9 +758,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-11-07T08:30:36.802Z",
-    "duration": 88174.834,
-    "expected": 10,
+    "startTime": "2026-11-07T10:02:31.159Z",
+    "duration": 154242.475,
+    "expected": 16,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0
