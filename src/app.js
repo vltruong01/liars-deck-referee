@@ -55,7 +55,7 @@ document.addEventListener('fullscreenchange',()=>{
   $('#fullscreen-button').setAttribute('aria-pressed',String(active));
 });
 function placeExecutionHud() {
-  if(execution.hidden||!['entering','ready','firing'].includes(execution.dataset.phase))return;
+  if(execution.hidden||!['entering','ready','firing','result'].includes(execution.dataset.phase))return;
   const subject=$('.execution-subject'),hud=$('.execution-hud'),head=$('#execution-portrait .character-head');
   if(!head)return;
   const parts=[head,...execution.querySelectorAll('#execution-portrait .headwear')].filter(e=>e.children.length);
@@ -75,6 +75,7 @@ function observeStage() {
   fitStage();
 }
 window.addEventListener('resize',()=>{fitStage();placeExecutionHud();});
+if(typeof ResizeObserver!=='undefined')new ResizeObserver(placeExecutionHud).observe($('.execution-hud'));
 $('#volume').value=String(Math.round(prefs.volume*100)); $('#volume-value').value=`${Math.round(prefs.volume*100)}%`;
 $('#reduced-flashing').checked=prefs.reducedFlashing; $('#reduced-motion').checked=prefs.reducedMotion;
 function savePrefs() { attempt(()=>storage.setItem('liars-deck.settings',JSON.stringify(prefs))); }

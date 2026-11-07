@@ -11,8 +11,8 @@
     },
     {
       "fraction": 50,
-      "shoulderGap": 0.000007405361975355893,
-      "elbowGap": 0.00001205680353212119
+      "shoulderGap": 0.0000058250524867705824,
+      "elbowGap": 0.000012303516862793736
     },
     {
       "fraction": 75,
@@ -21,8 +21,8 @@
     },
     {
       "fraction": 100,
-      "shoulderGap": 5.7090520134085987e-11,
-      "elbowGap": 1.6575148138555862e-10
+      "shoulderGap": 0,
+      "elbowGap": 0
     },
     {
       "player": 1,

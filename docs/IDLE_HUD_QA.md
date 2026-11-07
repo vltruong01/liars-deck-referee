@@ -2,7 +2,7 @@
 
 Continues the compact table nameplate update. Idle right arm now folds inward across the waist (shoulder 76 degrees, forearm 136 degrees), with a flat relaxed palm instead of a dangling closed gun grip. Left arm remains attached. The same two-arm hierarchy raises the weapon; ready aiming coordinates, grip artwork, suspense timing, firing reactions and camera return are unchanged. No roulette/save changes. The firing/reaction/return controller block was compared directly against the preceding commit and is identical ([preservation evidence](idle-hud-qa/preservation.json)).
 
-Shooting name/shot panel is centered over the actual head bounding box, positioned 8px above the highest head/hat geometry. Names use 18-24px type and shot count uses 12-14px. Resize and entry update its position. Reserved space prevents toolbar/headwear overlap on small screens. Table labels retain their compact content width and 26/28px height.
+Shooting name/shot panel is centered over the actual head bounding box, positioned 8px above the highest head/hat geometry. Names use 18-24px type and shot count uses 12-14px. Resize, entry and HUD height changes (including the added DIED line) update its position. Opened fatal-reaction frames exposed the height-change edge case; a HUD ResizeObserver prevents the panel from touching ears when the status appears ([opened fatal frame](idle-hud-qa/fatal-hud-667x375.png)). Reserved space prevents toolbar/headwear overlap on small screens. Table labels retain their compact content width and 26/28px height.
 
 Before: [idle hooked hand](nameplate-qa/table-1366x768.png), [corner shooting HUD](execution-qa/live-execution.png).
 

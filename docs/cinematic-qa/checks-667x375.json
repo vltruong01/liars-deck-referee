@@ -42,11 +42,11 @@
   "sharedAnticipation": [
     {
       "fatal": false,
-      "revealMs": 2847
+      "revealMs": 2855.699999988079
     },
     {
       "fatal": true,
-      "revealMs": 2859
+      "revealMs": 2866.399999976158
     }
   ],
   "errors": []
