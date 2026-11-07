@@ -93,6 +93,11 @@ for(const [width,height] of sizes)test(`customization ${width}x${height}: four i
 test('all six animals fit every hat; randomize and cancel do not mutate saved players',async({page})=>{
   test.setTimeout(60000);await page.setViewportSize({width:667,height:375});
   await page.goto('http://127.0.0.1:4173/');await page.evaluate(()=>localStorage.clear());await page.reload();
+  await page.locator('#name-0').tap();
+  await expect(page.locator('#name-0')).toBeFocused();
+  await page.keyboard.press('ControlOrMeta+A');await page.keyboard.type('Touch input');
+  await expect(page.locator('#name-0')).toHaveValue('Touch input');
+  await expect(page.locator('#name-0')).toBeFocused();
   await page.getByRole('button',{name:'Customize player 1',exact:true}).click();
   for(const skin of ['wolf','fox','hare','bear','raven','stag']){
     await page.locator('#tab-animal').click();await page.locator(`[data-option="${skin}"]`).click();

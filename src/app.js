@@ -80,7 +80,7 @@ function renderSetup() {
     <form id="setup-form"><div class="player-grid" data-count="${count}">${draft.slice(0,count).map((p,i)=>setupCard(p,i)).join('')}</div>
     <div class="setup-footer"><p>Six chambers. One bullet each.<small>Physical cards. The house handles the consequences.</small></p><button class="primary" type="submit">START GAME <b>&#8594;</b></button></div></form></section>`;
   $('#how-to').onclick=()=>showDialog('help-dialog');
-  document.querySelectorAll('[data-count]').forEach(b=>b.onclick=()=>{captureDraft();count=Number(b.dataset.count);attempt(saveDraft);renderSetup();});
+  document.querySelectorAll('.count-button[data-count]').forEach(b=>b.onclick=()=>{captureDraft();count=Number(b.dataset.count);attempt(saveDraft);renderSetup();});
   document.querySelectorAll('[data-skin-step]').forEach(b=>b.onclick=()=>{
     captureDraft();const i=Number(b.dataset.player), current=skins.findIndex(s=>s.id===draft[i].skin);
     draft[i].skin=skins[(current+Number(b.dataset.skinStep)+skins.length)%skins.length].id;

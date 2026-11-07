@@ -1,82 +1,82 @@
 [
   {
     "path": "test-results\\playwright\\customization-all-six-anim-49505-do-not-mutate-saved-players\\trace.zip",
-    "bytes": 2762845,
+    "bytes": 3207347,
     "integrity": "VERIFIED"
   },
   {
     "path": "test-results\\playwright\\customization-customizatio-1a8d9-rig-results-and-persistence\\trace.zip",
-    "bytes": 28341763,
+    "bytes": 27590786,
     "integrity": "VERIFIED"
   },
   {
     "path": "test-results\\playwright\\customization-customizatio-7ed5d-rig-results-and-persistence\\trace.zip",
-    "bytes": 21222003,
+    "bytes": 21038534,
     "integrity": "VERIFIED"
   },
   {
     "path": "test-results\\playwright\\customization-customizatio-e7043-rig-results-and-persistence\\trace.zip",
-    "bytes": 24681626,
+    "bytes": 24275616,
     "integrity": "VERIFIED"
   },
   {
     "path": "test-results\\playwright\\customization-customizatio-f1dd7-rig-results-and-persistence\\trace.zip",
-    "bytes": 27449373,
+    "bytes": 27626051,
     "integrity": "VERIFIED"
   },
   {
     "path": "test-results\\playwright\\customization-customizatio-f9a0f-rig-results-and-persistence\\trace.zip",
-    "bytes": 26246969,
+    "bytes": 26499880,
     "integrity": "VERIFIED"
   },
   {
     "path": "test-results\\playwright\\landscape-1024x768-table-e-7006d--FIRE-names-and-2-3-players\\trace.zip",
-    "bytes": 16852321,
+    "bytes": 16787237,
     "integrity": "VERIFIED"
   },
   {
     "path": "test-results\\playwright\\landscape-1366x768-table-e-dc1a3--FIRE-names-and-2-3-players\\trace.zip",
-    "bytes": 18706980,
+    "bytes": 18910462,
     "integrity": "VERIFIED"
   },
   {
     "path": "test-results\\playwright\\landscape-1920x1080-table--8e6d0--FIRE-names-and-2-3-players\\trace.zip",
-    "bytes": 9528221,
+    "bytes": 9243734,
     "integrity": "VERIFIED"
   },
   {
     "path": "test-results\\playwright\\landscape-667x375-table-each-seat-FIRE-names-and-2-3-players\\trace.zip",
-    "bytes": 28980886,
+    "bytes": 28544206,
     "integrity": "VERIFIED"
   },
   {
     "path": "test-results\\playwright\\landscape-740x360-table-each-seat-FIRE-names-and-2-3-players\\trace.zip",
-    "bytes": 31192857,
+    "bytes": 31300573,
     "integrity": "VERIFIED"
   },
   {
     "path": "test-results\\playwright\\landscape-844x390-table-each-seat-FIRE-names-and-2-3-players\\trace.zip",
-    "bytes": 29909255,
+    "bytes": 30404334,
     "integrity": "VERIFIED"
   },
   {
     "path": "test-results\\playwright\\landscape-852x393-table-each-seat-FIRE-names-and-2-3-players\\trace.zip",
-    "bytes": 31199798,
+    "bytes": 29274532,
     "integrity": "VERIFIED"
   },
   {
     "path": "test-results\\playwright\\landscape-932x430-table-each-seat-FIRE-names-and-2-3-players\\trace.zip",
-    "bytes": 22559560,
+    "bytes": 22664390,
     "integrity": "VERIFIED"
   },
   {
     "path": "test-results\\playwright\\landscape-fatal-effect-pen-57624-r-and-offline-local-release\\trace.zip",
-    "bytes": 8501655,
+    "bytes": 8263050,
     "integrity": "VERIFIED"
   },
   {
     "path": "test-results\\playwright\\landscape-portrait-guidanc-c99b3-ced-effects-and-entry-guard\\trace.zip",
-    "bytes": 3274809,
+    "bytes": 2902001,
     "integrity": "VERIFIED"
   }
 ]

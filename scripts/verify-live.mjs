@@ -1,0 +1,37 @@
+import {chromium,expect} from '@playwright/test';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {KEY} from '../src/engine.js';
+
+const url='https://vltruong01.github.io/liars-deck-referee/';
+const out='docs/mobile-qa';await mkdir(out,{recursive:true});
+const browser=await chromium.launch({channel:'chrome',headless:false});
+try {
+  const context=await browser.newContext({viewport:{width:844,height:390},hasTouch:true});
+  const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  const response=await page.goto(url);expect(response.status()).toBe(200);
+  const body=await response.body();expect(body.equals(await readFile('dist/index.html'))).toBe(true);
+  await page.locator('#name-0').tap();await expect(page.locator('#name-0')).toBeFocused();
+  await page.keyboard.press('ControlOrMeta+A');await page.keyboard.type('Mobile verified');
+  await page.getByRole('button',{name:'Customize player 1',exact:true}).click();
+  await page.locator('#tab-hat').click();await page.locator('[data-option="top-hat"]').click();
+  await page.locator('#tab-eyes').click();await page.locator('[data-option="sunglasses"]').click();
+  await page.locator('#tab-mouth').click();await page.locator('[data-option="cigar"]').click();
+  await page.screenshot({path:`${out}/live-customization.png`});await page.locator('#style-save').click();
+  await page.getByRole('button',{name:'START GAME'}).click();await expect(page.locator('.scene-frame')).toHaveCSS('opacity','1');
+  await page.screenshot({path:`${out}/live-table.png`});await page.locator('[data-execute="p1"]').click();
+  await expect(page.locator('#execution')).toHaveAttribute('data-phase','ready');
+  await page.screenshot({path:`${out}/live-execution.png`});await page.locator('#fire-button').click();
+  await expect(page.locator('#result')).toContainText(/SURVIVED|ELIMINATED/);await expect(page.locator('#result')).toHaveCSS('opacity','1');
+  const outcome=await page.locator('#result').innerText();await page.screenshot({path:`${out}/live-result.png`});
+  await expect(page.locator('#execution')).toBeHidden({timeout:7000});
+  const before=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),KEY);expect(before.players[0].shots).toBe(1);
+  await page.locator('#manage-button').click();await page.locator('[data-customize-player="p1"]').click();
+  await page.locator('#tab-eyes').click();await page.locator('[data-option="monocle"]').click();await page.locator('#style-save').click();
+  const after=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),KEY);
+  expect(after.players[0]).toEqual({...before.players[0],appearance:{...before.players[0].appearance,eyes:'monocle'}});
+  await page.getByRole('button',{name:'Close player management'}).click();await page.reload();
+  await expect(page.locator('[data-execute="p1"] .eyewear')).toHaveAttribute('data-eyes','monocle');expect(errors).toEqual([]);
+  const evidence={url,httpStatus:response.status(),htmlBytes:body.length,sha256:createHash('sha256').update(body).digest('hex'),matchesVerifiedDist:true,viewport:[844,390],browser:'headed Chrome',typedName:true,customization:true,shotCount:1,outcome,automaticReturn:true,cosmeticEditPreservesProgress:true,persistence:true,errors};
+  await writeFile(`${out}/live-verification.json`,JSON.stringify(evidence,null,2));console.log(JSON.stringify(evidence));
+} finally {await browser.close();}

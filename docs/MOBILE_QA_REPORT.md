@@ -32,6 +32,7 @@ To resume Responsively later:
 | Floating revolver had no connection to the character. | Shared SVG rig, shoulder anchor, illustrated bent arm/hand, mirrored gun and common raising/anticipation sequence. Four different accessories remain attached in each execution view. |
 | Death rotation/translation exceeded the lower edge and dimmed the outfit too much. | Reduced collapse angle/displacement, scaled the whole rig to 90% and retained 45% opacity. [Before](mobile-qa/before-death-frame-667x375.png), [corrected result](mobile-qa/elimination-667x375.png). Both visual inspection and the existing fatal-effect bounds test verified the fix. |
 | Setup Save previously existed only in memory until a match started. | Separate normalized setup draft storage; browser tests reload before starting and after later cosmetic edits. |
+| Setup's player-count handler also matched the entire player grid, so a tap on a name could rebuild the form and lose focus. | Bind only the three `.count-button` controls. Added actual touch → focus → keyboard typing verification; the name input keeps focus and accepts text. |
 
 ## Screenshots actually opened
 
