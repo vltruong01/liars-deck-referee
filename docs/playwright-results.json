@@ -1,0 +1,515 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--trace",
+      "on"
+    ],
+    "configFile": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\playwright.config.js",
+    "rootDir": "C:/Users/VUONGLOCTRUONG/Documents/GitHub/liarsbarGun/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 3
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/VUONGLOCTRUONG/Documents/GitHub/liarsbarGun/test-results/playwright",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/VUONGLOCTRUONG/Documents/GitHub/liarsbarGun/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "name": "",
+        "testDir": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\tests\\browser",
+        "snapshotDir": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\tests\\browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 45000,
+        "use": {
+          "channel": "chrome",
+          "headless": true,
+          "hasTouch": true,
+          "trace": "on",
+          "screenshot": "only-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "docs/playwright-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 3,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "landscape.spec.js",
+      "file": "landscape.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "667x375: table, each seat, FIRE, names and 2/3 players",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 26382,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T08:30:37.648Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\landscape-667x375-table-each-seat-FIRE-names-and-2-3-players\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1e57267a0ef8e03037da-b8e447f845c14edee269",
+          "file": "landscape.spec.js",
+          "line": 48,
+          "column": 35
+        },
+        {
+          "title": "740x360: table, each seat, FIRE, names and 2/3 players",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 26998,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T08:30:37.648Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\landscape-740x360-table-each-seat-FIRE-names-and-2-3-players\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1e57267a0ef8e03037da-270bc219558aeccc2b4c",
+          "file": "landscape.spec.js",
+          "line": 48,
+          "column": 35
+        },
+        {
+          "title": "844x390: table, each seat, FIRE, names and 2/3 players",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 26080,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T08:30:37.636Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\landscape-844x390-table-each-seat-FIRE-names-and-2-3-players\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1e57267a0ef8e03037da-060e42881adc1fd16267",
+          "file": "landscape.spec.js",
+          "line": 48,
+          "column": 35
+        },
+        {
+          "title": "852x393: table, each seat, FIRE, names and 2/3 players",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 26875,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T08:31:06.600Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\landscape-852x393-table-each-seat-FIRE-names-and-2-3-players\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1e57267a0ef8e03037da-a0b60dcd677d1aa40a0c",
+          "file": "landscape.spec.js",
+          "line": 48,
+          "column": 35
+        },
+        {
+          "title": "932x430: table, each seat, FIRE, names and 2/3 players",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 26371,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T08:31:06.860Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\landscape-932x430-table-each-seat-FIRE-names-and-2-3-players\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1e57267a0ef8e03037da-68ee5271b89a0bbf3887",
+          "file": "landscape.spec.js",
+          "line": 48,
+          "column": 35
+        },
+        {
+          "title": "1024x768: table, each seat, FIRE, names and 2/3 players",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 25795,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T08:31:08.525Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\landscape-1024x768-table-e-7006d--FIRE-names-and-2-3-players\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1e57267a0ef8e03037da-4ddeb940deedfd66b3d0",
+          "file": "landscape.spec.js",
+          "line": 48,
+          "column": 35
+        },
+        {
+          "title": "1366x768: table, each seat, FIRE, names and 2/3 players",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 26715,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T08:31:35.128Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\landscape-1366x768-table-e-dc1a3--FIRE-names-and-2-3-players\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1e57267a0ef8e03037da-cfa4583c02adb5aa4522",
+          "file": "landscape.spec.js",
+          "line": 48,
+          "column": 35
+        },
+        {
+          "title": "1920x1080: table, each seat, FIRE, names and 2/3 players",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 27415,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T08:31:35.670Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\landscape-1920x1080-table--8e6d0--FIRE-names-and-2-3-players\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1e57267a0ef8e03037da-c8527ccfbc389a07cbbf",
+          "file": "landscape.spec.js",
+          "line": 48,
+          "column": 35
+        },
+        {
+          "title": "fatal effect, pending recovery, resets, winner and offline local release",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 11183,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T08:31:36.148Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\landscape-fatal-effect-pen-57624-r-and-offline-local-release\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1e57267a0ef8e03037da-27e98df03d6fc834f9c9",
+          "file": "landscape.spec.js",
+          "line": 89,
+          "column": 1
+        },
+        {
+          "title": "portrait guidance, orientation, safe-area sizing, reduced effects and entry guard",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2981,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T08:31:48.088Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\landscape-portrait-guidanc-c99b3-ced-effects-and-entry-guard\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1e57267a0ef8e03037da-8bf22d9b2456980467a1",
+          "file": "landscape.spec.js",
+          "line": 106,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-07T08:30:36.802Z",
+    "duration": 88174.834,
+    "expected": 10,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

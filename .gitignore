@@ -1,0 +1,8 @@
+node_modules/
+test-results/
+*.log
+.agents/
+.env
+.env.*
+!.env.example
+docs/qa-audit/baseline.html

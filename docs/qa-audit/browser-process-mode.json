@@ -1,0 +1,17 @@
+[
+    {
+        "ProcessId":  25672,
+        "HeadlessFlagPresent":  false,
+        "ExecutablePath":  "C:\\Users\\VUONGLOCTRUONG\\.agent-browser\\browsers\\chrome-157.0.8103.38\\chrome.exe"
+    },
+    {
+        "ProcessId":  25984,
+        "HeadlessFlagPresent":  true,
+        "ExecutablePath":  "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+    },
+    {
+        "ProcessId":  18008,
+        "HeadlessFlagPresent":  false,
+        "ExecutablePath":  "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+    }
+]

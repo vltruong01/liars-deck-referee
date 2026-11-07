@@ -1,0 +1,234 @@
+[
+  {
+    "width": 667,
+    "height": 375,
+    "fatal": false,
+    "result": {
+      "viewport": [
+        667,
+        375
+      ],
+      "document": [
+        667,
+        375
+      ],
+      "phase": "result",
+      "result": "SURVIVED\nAlexandria Longname XXIV · STILL IN THE GAME",
+      "shots": 1,
+      "dead": false,
+      "returnBox": {
+        "x": 388.6625061035156,
+        "y": 248.9375,
+        "width": 260.5375061035156,
+        "height": 48,
+        "top": 248.9375,
+        "right": 649.2000122070312,
+        "bottom": 296.9375,
+        "left": 388.6625061035156
+      }
+    }
+  },
+  {
+    "width": 667,
+    "height": 375,
+    "fatal": true,
+    "result": {
+      "viewport": [
+        667,
+        375
+      ],
+      "document": [
+        667,
+        375
+      ],
+      "phase": "result",
+      "result": "ELIMINATED\nAlexandria Longname XXIV · THEIR SEAT IS EMPTY",
+      "shots": 1,
+      "dead": true,
+      "returnBox": {
+        "x": 388.6625061035156,
+        "y": 248.9375,
+        "width": 260.5375061035156,
+        "height": 48,
+        "top": 248.9375,
+        "right": 649.2000122070312,
+        "bottom": 296.9375,
+        "left": 388.6625061035156
+      }
+    }
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "fatal": false,
+    "result": {
+      "viewport": [
+        844,
+        390
+      ],
+      "document": [
+        844,
+        390
+      ],
+      "phase": "result",
+      "result": "SURVIVED\nAlexandria Longname XXIV · STILL IN THE GAME",
+      "shots": 1,
+      "dead": false,
+      "returnBox": {
+        "x": 533.9750366210938,
+        "y": 258.3625183105469,
+        "width": 289.375,
+        "height": 48,
+        "top": 258.3625183105469,
+        "right": 823.3500366210938,
+        "bottom": 306.3625183105469,
+        "left": 533.9750366210938
+      }
+    }
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "fatal": true,
+    "result": {
+      "viewport": [
+        844,
+        390
+      ],
+      "document": [
+        844,
+        390
+      ],
+      "phase": "result",
+      "result": "ELIMINATED\nAlexandria Longname XXIV · THEIR SEAT IS EMPTY",
+      "shots": 1,
+      "dead": true,
+      "returnBox": {
+        "x": 533.9750366210938,
+        "y": 258.3625183105469,
+        "width": 289.375,
+        "height": 48,
+        "top": 258.3625183105469,
+        "right": 823.3500366210938,
+        "bottom": 306.3625183105469,
+        "left": 533.9750366210938
+      }
+    }
+  },
+  {
+    "width": 932,
+    "height": 430,
+    "fatal": false,
+    "result": {
+      "viewport": [
+        932,
+        430
+      ],
+      "document": [
+        932,
+        430
+      ],
+      "phase": "result",
+      "result": "SURVIVED\nAlexandria Longname XXIV · STILL IN THE GAME",
+      "shots": 1,
+      "dead": false,
+      "returnBox": {
+        "x": 589.1500244140625,
+        "y": 283.1625061035156,
+        "width": 320.875,
+        "height": 48,
+        "top": 283.1625061035156,
+        "right": 910.0250244140625,
+        "bottom": 331.1625061035156,
+        "left": 589.1500244140625
+      }
+    }
+  },
+  {
+    "width": 932,
+    "height": 430,
+    "fatal": true,
+    "result": {
+      "viewport": [
+        932,
+        430
+      ],
+      "document": [
+        932,
+        430
+      ],
+      "phase": "result",
+      "result": "ELIMINATED\nAlexandria Longname XXIV · THEIR SEAT IS EMPTY",
+      "shots": 1,
+      "dead": true,
+      "returnBox": {
+        "x": 589.1500244140625,
+        "y": 283.1625061035156,
+        "width": 320.875,
+        "height": 48,
+        "top": 283.1625061035156,
+        "right": 910.0250244140625,
+        "bottom": 331.1625061035156,
+        "left": 589.1500244140625
+      }
+    }
+  },
+  {
+    "width": 1366,
+    "height": 768,
+    "fatal": false,
+    "result": {
+      "viewport": [
+        1366,
+        768
+      ],
+      "document": [
+        1366,
+        768
+      ],
+      "phase": "result",
+      "result": "SURVIVED\nAlexandria Longname XXIV · STILL IN THE GAME",
+      "shots": 1,
+      "dead": false,
+      "returnBox": {
+        "x": 878.7250366210938,
+        "y": 501.2749938964844,
+        "width": 443.1875,
+        "height": 48,
+        "top": 501.2749938964844,
+        "right": 1321.9125366210938,
+        "bottom": 549.2749938964844,
+        "left": 878.7250366210938
+      }
+    }
+  },
+  {
+    "width": 1366,
+    "height": 768,
+    "fatal": true,
+    "result": {
+      "viewport": [
+        1366,
+        768
+      ],
+      "document": [
+        1366,
+        768
+      ],
+      "phase": "result",
+      "result": "ELIMINATED\nAlexandria Longname XXIV · THEIR SEAT IS EMPTY",
+      "shots": 1,
+      "dead": true,
+      "returnBox": {
+        "x": 878.7250366210938,
+        "y": 501.2749938964844,
+        "width": 443.1875,
+        "height": 48,
+        "top": 501.2749938964844,
+        "right": 1321.9125366210938,
+        "bottom": 549.2749938964844,
+        "left": 878.7250366210938
+      }
+    }
+  }
+]

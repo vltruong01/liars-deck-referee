@@ -1,0 +1,87 @@
+﻿v22.14.0
+10.9.2
+git : fatal: not a git repository (or any of the parent directories): .git
+At line:2 char:36
++ & { node --version; npm --version; git status --short; git remote -v; ...
++                                    ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (fatal: not a gi...ectories): .git:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+git : fatal: not a git repository (or any of the parent directories): .git
+At line:2 char:56
++ ... e --version; npm --version; git status --short; git remote -v; Get-Co ...
++                                                     ~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (fatal: not a gi...ectories): .git:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+1.16.1
+{
+  "changes": [
+    {
+      "name": "visual-qa-audit",
+      "completedTasks": 0,
+      "totalTasks": 4,
+      "lastModified": "2026-11-07T08:27:07.207Z",
+      "status": "in-progress"
+    }
+  ],
+  "root": {
+    "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun",
+    "source": "nearest"
+  }
+}
+✓ spec/roulette-engine
+✓ spec/shared-bar
+Totals: 2 passed, 0 failed (2 items)
+agent-browser 0.27.0
+agent-browser doctor
+
+Environment
+  pass  CLI version 0.27.0 (windows x86_64)
+  pass  Home directory C:\Users\VUONGLOCTRUONG
+  pass  State and socket directory C:\Users\VUONGLOCTRUONG\.agent-browser
+  info  Disk free check unavailable on this platform
+
+Chrome
+  pass  Google Chrome for Testing 157.0.8103.38 at C:\Users\VUONGLOCTRUONG\.agent-browser\browsers\chrome-157.0.8103.38\chrome.exe
+  info  Cache dir C:\Users\VUONGLOCTRUONG\.agent-browser\browsers
+  info  8 Chrome profile(s) at C:\Users\VUONGLOCTRUONG\AppData\Local\Google\Chrome\User Data
+
+Daemons
+  pass  Session qa-audit (pid 12948)
+  pass  Session qa-visible (pid 33680)
+
+Config
+  pass  agent-browser.json (valid JSON)
+
+Security
+  info  No encryption key set (will be auto-generated on first auth save)
+        fix: export AGENT_BROWSER_ENCRYPTION_KEY=$(openssl rand -hex 32)
+
+Providers
+  info  Browserless: BROWSERLESS_API_KEY not set
+  info  Browserbase: BROWSERBASE_API_KEY not set
+  info  Browser Use: BROWSER_USE_API_KEY not set
+  info  Kernel: KERNEL_API_KEY not set
+  info  AgentCore: no AWS credentials in env (AWS_ACCESS_KEY_ID / AWS_PROFILE)
+  info  AI_GATEWAY_API_KEY not set (chat command disabled)
+        fix: export AI_GATEWAY_API_KEY=gw_...
+
+Summary: 7 pass, 0 warn, 0 fail
+
+tip: Run with --fix to attempt repairs.
+2.15.0
+liarsbargun@1.0.0 C:\Users\VUONGLOCTRUONG\Documents\GitHub\liarsbarGun
+├── @playwright/test@1.65.0
+├── esbuild@0.28.2
+├── gsap@3.15.1
+├── happy-dom@21.0.4
+└── vitest@5.1.0
+
+345e4e576fe505296d30f0238c4478740f17de9d
+
+Algorithm       Hash                                                                   Path                            
+---------       ----                                                                   ----                            
+SHA256          7794D868D385FAA44E142C977A979859028FE4D1CDDB23D0F3C28F202BB032F3       C:\Users\VUONGLOCTRUONG\Docum...
+
+

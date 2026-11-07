@@ -1,0 +1,30 @@
+LIAR'S DECK — THE LAST CALL
+
+TIENG VIET
+1. Giai nen thu muc nay (neu dang o trong ZIP).
+2. Nhap dup PLAY.cmd hoac Liars-Deck.html, mo bang Chrome/Edge/Firefox.
+3. Chon 2-4 nguoi, nhap ten, chon nhan vat va bam START GAME.
+4. Choi bai that. Nguoi thua chon nhan vat cua minh va bam FIRE.
+5. Manage players: sua ten, reset tung nguoi. New match: bat dau lai.
+Khong can Internet, Node hay cai dat thu vien.
+Giu nguyen vi tri file va dung cung trinh duyet de tiep tuc van da luu.
+Khong xoa du lieu trinh duyet neu muon giu van choi.
+
+ENGLISH
+Open Liars-Deck.html directly in a modern browser. No installation or Internet required.
+Choose 2-4 players, names and skins, then start. Play cards physically; select the
+loser of a challenge and press FIRE. Each player has an independent six-chamber
+revolver with one bullet; blanks never reshuffle it. Last survivor wins.
+Use the gear for volume/reduced effects and Manage players for names/resets.
+Progress saves automatically in this browser for this file location.
+A refresh during a shot recovers its committed result.
+Phones: transfer the HTML to a browser that supports local HTML with JavaScript.
+Some phone file-viewer apps only show a preview; use a full browser or a local server.
+
+Made with original SVG art and synthesized audio; GSAP bundled locally.
+
+LANDSCAPE UI
+Rotate phones to landscape. Portrait shows a rotate-device prompt.
+All game screens fit in one landscape viewport. No page scrolling required.
+Use the square-corners button for optional fullscreen. Browser support varies.
+Back and settings are unavailable during a shot. FIRE unlocks after entry.

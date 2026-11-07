@@ -1,0 +1,6 @@
+* text=auto
+*.png binary
+*.zip binary
+*.cmd text eol=crlf
+dist/*.html -text
+src/engine.js -text

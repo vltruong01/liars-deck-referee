@@ -1,0 +1,25 @@
+{
+  "name": "liarsbargun",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "vitest run",
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/serve.mjs",
+    "test:browser": "playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "gsap": "^3.15.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.0",
+    "esbuild": "^0.28.2",
+    "happy-dom": "^21.0.4",
+    "vitest": "^5.1.0"
+  }
+}

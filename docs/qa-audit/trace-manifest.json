@@ -1,0 +1,62 @@
+[
+  {
+    "path": "test-results\\playwright\\landscape-1024x768-table-e-7006d--FIRE-names-and-2-3-players\\trace.zip",
+    "bytes": 27627350,
+    "entries": 705,
+    "integrity": "VERIFIED"
+  },
+  {
+    "path": "test-results\\playwright\\landscape-1366x768-table-e-dc1a3--FIRE-names-and-2-3-players\\trace.zip",
+    "bytes": 28192425,
+    "entries": 577,
+    "integrity": "VERIFIED"
+  },
+  {
+    "path": "test-results\\playwright\\landscape-1920x1080-table--8e6d0--FIRE-names-and-2-3-players\\trace.zip",
+    "bytes": 14330601,
+    "entries": 377,
+    "integrity": "VERIFIED"
+  },
+  {
+    "path": "test-results\\playwright\\landscape-667x375-table-each-seat-FIRE-names-and-2-3-players\\trace.zip",
+    "bytes": 35715233,
+    "entries": 823,
+    "integrity": "VERIFIED"
+  },
+  {
+    "path": "test-results\\playwright\\landscape-740x360-table-each-seat-FIRE-names-and-2-3-players\\trace.zip",
+    "bytes": 36917759,
+    "entries": 831,
+    "integrity": "VERIFIED"
+  },
+  {
+    "path": "test-results\\playwright\\landscape-844x390-table-each-seat-FIRE-names-and-2-3-players\\trace.zip",
+    "bytes": 34673582,
+    "entries": 831,
+    "integrity": "VERIFIED"
+  },
+  {
+    "path": "test-results\\playwright\\landscape-852x393-table-each-seat-FIRE-names-and-2-3-players\\trace.zip",
+    "bytes": 36804955,
+    "entries": 859,
+    "integrity": "VERIFIED"
+  },
+  {
+    "path": "test-results\\playwright\\landscape-932x430-table-each-seat-FIRE-names-and-2-3-players\\trace.zip",
+    "bytes": 33260391,
+    "entries": 810,
+    "integrity": "VERIFIED"
+  },
+  {
+    "path": "test-results\\playwright\\landscape-fatal-effect-pen-57624-r-and-offline-local-release\\trace.zip",
+    "bytes": 9247491,
+    "entries": 228,
+    "integrity": "VERIFIED"
+  },
+  {
+    "path": "test-results\\playwright\\landscape-portrait-guidanc-c99b3-ced-effects-and-entry-guard\\trace.zip",
+    "bytes": 3601125,
+    "entries": 101,
+    "integrity": "VERIFIED"
+  }
+]

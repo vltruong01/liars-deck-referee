@@ -1,0 +1,14 @@
+import { execFileSync } from 'node:child_process';
+import { join,resolve } from 'node:path';
+import { writeFileSync } from 'node:fs';
+import { createMatch, KEY } from '../src/engine.js';
+const cli=join(process.env.APPDATA,'npm/node_modules/agent-browser/bin/agent-browser-win32-x64.exe');
+const run=(...args)=>execFileSync(cli,['--session','qa-visible','--headed','--executable-path','C:/Program Files/Google/Chrome/Application/chrome.exe',...args],{encoding:'utf8',timeout:30000}).trim();
+const evaluate=code=>run('eval','-b',Buffer.from(code).toString('base64'));
+const label=process.argv[2]||'before';
+run('set','viewport','667','375');run('open',label==='before'?'file:///'+resolve('docs/qa-audit/baseline.html').replaceAll('\\','/'):'http://127.0.0.1:4173/');
+console.log(evaluate(`localStorage.setItem(${JSON.stringify(KEY)},${JSON.stringify(JSON.stringify(createMatch([{name:'Alexandria Longname XXIV',skin:'wolf'},{name:'Fox',skin:'fox'},{name:'Hare',skin:'hare'},{name:'Bear',skin:'bear'}],()=>5)))});`));
+run('reload');console.log(run('snapshot','-i'));run('find','role','button','click','--name','MANAGE PLAYERS');
+run('screenshot',resolve(`docs/qa-audit/manage-${label}-667x375.png`));
+const measurement=evaluate(`JSON.stringify({userAgent:navigator.userAgent,window:[innerWidth,innerHeight],dialog:document.getElementById('manage-dialog').getBoundingClientRect().toJSON(),scroll:[document.getElementById('manage-dialog').scrollHeight,document.getElementById('manage-dialog').clientHeight],inputs:[...document.querySelectorAll('#manage-list input')].map(el=>el.getBoundingClientRect().toJSON())})`);
+writeFileSync(`docs/qa-audit/manage-${label}-geometry.json`,measurement);console.log(measurement);
