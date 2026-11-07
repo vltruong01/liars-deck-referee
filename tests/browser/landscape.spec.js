@@ -45,7 +45,7 @@ async function executionChecks(page){
   await noOverflow(page,['#execution','.execution-layout','.execution-subject','.execution-action']);
 }
 
-for(const [width,height] of sizes)test(`${width}x${height}: table, each seat, FIRE, names and 2/3 players`,async({page,context})=>{
+for(const [width,height] of sizes)test(`${width}x${height}: table, each seat, FIRE, names and 2/3 players`,async({page})=>{
   await page.setViewportSize({width,height});
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto(url);await expect(page.locator('.setup-player')).toHaveCount(4);
@@ -110,5 +110,5 @@ test('portrait guidance, orientation, safe-area sizing, reduced effects and entr
   await page.setViewportSize({width:844,height:390});await executionChecks(page);expect(await page.evaluate(key=>localStorage.getItem(key),KEY)).toBe(before);
   await page.locator('#execution-settings').tap();await page.locator('#reduced-flashing').check();await page.locator('#reduced-motion').check();await page.getByRole('button',{name:'DONE'}).tap();
   await page.locator('#cancel-execution').tap();await expect(page.locator('#execution')).toBeHidden();
-  await page.locator('#fullscreen-button').evaluate(el=>document.documentElement.requestFullscreen=undefined);await page.locator('#fullscreen-button').tap();await expect(page.locator('#toast')).toContainText('unavailable');
+  await page.locator('#fullscreen-button').evaluate(()=>document.documentElement.requestFullscreen=undefined);await page.locator('#fullscreen-button').tap();await expect(page.locator('#toast')).toContainText('unavailable');
 });

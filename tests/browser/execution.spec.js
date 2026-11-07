@@ -54,7 +54,7 @@ for(const [width,height]of [[667,375],[740,360],[844,390],[932,430],[1366,768]])
 
     await expect(page.locator('#execution-status')).toBeHidden();
     await page.locator('#fire-button').click({force:true});await page.locator('#fire-button').evaluate(e=>e.click());
-    await page.clock.runFor(2400);await joints(page);await expect(page.locator('#execution')).toHaveAttribute('data-phase','firing');expect(await page.locator('#result').textContent()).toBe('');
+    await page.clock.runFor(5250);await joints(page);await expect(page.locator('#execution')).toHaveAttribute('data-phase','firing');expect(await page.locator('#result').textContent()).toBe('');
     if(i===0)await snap('suspense');await page.clock.runFor(480);await expect(page.locator('#execution')).toHaveAttribute('data-phase','result');
     const fatal=i===1||i===3;
     await page.clock.runFor(180);await joints(page);if(i<2)await snap(fatal?'fatal-reaction':'blank-reaction');
@@ -104,7 +104,7 @@ test('reduced effects retain suspense and customized death without camera moveme
   await page.goto('http://127.0.0.1:4173/');
   await page.evaluate(({k,s})=>{localStorage.setItem(k,JSON.stringify(s));localStorage.setItem('liars-deck.settings',JSON.stringify({volume:0,reducedMotion:true,reducedFlashing:true}));},{k:KEY,s:createMatch(players,()=>0)});await page.reload();
   await page.locator('[data-execute="p1"]').click({force:true});await page.clock.runFor(180);await joints(page);await expect(page.locator('#fire-button')).toBeEnabled();
-  await page.locator('#fire-button').click({force:true});await page.clock.runFor(2800);await expect(page.locator('#execution')).toHaveAttribute('data-phase','firing');
+  await page.locator('#fire-button').click({force:true});await page.clock.runFor(5650);await expect(page.locator('#execution')).toHaveAttribute('data-phase','firing');
   await page.clock.runFor(100);await expect(page.locator('#execution')).toHaveAttribute('data-phase','result');
   await expect(page.locator('.impact')).toHaveCSS('opacity','0');await expect(page.locator('.muzzle')).toHaveCSS('opacity','0');
   expect(await page.locator('.execution-stage').evaluate(e=>{const m=new DOMMatrixReadOnly(getComputedStyle(e).transform);return [m.a,m.d,m.e,m.f];})).toEqual([1,1,0,0]);

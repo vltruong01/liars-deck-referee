@@ -9,15 +9,15 @@ describe('cosmetics preserve existing matches',()=>{
     const storage={getItem:key=>key===KEY?JSON.stringify(state):null};
     const restored=load(storage);
     expect(restored.players[0].appearance).toEqual(normalizeAppearance());
-    expect(restored.players.map(({appearance,...p})=>p)).toEqual(state.players);
+    expect(restored.players.map(({appearance:_appearance,...p})=>p)).toEqual(state.players);
     expect(restored.nextShot).toBe(state.nextShot);expect(restored.revision).toBe(state.revision);
   });
   it('changes exactly one appearance after shooting, and keeps it on reset',()=>{
     const state=completeShot(fire(createMatch(entries,()=>5),'p1',1));
     const next=customize(state,'p1','bear',{hat:'top-hat',eyes:'monocle',mouth:'cigar',outfit:'western',bow:true});
     expect(next.players[1]).toEqual(state.players[1]);
-    const {skin,appearance,...progress}=next.players[0];
-    const {skin:oldSkin,appearance:oldAppearance,...oldProgress}=state.players[0];
+    const {skin:_skin,appearance,...progress}=next.players[0];
+    const {skin:_oldSkin,appearance:_oldAppearance,...oldProgress}=state.players[0];
     expect(progress).toEqual(oldProgress);expect(next.nextShot).toBe(state.nextShot);
     expect(next.last).toEqual(state.last);expect(next.pending).toBeNull();
     expect(resetMatch(next,()=>3).players[0].appearance).toEqual(appearance);

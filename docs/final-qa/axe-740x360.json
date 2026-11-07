@@ -1,0 +1,46 @@
+[
+  {
+    "state": "setup",
+    "violations": []
+  },
+  {
+    "state": "editor",
+    "violations": []
+  },
+  {
+    "state": "tie-options",
+    "violations": []
+  },
+  {
+    "state": "settings",
+    "violations": []
+  },
+  {
+    "state": "help",
+    "violations": []
+  },
+  {
+    "state": "table",
+    "violations": []
+  },
+  {
+    "state": "confirmation",
+    "violations": []
+  },
+  {
+    "state": "management",
+    "violations": []
+  },
+  {
+    "state": "execution",
+    "violations": []
+  },
+  {
+    "state": "recovered-fatal",
+    "violations": []
+  },
+  {
+    "state": "winner",
+    "violations": []
+  }
+]

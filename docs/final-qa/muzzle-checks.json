@@ -1,0 +1,57 @@
+[
+  {
+    "viewport": [
+      667,
+      375
+    ],
+    "firstFlash": {
+      "elapsed": 5730,
+      "opacity": 0.8704
+    },
+    "offAfter100ms": true
+  },
+  {
+    "viewport": [
+      740,
+      360
+    ],
+    "firstFlash": {
+      "elapsed": 5730,
+      "opacity": 0.8704
+    },
+    "offAfter100ms": true
+  },
+  {
+    "viewport": [
+      844,
+      390
+    ],
+    "firstFlash": {
+      "elapsed": 5730,
+      "opacity": 0.8704
+    },
+    "offAfter100ms": true
+  },
+  {
+    "viewport": [
+      932,
+      430
+    ],
+    "firstFlash": {
+      "elapsed": 5730,
+      "opacity": 0.8704
+    },
+    "offAfter100ms": true
+  },
+  {
+    "viewport": [
+      1366,
+      768
+    ],
+    "firstFlash": {
+      "elapsed": 5730,
+      "opacity": 0.8704
+    },
+    "offAfter100ms": true
+  }
+]

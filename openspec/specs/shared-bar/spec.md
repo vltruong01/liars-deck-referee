@@ -106,7 +106,7 @@ The shared character renderer SHALL support classic, vest/rolled sleeves and wes
 - **THEN** its attachment, direction and layering remain aligned and inside the silhouette bounds.
 
 ### Requirement: Articulated suspense and outcome reactions
-Execution SHALL use a connected shoulder, upper arm, elbow, forearm, wrist/hand and revolver hierarchy. Both results SHALL share a locked 2.85-second anticipation with synchronized generated breathing, mechanical cues, heartbeat and near-silence before reveal. Reduced motion SHALL simplify movements.
+Execution SHALL use a connected shoulder, upper arm, elbow, forearm, wrist/hand and revolver hierarchy. Both results SHALL share a locked 5.7-second anticipation with synchronized generated breathing, mechanical cues, heartbeat and near-silence before reveal. Reduced motion SHALL simplify movements.
 
 #### Scenario: Contrasting outcomes
 - **WHEN** the predetermined shot is revealed

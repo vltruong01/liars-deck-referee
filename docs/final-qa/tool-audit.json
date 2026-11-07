@@ -1,0 +1,57 @@
+{
+  "chromeDevToolsMcp": {
+    "version": "1.12.0",
+    "operational": true,
+    "transport": "SDK stdio repository client",
+    "evidence": "devtools-mcp.json"
+  },
+  "agentBrowser": {
+    "version": "0.27.0",
+    "doctor": {
+      "pass": 8,
+      "warn": 0,
+      "fail": 0
+    },
+    "actualChecks": [
+      "HTTP app navigation",
+      "interactive setup snapshot",
+      "click settings",
+      "settings snapshot",
+      "settings screenshot",
+      "empty errors",
+      "owned session closed"
+    ],
+    "initialBlankSnapshot": "doctor plus explicit navigation retried successfully",
+    "evidence": "agent-settings.png"
+  },
+  "responsively": {
+    "operational": false,
+    "reinstalled": false,
+    "reason": "Previously verified installation-policy and desktop MCP bridge blocker unchanged",
+    "evidence": "../mobile-qa/responsively-mcp.json"
+  },
+  "axe": {
+    "version": "4.14.0",
+    "rules": "default, no exclusions",
+    "sizes": 5,
+    "statesPerSize": 11
+  },
+  "eslint": {
+    "version": "10.14.0",
+    "actualRun": "npm run lint",
+    "result": "pass"
+  },
+  "unit": {
+    "command": "npm test",
+    "passed": 39,
+    "failed": 0
+  },
+  "visualReview": {
+    "images": 45,
+    "sizes": 5,
+    "states": 9,
+    "openedBeforeApproval": true,
+    "lcdInstabilityInvestigated": true,
+    "toleranceNotIncreased": true
+  }
+}

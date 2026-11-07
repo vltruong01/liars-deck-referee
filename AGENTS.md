@@ -1,5 +1,7 @@
 # Liar's Deck development rules
 
+- Every future code change must include relevant regression tests. Every UI or animation change must include actual browser inspection and visual verification. Run focused checks while editing and the complete lint, unit, browser, accessibility and reviewed screenshot suite before deployment; never auto-approve new image baselines.
+
 - Continue this vanilla JS offline project and its OpenSpec history. Do not replace the game or add a framework for UI work.
 - Preserve the six-chamber rejection-sampled algorithm, independent revolvers, durable shot token and duplicate-FIRE guards. Cosmetic edits must never consume/reset a shot or reroll a bullet.
 - Keep legacy version-1 saves readable. Normalize optional cosmetics to safe defaults. Use allowlisted SVG choices, never interpolate arbitrary saved markup or colors.

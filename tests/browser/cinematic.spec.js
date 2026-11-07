@@ -34,7 +34,7 @@ for(const [width,height]of [[667,375],[740,360],[844,390],[932,430],[1366,768]])
     await snap(page,`${fatal?'fatal':'blank'}-raise-${suffix}`);await visibleArt(page);
     await expect(page.locator('#execution')).toHaveAttribute('data-phase','ready');await visibleArt(page);
     expect(await page.locator('#execution .forearm').getAttribute('transform')).not.toBe(mid);await snap(page,`ready-${fatal?'fatal':'blank'}-${suffix}`);
-    await page.evaluate(()=>{window.qaPhases=[];window.qaStart=performance.now();new MutationObserver(()=>{const phase=document.querySelector('#execution').dataset.phase;window.qaPhases.push({phase,t:performance.now()-window.qaStart});if(phase==='firing')setTimeout(()=>window.qaBeforeReveal={phase:document.querySelector('#execution').dataset.phase,text:document.querySelector('#result').textContent},1600);}).observe(document.querySelector('#execution'),{attributes:true,attributeFilter:['data-phase']});});
+    await page.evaluate(()=>{window.qaPhases=[];window.qaStart=performance.now();new MutationObserver(()=>{const phase=document.querySelector('#execution').dataset.phase;window.qaPhases.push({phase,t:performance.now()-window.qaStart});if(phase==='firing')setTimeout(()=>window.qaBeforeReveal={phase:document.querySelector('#execution').dataset.phase,text:document.querySelector('#result').textContent},5400);}).observe(document.querySelector('#execution'),{attributes:true,attributeFilter:['data-phase']});});
     await page.locator('#fire-button').click();await page.locator('#fire-button').evaluate(b=>b.click());
     await page.waitForTimeout(750);expect(await page.locator('#result').textContent()).toBe('');await visibleArt(page);await snap(page,`breath-${fatal?'fatal':'blank'}-${suffix}`);
     await expect(page.locator('#execution')).toHaveAttribute('data-phase','result');
@@ -42,7 +42,7 @@ for(const [width,height]of [[667,375],[740,360],[844,390],[932,430],[1366,768]])
     await expect(page.locator('#result')).toHaveCSS('opacity','1');await page.waitForTimeout(180);await visibleArt(page);await snap(page,`${fatal?'fatal':'blank'}-result-${suffix}`);
     await expect(page.locator('#execution-name')).toContainText('Alexandria');if(fatal)await expect(page.locator('#result')).toContainText('DIED');await expect(page.locator('#execution')).toBeHidden({timeout:7000});
     expect(await page.evaluate(()=>window.qaBeforeReveal)).toEqual({phase:'firing',text:''});
-    const phases=await page.evaluate(()=>window.qaPhases);const reveal=phases.find(p=>p.phase==='result').t-phases.find(p=>p.phase==='firing').t;expect(reveal).toBeGreaterThan(2650);expect(reveal).toBeLessThan(3150);sequences.push({fatal,revealMs:reveal});
+    const phases=await page.evaluate(()=>window.qaPhases);const reveal=phases.find(p=>p.phase==='result').t-phases.find(p=>p.phase==='firing').t;expect(reveal).toBeGreaterThan(5500);expect(reveal).toBeLessThan(6000);sequences.push({fatal,revealMs:reveal});
     const state=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)),KEY);expect(state.players[0].shots).toBe(1);expect(state.pending).toBeNull();
     if(fatal){await expect(page.locator('[data-execute="p1"]')).toBeDisabled();await snap(page,`eliminated-table-${suffix}`);}
   }
@@ -58,7 +58,7 @@ test('mouth accessories and outfit silhouettes: all six species and inward mirro
   const artURL='data:text/javascript;base64,'+Buffer.from(art.replace("'./appearance.js'",JSON.stringify(appearanceURL))).toString('base64');
   await page.evaluate(async({url})=>{
     const {portrait}=await import(url);document.querySelector('.bar-heading').hidden=true;const scene=document.querySelector('.scene-frame');
-    scene.innerHTML=`<div id="species-contact" style="position:absolute;inset:0;display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(3,1fr)">${['cigarette','cigar','toothpick'].flatMap((mouth,row)=>['wolf','fox','hare','bear','raven','stag'].map((skin,i)=>`<div style="min-height:0;position:relative" data-example="${skin}-${mouth}"><div style="height:100%;${row===1?'transform:scaleX(-1)':''}">${portrait(skin,true,{mouth,hat:'none',outfit:['classic','vest','western'][row]})}</div></div>`)).join('')}</div>`;
+    scene.innerHTML=`<div id="species-contact" style="position:absolute;inset:0;display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(3,1fr)">${['cigarette','cigar','toothpick'].flatMap((mouth,row)=>['wolf','fox','hare','bear','raven','stag'].map(skin=>`<div style="min-height:0;position:relative" data-example="${skin}-${mouth}"><div style="height:100%;${row===1?'transform:scaleX(-1)':''}">${portrait(skin,true,{mouth,hat:'none',outfit:['classic','vest','western'][row]})}</div></div>`)).join('')}</div>`;
     scene.querySelectorAll('.portrait').forEach(e=>{e.style.width='100%';e.style.height='100%';});
   },{url:artURL});
   const directions=await page.locator('.mouthwear').evaluateAll(els=>els.map(e=>{const matrix=e.getScreenCTM(),a=new DOMPoint(0,0).matrixTransform(matrix),b=new DOMPoint(54,0).matrixTransform(matrix);return {mouth:e.dataset.mouth,outward:Math.abs(b.x-a.x)>10,above:b.y<a.y};}));

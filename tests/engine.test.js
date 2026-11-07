@@ -86,7 +86,7 @@ describe('durable state', () => {
   });
   it('preserves a blank through refresh and fires the next chamber', () => {
     const storage=memory(); let s=persist(storage,match(1));
-    s=persist(storage,fire(s,'p1',1),s); s=persist(storage,completeShot(load(storage)),s);
+    s=persist(storage,fire(s,'p1',1),s); persist(storage,completeShot(load(storage)),s);
     expect(fire(load(storage),'p1',2).pending.fatal).toBe(true);
   });
   it('fails without mutating the old state when storage is full', () => {

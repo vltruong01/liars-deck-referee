@@ -1,0 +1,13 @@
+{
+  "bytes": 156803,
+  "sha256": "174525e3ce81cb0b10d0c97441f995b8625ae1e4091aca53dd186d7b05bdcaf4",
+  "identicalHtml": true,
+  "zipMatchesDist": true,
+  "zipEntries": [
+    "index.html",
+    "Liars-Deck.html",
+    "PLAY.cmd",
+    "READ-ME.txt",
+    "THIRD-PARTY-NOTICES.txt"
+  ]
+}

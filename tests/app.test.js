@@ -52,7 +52,7 @@ describe('shared screen controller',()=>{
     expect($('#execution').hidden).toBe(false);expect($('#execution-name').textContent).toBe('Alice');
     $('#fire-button').click();$('#fire-button').click();
     expect(saved().players[0].shots).toBe(1);expect(saved().pending.fatal).toBe(fatal);
-    expect($('#result').textContent).toBe('');await advance(2800);expect($('#result').textContent).toBe('');
+    expect($('#result').textContent).toBe('');await advance(5650);expect($('#result').textContent).toBe('');
     await advance(60);expect($('#result').textContent).toContain(fatal?'DIED':'SURVIVED');
     await advance(5000);expect($('#execution').hidden).toBe(true);expect(saved().pending).toBeNull();
     expect($('[data-execute="p1"]').disabled).toBe(fatal);expect(saved().players[1].shots).toBe(0);

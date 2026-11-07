@@ -1,5 +1,5 @@
 import { gsap } from 'gsap';
-import { createMatch, customize, fire, completeShot, rename, resetPlayer, resetMatch, living, winner, load, persist, KEY } from './engine.js';
+import { createMatch, customize, fire, completeShot, rename, resetPlayer, resetMatch, winner, load, persist, KEY } from './engine.js';
 import { skins, portrait, roomArt, executionRig } from './art.js';
 import { choices, colors, normalizeAppearance, randomAppearance, label } from './appearance.js';
 import { seatPosition } from './staging.js';
@@ -10,13 +10,13 @@ const app=$('#app'), execution=$('#execution'), audio=new AudioDirector();
 const escapeText = value => String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const prefersMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
 let prefs={volume:.45,reducedFlashing:false,reducedMotion:prefersMotion.matches};
-try { const saved=JSON.parse(localStorage.getItem('liars-deck.settings')||'null'); if(saved) prefs={volume:typeof saved.volume==='number'?Math.max(0,Math.min(1,saved.volume)):.45,reducedFlashing:!!saved.reducedFlashing,reducedMotion:!!saved.reducedMotion||prefersMotion.matches}; } catch {}
+try { const saved=JSON.parse(localStorage.getItem('liars-deck.settings')||'null'); if(saved) prefs={volume:typeof saved.volume==='number'?Math.max(0,Math.min(1,saved.volume)):.45,reducedFlashing:!!saved.reducedFlashing,reducedMotion:!!saved.reducedMotion||prefersMotion.matches}; } catch { /* Ignore malformed optional preferences. */ }
 audio.setVolume(prefs.volume);
 let state=null, storage, storageError=null, selected=null, busy=false, returning=false, shotTimeline=null, entryTimeline=null, reactionTimeline=null, transitionTimeline=null, toastTimer=null, confirmAction=null;
 let count=4, draft=skins.slice(0,4).map((s,i)=>({name:`Player ${i+1}`,skin:s.id}));
 let stageObserver=null, entrySequence=0;
 const DRAFT_KEY='liars-deck.setup.v1';
-try { const saved=JSON.parse(localStorage.getItem(DRAFT_KEY)||'null');if(saved&&Array.isArray(saved.players)&&saved.players.length===4){draft=saved.players.map((p,i)=>({name:String(p.name||`Player ${i+1}`).slice(0,24),skin:skins.some(s=>s.id===p.skin)?p.skin:skins[i].id,appearance:normalizeAppearance(p.appearance)}));if([2,3,4].includes(saved.count))count=saved.count;} }catch{}
+try { const saved=JSON.parse(localStorage.getItem(DRAFT_KEY)||'null');if(saved&&Array.isArray(saved.players)&&saved.players.length===4){draft=saved.players.map((p,i)=>({name:String(p.name||`Player ${i+1}`).slice(0,24),skin:skins.some(s=>s.id===p.skin)?p.skin:skins[i].id,appearance:normalizeAppearance(p.appearance)}));if([2,3,4].includes(saved.count))count=saved.count;} }catch{ /* Ignore malformed optional setup drafts. */ }
 function saveDraft(){storage.setItem(DRAFT_KEY,JSON.stringify({count,players:draft}));}
 
 try { storage=localStorage; state=load(storage); } catch(error) { storageError=error.message; }
@@ -84,7 +84,6 @@ $('#volume').onchange=()=>{audio.unlock();audio.click();};
 $('#reduced-flashing').onchange=e=>{prefs.reducedFlashing=e.target.checked;savePrefs();};
 $('#reduced-motion').onchange=e=>{prefs.reducedMotion=e.target.checked;savePrefs();};
 
-function footer() { return `<footer class="footnote"><span>PHYSICAL CARDS. DIGITAL CONSEQUENCES.</span><span>ONE BULLET. NO SECOND CHANCES.</span></footer>`; }
 
 function renderSetup() {
   stageObserver?.disconnect();
@@ -142,13 +141,13 @@ function renderAppearance() {
 }
 
 function renderTable() {
-  const w=winner(state),alive=living(state).length;
+  const w=winner(state);
   app.innerHTML=`<section class="bar-page ${w?'has-winner':''}">
     <div class="bar-heading"><h1 class="sr-only">Match table</h1><div class="bar-tools"><button class="outline" id="new-match">NEW MATCH &#8599;</button></div></div>
     ${w?`<div class="winner-banner"><h2><span>${escapeText(w.name)}</span> takes the table.</h2><button class="primary" id="play-again">PLAY AGAIN <b>&#8594;</b></button></div>`:''}
     <div class="scene-frame"><div class="scene" data-count="${state.players.length}">${roomArt()}<div class="stage-fit"><div class="room-camera">
     <div class="table" aria-hidden="true"><div class="table-felt"><div class="table-emblem">&#9824;<span>THE LAST CALL</span></div><div class="cards"><div class="card">&#9824;</div><div class="card">&#9830;</div><div class="card">&#9827;</div></div><div class="glass"></div></div></div>
-    ${state.players.map((p,i)=>`<button class="seat ${p.dead?'dead':''}" data-seat="${i+1}" data-position="${seatPosition(state.players.length,i).position}" style="${seatPosition(state.players.length,i).style}" data-execute="${p.id}" ${p.dead||w?'disabled':''} aria-label="${escapeText(p.name)}, ${p.dead?'DIED':`${p.shots} shots taken. Select for execution`}" title="${escapeText(p.name)}"><span class="seat-character">${portrait(p.skin,true,p.appearance)}</span><span class="seat-name"><strong>${escapeText(p.name)}</strong><small>${p.dead?'DIED':`${p.shots}/6`}</small></span></button>`).join('')}
+    ${state.players.map((p,i)=>`<button class="seat ${p.dead?'dead':''}" data-seat="${i+1}" data-position="${seatPosition(state.players.length,i).position}" style="${seatPosition(state.players.length,i).style}" data-execute="${p.id}" ${p.dead||w?'disabled':''} aria-description="${p.dead?'Eliminated':'Select for execution'}" title="${escapeText(p.name)}"><span class="seat-character">${portrait(p.skin,true,p.appearance)}</span><span class="seat-name"><strong>${escapeText(p.name)}</strong><small>${p.dead?'DIED':`${p.shots}/6`}</small></span></button>`).join('')}
     </div></div></div></div>
     </section>`;
   observeStage();
@@ -156,7 +155,6 @@ function renderTable() {
   $('#new-match').onclick=()=>{confirm('A different company?','End this match and return to player setup? Current progress will be replaced when you start the new game.',()=>{draft=state.players.map(p=>({name:p.name,skin:p.skin,appearance:p.appearance}));while(draft.length<4)draft.push({name:`Player ${draft.length+1}`,skin:skins[draft.length].id});count=state.players.length;renderSetup();});$('#manage-button').hidden=false;};
   if(w) $('#play-again').onclick=()=>confirm('Another night?','Reload every revolver with one freshly randomized bullet. Keep the same names and characters?',()=>{commit(resetMatch(state));renderTable();});
 }
-function lastEvent() { if(!state.last) return 'All revolvers loaded. <span>Make your first move.</span>';const p=state.players.find(p=>p.id===state.last.playerId);return `<span>${escapeText(p.name)}</span> ${state.last.fatal?'was eliminated':'survived'} · pull ${state.last.shot}/6`; }
 
 function openManagement() {
   if(busy)return;
@@ -221,11 +219,15 @@ $('#fire-button').onclick=()=>{
       .call(()=>audio.heartbeat(),[],.55)
       .call(()=>audio.breathe(),[],1.35)
       .call(()=>audio.heartbeat(),[],1.35)
-      .to('#execution-portrait .forearm',{rotation:prefs.reducedMotion?0:-.65,svgOrigin:'222 224',duration:.16,yoyo:true,repeat:7,ease:'sine.inOut'},.65)
-      .to('.execution-stage',{scale:prefs.reducedMotion?1:1.025,transformOrigin:'50% 55%',duration:2.3,ease:'sine.inOut'},0)
-      // Second breath ends at 2.37; hold near-silence until the 2.85s reveal.
-      .to('#execution-portrait .trigger',{x:-3,duration:.14},2.69)
-      .call(()=>{if(sequence===entrySequence&&!returning)reveal(result);},[],2.85);
+      .call(()=>audio.breathe(),[],2.8)
+      .call(()=>audio.heartbeat(),[],2.8)
+      .call(()=>audio.breathe(),[],4.2)
+      .call(()=>audio.heartbeat(),[],4.2)
+      .to('#execution-portrait .forearm',{rotation:prefs.reducedMotion?0:-.65,svgOrigin:'222 224',duration:.16,yoyo:true,repeat:21,ease:'sine.inOut'},.65)
+      .to('.execution-stage',{scale:prefs.reducedMotion?1:1.025,transformOrigin:'50% 55%',duration:4.6,ease:'sine.inOut'},0)
+      // Final breath ends at 5.22; keep both outcomes hidden until 5.7s.
+      .to('#execution-portrait .trigger',{x:-3,duration:.14},5.54)
+      .call(()=>{if(sequence===entrySequence&&!returning)reveal(result);},[],5.7);
   });
 };
 

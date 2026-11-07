@@ -1,0 +1,26 @@
+{
+  "unit": {
+    "passed": 39,
+    "failed": 0
+  },
+  "browser": {
+    "startTime": "2026-11-07T16:12:34.989Z",
+    "duration": 240570.932,
+    "expected": 41,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "axe": {
+    "scans": 55,
+    "violations": 0
+  },
+  "screenshots": {
+    "comparisons": 45,
+    "passed": true,
+    "updatedDuringVerification": false
+  },
+  "lint": "passed",
+  "offlineFilePlay": "passed in landscape integration test",
+  "muzzleSizes": 5
+}

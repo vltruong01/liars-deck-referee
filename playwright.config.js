@@ -8,5 +8,5 @@ export default defineConfig({
   workers:3,
   reporter:[['list'],['json',{outputFile:'docs/playwright-results.json'}]],
   outputDir:'test-results/playwright',
-  use:{channel:'chrome',headless:true,hasTouch:true,trace:'retain-on-failure',screenshot:'only-on-failure'},
+  use:{channel:'chrome',headless:true,hasTouch:true,launchOptions:{args:['--disable-lcd-text']},trace:'retain-on-failure',screenshot:'only-on-failure'},
 });

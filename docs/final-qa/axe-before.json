@@ -1,0 +1,117 @@
+[
+  {
+    "state": "setup",
+    "violations": []
+  },
+  {
+    "state": "editor",
+    "violations": []
+  },
+  {
+    "state": "settings",
+    "violations": []
+  },
+  {
+    "state": "table",
+    "violations": [
+      {
+        "id": "label-content-name-mismatch",
+        "impact": "serious",
+        "tags": [
+          "cat.semantics",
+          "wcag21a",
+          "wcag253",
+          "EN-301-549",
+          "EN-9.2.5.3",
+          "RGAAv4",
+          "RGAA-6.1.5"
+        ],
+        "description": "Ensure that elements labelled through their content must have their visible text as part of their accessible name",
+        "help": "Elements must have their visible text as part of their accessible name",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/label-content-name-mismatch?application=playwright",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "label-content-name-mismatch",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "Text inside the element is not included in the accessible name"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<button class=\"seat \" data-seat=\"1\" data-position=\"rear\" style=\"--seat-x:27%;--seat-y:0%;--seat-w:21%;--seat-h:65%\" data-execute=\"p1\" aria-label=\"Player 1, 0 shots taken. Select for execution\" title=\"Player 1\">",
+            "target": [
+              "button[data-seat=\"1\"]"
+            ],
+            "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+          },
+          {
+            "any": [
+              {
+                "id": "label-content-name-mismatch",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "Text inside the element is not included in the accessible name"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<button class=\"seat \" data-seat=\"2\" data-position=\"rear\" style=\"--seat-x:52%;--seat-y:0%;--seat-w:21%;--seat-h:65%\" data-execute=\"p2\" aria-label=\"Player 2, 0 shots taken. Select for execution\" title=\"Player 2\">",
+            "target": [
+              "button[data-seat=\"2\"]"
+            ],
+            "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+          },
+          {
+            "any": [
+              {
+                "id": "label-content-name-mismatch",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "Text inside the element is not included in the accessible name"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<button class=\"seat \" data-seat=\"3\" data-position=\"left\" style=\"--seat-x:1%;--seat-y:29%;--seat-w:24%;--seat-h:68%\" data-execute=\"p3\" aria-label=\"Player 3, 0 shots taken. Select for execution\" title=\"Player 3\">",
+            "target": [
+              "button[data-seat=\"3\"]"
+            ],
+            "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+          },
+          {
+            "any": [
+              {
+                "id": "label-content-name-mismatch",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "Text inside the element is not included in the accessible name"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<button class=\"seat \" data-seat=\"4\" data-position=\"right\" style=\"--seat-x:75%;--seat-y:29%;--seat-w:24%;--seat-h:68%\" data-execute=\"p4\" aria-label=\"Player 4, 0 shots taken. Select for execution\" title=\"Player 4\">",
+            "target": [
+              "button[data-seat=\"4\"]"
+            ],
+            "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "state": "execution",
+    "violations": []
+  }
+]

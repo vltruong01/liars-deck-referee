@@ -1,0 +1,140 @@
+{
+  "tools": [
+    "click",
+    "close_page",
+    "drag",
+    "emulate",
+    "evaluate_script",
+    "fill",
+    "fill_form",
+    "get_console_message",
+    "get_css_styles",
+    "get_network_request",
+    "handle_dialog",
+    "hover",
+    "lighthouse_audit",
+    "list_console_messages",
+    "list_network_requests",
+    "list_pages",
+    "navigate_page",
+    "new_page",
+    "performance_analyze_insight",
+    "performance_start_trace",
+    "performance_stop_trace",
+    "press_key",
+    "resize_page",
+    "screencast_start",
+    "screencast_stop",
+    "select_page",
+    "take_heapsnapshot",
+    "take_screenshot",
+    "take_snapshot",
+    "type_text",
+    "upload_file",
+    "wait_for"
+  ],
+  "calls": [
+    {
+      "name": "new_page",
+      "args": {
+        "url": "http://127.0.0.1:4173/"
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Pages\n1: about:blank\n2: Liar's Deck — The Last Call (http://127.0.0.1:4173/) [selected]"
+          }
+        ]
+      }
+    },
+    {
+      "name": "evaluate_script",
+      "args": {
+        "pageId": 2,
+        "function": "() => ({title:document.title,inputs:document.querySelectorAll(\"input[data-draft]\").length,overflow:document.documentElement.scrollWidth-innerWidth,buttons:[...document.querySelectorAll(\"button\")].filter(b=>b.getBoundingClientRect().width).length})"
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Script ran on page and returned:\n```json\n{\"title\":\"Liar's Deck — The Last Call\",\"inputs\":4,\"overflow\":0,\"buttons\":19}\n```"
+          }
+        ]
+      }
+    },
+    {
+      "name": "take_screenshot",
+      "args": {
+        "pageId": 2,
+        "filePath": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\docs\\final-qa\\devtools-setup.png"
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Took a screenshot of the current page's viewport.\nSaved screenshot to C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\docs\\final-qa\\devtools-setup.png."
+          }
+        ]
+      }
+    },
+    {
+      "name": "evaluate_script",
+      "args": {
+        "pageId": 2,
+        "function": "async () => {document.querySelector(\"#setup-form\").requestSubmit();await new Promise(r=>setTimeout(r,450));return [...document.querySelectorAll(\".seat\")].map(b=>({visible:b.innerText,ariaLabel:b.getAttribute(\"aria-label\"),description:b.getAttribute(\"aria-description\"),clickHandler:typeof b.onclick}));}"
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Script ran on page and returned:\n```json\n[{\"visible\":\"Player 1\\n0/6\",\"ariaLabel\":null,\"description\":\"Select for execution\",\"clickHandler\":\"function\"},{\"visible\":\"Player 2\\n0/6\",\"ariaLabel\":null,\"description\":\"Select for execution\",\"clickHandler\":\"function\"},{\"visible\":\"Player 3\\n0/6\",\"ariaLabel\":null,\"description\":\"Select for execution\",\"clickHandler\":\"function\"},{\"visible\":\"Player 4\\n0/6\",\"ariaLabel\":null,\"description\":\"Select for execution\",\"clickHandler\":\"function\"}]\n```"
+          }
+        ]
+      }
+    },
+    {
+      "name": "list_console_messages",
+      "args": {
+        "pageId": 2
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Console messages\n<no console messages found>"
+          }
+        ]
+      }
+    },
+    {
+      "name": "list_network_requests",
+      "args": {
+        "pageId": 2
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Network requests\nShowing 1-2 of 2 (Page 1 of 1).\nreqid=1 GET http://127.0.0.1:4173/ [200]\nreqid=2 GET data:image/svg+xml,%3Csvg viewBox='0 0 150 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filte... <truncated> [200]"
+          }
+        ]
+      }
+    },
+    {
+      "name": "take_screenshot",
+      "args": {
+        "pageId": 2,
+        "filePath": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\docs\\final-qa\\devtools-table.png"
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Took a screenshot of the current page's viewport.\nSaved screenshot to C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\docs\\final-qa\\devtools-table.png."
+          }
+        ]
+      }
+    }
+  ]
+}
