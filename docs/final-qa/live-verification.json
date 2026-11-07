@@ -1,0 +1,34 @@
+{
+  "url": "https://vltruong01.github.io/liars-deck-referee/",
+  "httpStatus": 200,
+  "htmlBytes": 156803,
+  "sha256": "174525e3ce81cb0b10d0c97441f995b8625ae1e4091aca53dd186d7b05bdcaf4",
+  "matchesVerifiedDist": true,
+  "viewport": [
+    844,
+    390
+  ],
+  "browser": "headed Chrome",
+  "typedName": true,
+  "customization": true,
+  "twoArmRig": true,
+  "overheadHud": {
+    "gap": 8.310962677001953,
+    "center": 0.00634765625,
+    "fontSize": 18
+  },
+  "compactTableLabels": true,
+  "liveFatalFixture": true,
+  "customizedDeathReveal": true,
+  "stableTableCamera": true,
+  "shotCount": 1,
+  "outcome": "SURVIVED",
+  "automaticReturn": true,
+  "suspenseMs": [
+    5726.400000035763,
+    5724.900000035763
+  ],
+  "cosmeticEditPreservesProgress": true,
+  "persistence": true,
+  "errors": []
+}

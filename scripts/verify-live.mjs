@@ -1,10 +1,10 @@
-import {chromium,expect} from '@playwright/test';
+import {chromium,expect as baseExpect} from '@playwright/test';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {KEY,createMatch} from '../src/engine.js';
 
 const url='https://vltruong01.github.io/liars-deck-referee/';
-expect.configure({timeout:8000});
+const expect=baseExpect.configure({timeout:8000});
 const liveTimings=[];
 async function observeShot(page){await page.evaluate(()=>{window.liveRevealMs=null;const start=performance.now(),view=document.querySelector('#execution');const observer=new MutationObserver(()=>{if(view.dataset.phase==='result'){window.liveRevealMs=performance.now()-start;observer.disconnect();}});observer.observe(view,{attributes:true,attributeFilter:['data-phase']});});}
 async function checkTiming(page){const ms=await page.evaluate(()=>window.liveRevealMs);expect(ms).toBeGreaterThan(5500);expect(ms).toBeLessThan(6100);liveTimings.push(ms);}

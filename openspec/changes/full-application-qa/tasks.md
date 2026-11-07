@@ -11,6 +11,6 @@
 ## 3. Release integration
 
 - [x] 3.1 Run full unit/browser/axe/lint/build and offline checks, inspect fractional rig/return frames, and document actual results in FINAL_QA_REPORT.md.
-- [ ] 3.2 Refresh offline archive, commit/push/deploy only after critical checks pass, then verify public artifact and browser gameplay; record release evidence.
+- [x] 3.2 Refresh offline archive, commit/push/deploy only after critical checks pass, then verify public artifact and browser gameplay; record release evidence.
 
-- [ ] 3.3 Verify remote source and Pages before deleting the exact local project directory requested by the user.
+- [x] 3.3 Verify remote source and Pages before deleting the exact local project directory requested by the user.

@@ -1,0 +1,45 @@
+{
+  "commit": "ab93fd77548eff532a1b4848825a27e09012b78c",
+  "checks": [
+    {
+      "path": "src/app.js",
+      "matchesCommittedSource": true,
+      "bytes": 28532,
+      "sha256": "ce177600b8d9908bb31151d1ceae0f741f559d801ef8f7563bc7958c4bcf15ac"
+    },
+    {
+      "path": "src/engine.js",
+      "matchesCommittedSource": true,
+      "bytes": 5934,
+      "sha256": "221817ca5abe8921e0dd2e6b95dedd4399f546681fe1fa6676f8137426ae2832"
+    },
+    {
+      "path": "package.json",
+      "matchesCommittedSource": true,
+      "bytes": 931,
+      "sha256": "372c8e01558d0cc1fe485b12746d1d815ffde637639f6f12cfb979d63d4cfe82"
+    },
+    {
+      "path": "package-lock.json",
+      "matchesCommittedSource": true,
+      "bytes": 134062,
+      "sha256": "3af4e95171ad1a4bc616f566bbff9a7622a8cd09d57893fa710b4f2ed99812c8"
+    },
+    {
+      "path": "Liars-Deck-Offline.zip",
+      "matchesCommittedSource": true,
+      "bytes": 110816,
+      "sha256": "6e1c2464ddc64cab044d5079dfd024f760f4f84b0382cf61551bd57fce8f558e"
+    },
+    {
+      "path": "tests/browser/visual.spec.js",
+      "matchesCommittedSource": true,
+      "bytes": 2368,
+      "sha256": "b3f9d048872f76d861ec7d7bab4be87aa9954d7b1ea974913ba8ab2c2b115980"
+    }
+  ],
+  "publicPagesMatchesDist": true,
+  "localDirectory": "C:/Users/VUONGLOCTRUONG/Documents/GitHub/liarsbarGun",
+  "normalDirectory": true,
+  "reparsePoints": 0
+}
