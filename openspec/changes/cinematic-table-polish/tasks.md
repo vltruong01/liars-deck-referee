@@ -9,4 +9,4 @@
 - [x] 5.1 Refactor one shared two-arm rig with continuous idle-to-aim joints; fix camera ownership and transition cleanup.
 - [x] 5.2 Replace large headings/status with compact HUD, 2.85-second common anticipation and centered customized DIED/X reveal.
 - [x] 5.3 Inspect five-size fractional raise/outcome/return frames and consecutive executions; extend regression and run full suites.
-- [ ] 5.4 Sync specs, build offline release, update QA, commit/push/deploy and verify live bytes and gameplay.
+- [x] 5.4 Sync specs, build offline release, update QA, commit/push/deploy and verify live bytes and gameplay.

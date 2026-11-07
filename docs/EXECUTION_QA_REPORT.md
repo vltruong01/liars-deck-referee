@@ -42,7 +42,16 @@ One inherited real-time pose assertion initially sampled after the full raise un
 - Production rebuild matches the tested artifact; index and standalone are byte-identical and the offline ZIP matches dist ([release integrity](execution-qa/release-integrity.json)). HTML: 155211 bytes, SHA256 `d65eb3e4792f236149ad61db154fd1067457d718447fd3f8c1cce140bd489e7f`.
 - OpenSpec main shared-bar requirements are synchronized; strict validation passes ([output](execution-qa/openspec-validation.txt)).
 
-Live deployment evidence follows after publishing and checking this verified artifact.
+## Verified live deployment
+
+- Implementation commit [`b5eb06153b6a366af8cf2f32d9c035c42c49f111`](https://github.com/vltruong01/liars-deck-referee/commit/b5eb06153b6a366af8cf2f32d9c035c42c49f111), pushed to existing main.
+- Existing dist subtree published as `6441665be973e513724edfc3621e2e70839d48aa` on gh-pages. API reports built, HTTPS enforced, no build error ([evidence](execution-qa/deployment-pages.json)).
+- [Live game](https://vltruong01.github.io/liars-deck-referee/) verified in headed Chrome at **844x390**, HTTP 200; actual response bytes match the tested SHA256 and standalone ([live JSON](execution-qa/live-verification.json)). No JavaScript errors.
+- Real setup/name entry, western outfit/top hat/sunglasses/cigar, selection and one normal random shot passed. Actual normal outcome: SURVIVED. Automatic return, exactly one consumed shot, cosmetic editing without changing progress, and reload persistence passed.
+- In the same isolated live browser context, loaded a deterministic valid match fixture and fired through the actual published UI. The customized portrait retained the edited monocle, top hat and outfit; DIED/X appeared; right-arm resting transforms were unchanged; automatic return showed DIED on a disabled seat and an unscaled camera. Production RNG code was not patched.
+- Opened actual live [ready](execution-qa/live-execution.png), [table](execution-qa/live-table.png), [survival](execution-qa/live-result.png) and [customized DIED/X](execution-qa/live-death.png) screenshots. The release ZIP remains byte-consistent with dist.
+
+All ten tracked tasks in cinematic-table-polish are complete; change retained for review without archiving.
 
 ## Limits
 

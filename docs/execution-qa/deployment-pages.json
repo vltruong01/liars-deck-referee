@@ -1,0 +1,13 @@
+{
+  "pagesStatus": "built",
+  "source": {
+    "branch": "gh-pages",
+    "path": "/"
+  },
+  "httpsEnforced": true,
+  "buildStatus": "built",
+  "buildCommit": "6441665be973e513724edfc3621e2e70839d48aa",
+  "error": {
+    "message": null
+  }
+}
