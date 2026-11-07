@@ -49,4 +49,12 @@ Also opened [six species × three mouth accessories and three clothing styles](c
 - Production build, index/standalone byte equality and offline ZIP integrity passed ([release evidence](cinematic-qa/release-integrity.json)). Both HTML files are 152309 bytes; SHA256 `4274f6b6f7265bf4fda7461e92f56af8bbe64af25621457059ae12ccccd7f8a6`.
 - OpenSpec strict validation passed ([output](cinematic-qa/openspec-validation.txt)); main shared-bar requirements were synchronized.
 
-Deployment evidence follows after the tested artifact is published and checked.
+## Verified deployment
+
+- Implementation commit: [`626b2bcbbf677e11195a76b1b9a647bf4d00c2ff`](https://github.com/vltruong01/liars-deck-referee/commit/626b2bcbbf677e11195a76b1b9a647bf4d00c2ff), pushed to the existing main branch.
+- Existing dist subtree deployment: `8d942b5904b0d7fa8800983d250ce94184ba5aaf` on gh-pages. GitHub reports **built**, HTTPS enforced and no build error ([API evidence](cinematic-qa/deployment-pages.json)).
+- Verified [public game](https://vltruong01.github.io/liars-deck-referee/) with **headed Chrome at 844x390**, HTTP 200. The actual response bytes match the tested dist SHA256 above ([live evidence](cinematic-qa/live-verification.json)).
+- Typed a name, saved western outfit/top hat/sunglasses/cigar, started a match, selected the seat and fired once. The random live outcome was SURVIVED. Automatic return, exactly one shot, appearance edits preserving progress and reload persistence passed; JavaScript errors were empty. Both fatal/blank outcomes are exercised deterministically in local regression.
+- Opened actual live screenshots: [customization](cinematic-qa/live-customization.png), [table](cinematic-qa/live-table.png), [ready](cinematic-qa/live-execution.png), [result](cinematic-qa/live-result.png). The released offline ZIP remains identical to dist.
+
+All six cinematic-table-polish tasks are complete. The change remains available for review without archiving. Physical-device/Safari testing and subjective audio listening remain outside this verification.

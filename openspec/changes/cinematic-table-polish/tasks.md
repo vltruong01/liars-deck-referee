@@ -4,4 +4,4 @@
 - [x] 2.2 Add clothing silhouettes, species expression/proportions and outward mouth anchors preserving saves.
 - [x] 2.3 Implement articulated joints, shaped breathing/shared anticipation and contrasting aftermath.
 - [x] 3.1 Capture and open five-size before/after, all seats and intermediate animation frames; correct defects and extend regression.
-- [ ] 4.1 Run full tests/build/spec validation, refresh ZIP, commit/push, deploy and verify exact live artifact/gameplay.
+- [x] 4.1 Run full tests/build/spec validation, refresh ZIP, commit/push, deploy and verify exact live artifact/gameplay.

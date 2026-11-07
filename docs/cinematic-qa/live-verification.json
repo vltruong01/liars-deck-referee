@@ -1,0 +1,20 @@
+{
+  "url": "https://vltruong01.github.io/liars-deck-referee/",
+  "httpStatus": 200,
+  "htmlBytes": 152309,
+  "sha256": "4274f6b6f7265bf4fda7461e92f56af8bbe64af25621457059ae12ccccd7f8a6",
+  "matchesVerifiedDist": true,
+  "viewport": [
+    844,
+    390
+  ],
+  "browser": "headed Chrome",
+  "typedName": true,
+  "customization": true,
+  "shotCount": 1,
+  "outcome": "SURVIVED\nMobile verified · STILL IN THE GAME",
+  "automaticReturn": true,
+  "cosmeticEditPreservesProgress": true,
+  "persistence": true,
+  "errors": []
+}
