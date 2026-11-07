@@ -19,3 +19,6 @@ The table camera was scaled immediately behind a fading execution overlay, and r
 A death reveal uses the selected renderer in a centered overlay after collapse, with a restrained SVG red X; fully readable reveal holds two seconds. Normal play has automatic return; manual return is reserved for recovered results or save failure.
 
 The final idle right forearm is folded 130 degrees with a 40-degree shoulder; a padded 480x490 execution viewBox contains the gun sweep. Artwork tweens target only #execution-portrait, excluding the centered reveal portrait. Painted leaf geometry checks distinguish real clipping from empty corners of rotated aggregate boxes.
+
+## Compact nameplate follow-up
+Table nameplates size to their text instead of the full seat width, capped at 180px or the seat width. Height is 26px on small screens and 28px on desktop. Keep the seat geometry and large character hit areas unchanged.

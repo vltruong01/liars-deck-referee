@@ -3,9 +3,7 @@
     "argv": [
       "C:\\Program Files\\nodejs\\node.exe",
       "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\node_modules\\@playwright\\test\\cli.js",
-      "test",
-      "--trace",
-      "on"
+      "test"
     ],
     "configFile": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\playwright.config.js",
     "rootDir": "C:/Users/VUONGLOCTRUONG/Documents/GitHub/liarsbarGun/tests/browser",
@@ -60,7 +58,7 @@
           "channel": "chrome",
           "headless": true,
           "hasTouch": true,
-          "trace": "on",
+          "trace": "retain-on-failure",
           "screenshot": "only-on-failure"
         },
         "dependencies": [],
@@ -121,20 +119,14 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 19927,
+                  "duration": 18819,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:44:04.400Z",
+                  "startTime": "2026-11-07T11:59:15.386Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\cinematic-cinematic-667x37-519c5-ared-suspense-and-reactions\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -161,20 +153,14 @@
                   "workerIndex": 1,
                   "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 20067,
+                  "duration": 23634,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:44:04.386Z",
+                  "startTime": "2026-11-07T11:59:15.418Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\cinematic-cinematic-740x36-3ddfc-ared-suspense-and-reactions\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -201,20 +187,14 @@
                   "workerIndex": 2,
                   "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 19812,
+                  "duration": 19685,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:44:04.401Z",
+                  "startTime": "2026-11-07T11:59:15.418Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\cinematic-cinematic-844x39-686d5-ared-suspense-and-reactions\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -241,20 +221,14 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 19774,
+                  "duration": 20576,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:44:25.650Z",
+                  "startTime": "2026-11-07T11:59:34.720Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\cinematic-cinematic-932x43-200d9-ared-suspense-and-reactions\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -281,20 +255,14 @@
                   "workerIndex": 2,
                   "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 21446,
+                  "duration": 22499,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:44:25.669Z",
+                  "startTime": "2026-11-07T11:59:35.519Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\cinematic-cinematic-1366x7-5b3aa-ared-suspense-and-reactions\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -321,20 +289,14 @@
                   "workerIndex": 1,
                   "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 1731,
+                  "duration": 1614,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:44:25.675Z",
+                  "startTime": "2026-11-07T11:59:39.615Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\cinematic-mouth-accessorie-b148a-pecies-and-inward-mirroring\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -361,20 +323,14 @@
                   "workerIndex": 1,
                   "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 948,
+                  "duration": 765,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:44:27.528Z",
+                  "startTime": "2026-11-07T11:59:41.247Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\cinematic-generated-breath-fce0e-e-the-common-reveal-silence\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -409,20 +365,14 @@
                   "workerIndex": 1,
                   "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 34411,
+                  "duration": 34728,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:44:28.598Z",
+                  "startTime": "2026-11-07T11:59:42.074Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\customization-customizatio-f1dd7-rig-results-and-persistence\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -449,20 +399,14 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 34079,
+                  "duration": 46512,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:44:46.253Z",
+                  "startTime": "2026-11-07T11:59:55.561Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\customization-customizatio-1a8d9-rig-results-and-persistence\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -489,20 +433,14 @@
                   "workerIndex": 2,
                   "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 34637,
+                  "duration": 45563,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:44:47.889Z",
+                  "startTime": "2026-11-07T11:59:58.141Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\customization-customizatio-f9a0f-rig-results-and-persistence\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -529,20 +467,14 @@
                   "workerIndex": 1,
                   "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 35044,
+                  "duration": 47606,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:45:04.735Z",
+                  "startTime": "2026-11-07T12:00:16.902Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\customization-customizatio-e7043-rig-results-and-persistence\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -569,20 +501,14 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 36659,
+                  "duration": 37128,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:45:21.868Z",
+                  "startTime": "2026-11-07T12:00:42.154Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\customization-customizatio-7ed5d-rig-results-and-persistence\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -609,20 +535,14 @@
                   "workerIndex": 2,
                   "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 5225,
+                  "duration": 5093,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:45:24.284Z",
+                  "startTime": "2026-11-07T12:00:43.736Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\customization-all-six-anim-49505-do-not-mutate-saved-players\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -657,20 +577,14 @@
                   "workerIndex": 2,
                   "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 8342,
+                  "duration": 9781,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:45:29.773Z",
+                  "startTime": "2026-11-07T12:00:48.895Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\execution-execution-contin-d0213-eated-stable-camera-returns\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -697,20 +611,14 @@
                   "workerIndex": 2,
                   "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 9193,
+                  "duration": 10408,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:45:38.599Z",
+                  "startTime": "2026-11-07T12:00:58.694Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\execution-execution-contin-59d91-eated-stable-camera-returns\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -737,20 +645,14 @@
                   "workerIndex": 1,
                   "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 10011,
+                  "duration": 10353,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:45:41.523Z",
+                  "startTime": "2026-11-07T12:01:04.711Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\execution-execution-contin-79921-eated-stable-camera-returns\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -777,20 +679,14 @@
                   "workerIndex": 2,
                   "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 10458,
+                  "duration": 10042,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:45:48.326Z",
+                  "startTime": "2026-11-07T12:01:09.120Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\execution-execution-contin-1d055-eated-stable-camera-returns\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -817,20 +713,14 @@
                   "workerIndex": 1,
                   "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 15326,
+                  "duration": 14556,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:45:52.056Z",
+                  "startTime": "2026-11-07T12:01:15.087Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\execution-execution-contin-12a7e-eated-stable-camera-returns\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -857,20 +747,14 @@
                   "workerIndex": 2,
                   "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 1145,
+                  "duration": 1277,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:45:59.145Z",
+                  "startTime": "2026-11-07T12:01:19.181Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\execution-reduced-effects--679cd-ut-camera-movement-or-flash\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -905,20 +789,14 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 27100,
+                  "duration": 27688,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:46:00.038Z",
+                  "startTime": "2026-11-07T12:01:19.386Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\landscape-667x375-table-each-seat-FIRE-names-and-2-3-players\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -945,20 +823,14 @@
                   "workerIndex": 2,
                   "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 27329,
+                  "duration": 27788,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:46:00.435Z",
+                  "startTime": "2026-11-07T12:01:20.505Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\landscape-740x360-table-each-seat-FIRE-names-and-2-3-players\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -985,20 +857,14 @@
                   "workerIndex": 1,
                   "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 27156,
+                  "duration": 26986,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:46:07.874Z",
+                  "startTime": "2026-11-07T12:01:29.712Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\landscape-844x390-table-each-seat-FIRE-names-and-2-3-players\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -1025,20 +891,14 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 27160,
+                  "duration": 28202,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:46:28.888Z",
+                  "startTime": "2026-11-07T12:01:47.167Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\landscape-852x393-table-each-seat-FIRE-names-and-2-3-players\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -1065,20 +925,14 @@
                   "workerIndex": 2,
                   "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 27629,
+                  "duration": 30548,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:46:29.450Z",
+                  "startTime": "2026-11-07T12:01:48.384Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\landscape-932x430-table-each-seat-FIRE-names-and-2-3-players\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -1105,20 +959,14 @@
                   "workerIndex": 1,
                   "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 27610,
+                  "duration": 27173,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:46:36.734Z",
+                  "startTime": "2026-11-07T12:01:56.715Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\landscape-1024x768-table-e-7006d--FIRE-names-and-2-3-players\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -1145,20 +993,14 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 27780,
+                  "duration": 26384,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:46:57.578Z",
+                  "startTime": "2026-11-07T12:02:15.436Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\landscape-1366x768-table-e-dc1a3--FIRE-names-and-2-3-players\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -1185,20 +1027,14 @@
                   "workerIndex": 2,
                   "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 28734,
+                  "duration": 27295,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:46:58.837Z",
+                  "startTime": "2026-11-07T12:02:18.967Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\landscape-1920x1080-table--8e6d0--FIRE-names-and-2-3-players\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -1225,20 +1061,14 @@
                   "workerIndex": 1,
                   "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 12150,
+                  "duration": 11420,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:47:05.844Z",
+                  "startTime": "2026-11-07T12:02:23.903Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\landscape-fatal-effect-pen-57624-r-and-offline-local-release\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -1265,20 +1095,14 @@
                   "workerIndex": 1,
                   "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 3140,
+                  "duration": 2980,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-07T11:47:18.495Z",
+                  "startTime": "2026-11-07T12:02:35.341Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\VUONGLOCTRUONG\\Documents\\GitHub\\liarsbarGun\\test-results\\playwright\\landscape-portrait-guidanc-c99b3-ced-effects-and-entry-guard\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
               "status": "expected"
@@ -1294,8 +1118,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-11-07T11:44:03.341Z",
-    "duration": 205745.018,
+    "startTime": "2026-11-07T11:59:14.535Z",
+    "duration": 212497.464,
     "expected": 29,
     "skipped": 0,
     "unexpected": 0,

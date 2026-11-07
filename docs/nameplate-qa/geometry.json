@@ -1,0 +1,152 @@
+[
+  {
+    "width": 667,
+    "height": 375,
+    "boxes": [
+      {
+        "seat": 136.28125,
+        "label": 79.96875,
+        "height": 26,
+        "centerGap": 0
+      },
+      {
+        "seat": 136.28125,
+        "label": 84.078125,
+        "height": 26,
+        "centerGap": 0.0078125
+      },
+      {
+        "seat": 155.75,
+        "label": 155.75,
+        "height": 26,
+        "centerGap": 0
+      },
+      {
+        "seat": 155.75,
+        "label": 65.65625,
+        "height": 26,
+        "centerGap": 0
+      }
+    ]
+  },
+  {
+    "width": 740,
+    "height": 360,
+    "boxes": [
+      {
+        "seat": 151.609375,
+        "label": 79.96875,
+        "height": 26,
+        "centerGap": 0.0078125
+      },
+      {
+        "seat": 151.609375,
+        "label": 84.078125,
+        "height": 26,
+        "centerGap": 0
+      },
+      {
+        "seat": 173.265625,
+        "label": 173.265625,
+        "height": 26,
+        "centerGap": 0
+      },
+      {
+        "seat": 173.265625,
+        "label": 65.65625,
+        "height": 26,
+        "centerGap": 0.0078125
+      }
+    ]
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "boxes": [
+      {
+        "seat": 173.453125,
+        "label": 79.96875,
+        "height": 26,
+        "centerGap": 0.0078125
+      },
+      {
+        "seat": 173.453125,
+        "label": 84.078125,
+        "height": 26,
+        "centerGap": 0
+      },
+      {
+        "seat": 198.234375,
+        "label": 180,
+        "height": 26,
+        "centerGap": 0.0078125
+      },
+      {
+        "seat": 198.234375,
+        "label": 65.65625,
+        "height": 26,
+        "centerGap": 0.0078125
+      }
+    ]
+  },
+  {
+    "width": 932,
+    "height": 430,
+    "boxes": [
+      {
+        "seat": 191.9375,
+        "label": 79.96875,
+        "height": 26,
+        "centerGap": 0
+      },
+      {
+        "seat": 191.9375,
+        "label": 84.078125,
+        "height": 26,
+        "centerGap": 0.0078125
+      },
+      {
+        "seat": 219.359375,
+        "label": 180,
+        "height": 26,
+        "centerGap": 0.0078125
+      },
+      {
+        "seat": 219.359375,
+        "label": 65.65625,
+        "height": 26,
+        "centerGap": 0.0078125
+      }
+    ]
+  },
+  {
+    "width": 1366,
+    "height": 768,
+    "boxes": [
+      {
+        "seat": 283.078125,
+        "label": 93.0625,
+        "height": 28,
+        "centerGap": 0.0078125
+      },
+      {
+        "seat": 283.078125,
+        "label": 98.203125,
+        "height": 28,
+        "centerGap": 0
+      },
+      {
+        "seat": 323.515625,
+        "label": 180,
+        "height": 28,
+        "centerGap": 0.0078125
+      },
+      {
+        "seat": 323.515625,
+        "label": 75.1875,
+        "height": 28,
+        "centerGap": 0.0078125
+      }
+    ]
+  }
+]

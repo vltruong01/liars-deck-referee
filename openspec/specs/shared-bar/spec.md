@@ -90,6 +90,10 @@ The table SHALL use a compact header and in-stage New Match control; current-pla
 ### Requirement: Spatial seating and compact HUD
 Four-player scenes SHALL place players 1 and 2 behind the upper-left/upper-right edges of the table, player 3 at the left end and player 4 at the right end facing inward. Rear torsos SHALL sit behind the tabletop while faces/accessories and small name/status labels remain visible. Two/three-player maps SHALL adapt around the same table. The table HUD SHALL contain New Match without an alive counter or Manage Players button.
 
+#### Scenario: Content-sized nameplates
+- **WHEN** the table displays a player name and shot count or DIED
+- **THEN** its label sizes to the text, capped at 180px or the seat width, with 26px mobile/28px desktop height and centered alignment; character hit areas remain unchanged.
+
 #### Scenario: Protected match actions
 - **WHEN** New Match is opened during play
 - **THEN** replacement requires confirmation and editing the current group remains available without resetting shooting progress.
