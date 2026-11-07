@@ -1,5 +1,10 @@
 # Liar's Deck — The Last Call
 
+Play online: https://vltruong01.github.io/liars-deck-referee/
+
+Source: https://github.com/vltruong01/liars-deck-referee
+
+
 Game trọng tài offline dành cho nhóm chơi Liar's Deck bằng bài thật. Vanilla JavaScript, CSS, SVG gốc, GSAP và Web Audio; không cần tài khoản hay máy chủ.
 
 ## Chơi ngay trên Windows

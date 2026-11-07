@@ -1,6 +1,6 @@
 # QA audit — 2026-11-07
 
-**VERIFIED:** local application, focused touch-control correction, visual inspection and full regression. **FAILED:** agent-browser trace export. Valid Playwright traces provide the recorded regression evidence. **FAILED:** GitHub deployment is blocked by missing repository metadata/destination; nothing was published.
+**VERIFIED:** local application, focused touch-control correction, visual inspection and full regression. **FAILED:** agent-browser trace export. Valid Playwright traces provide the recorded regression evidence. **VERIFIED:** GitHub deployment subsequently completed after the user authorized creating a new repository; see the follow-up below.
 
 ## Tools actually checked
 
@@ -53,6 +53,8 @@ The first resize/headed attempt reset navigation to `about:blank` and later fell
 
 `dist/Liars-Deck.html`, `dist/index.html` and `Liars-Deck-Offline.zip` contain the corrected UI. ZIP integrity, ZIP-to-dist contents and identical standalone/index HTML were verified: [release integrity](qa-audit/release-integrity.json). Engine SHA-256 remains `7794D868D385FAA44E142C977A979859028FE4D1CDDB23D0F3C28F202BB032F3`. No framework, tool reinstall, reference asset import or roulette-logic change was introduced.
 
-**FAILED — deployment prerequisite:** `git status --short` and `git remote -v` report that this workspace is not a Git repository; `gh` is absent. No target GitHub URL or verified write access is available. A destination request was sent; no response has arrived. No repository was guessed/created and nothing was published. The audit change remains unarchived, with deployment follow-up explicitly pending.
+**FAILED — initial deployment prerequisite, subsequently resolved:** the initial audit found no `.git`/remote or `gh`. The user subsequently instructed creating a new repository. Git Credential Manager authenticated `vltruong01` through the GitHub API with verified repository administration/write access, so no CLI installation was needed. Created the public [liars-deck-referee repository](https://github.com/vltruong01/liars-deck-referee), initialized local Git and pushed source to `main` and the verified `dist` subtree to `gh-pages`. Dependency/skill directories and environment files are ignored. Credential patterns were checked before staging; credentials stayed in memory and were not written to files or Git.
+
+**VERIFIED — published website:** [https://vltruong01.github.io/liars-deck-referee/](https://vltruong01.github.io/liars-deck-referee/). Pages reports `built` from `gh-pages` with HTTPS enforced: [API evidence](qa-audit/deployment-pages.json). The create-Pages request returned 409 because GitHub had already enabled Pages for the new branch; the subsequent GET verified the correct source and successful build. HTTP 200 serves 132,105 bytes, matching the verified local HTML byte-for-byte: [HTTP/hash evidence](qa-audit/deployment-http.json). See [deployment instructions](DEPLOYMENT.md).
 
 **NOT USED:** physical phone, Safari/Firefox hands-on verification and subjective speaker/audio assessment; unavailable in this run. Chrome viewport emulation does not verify phone browser chrome, virtual keyboard or device safe-area behavior. Some Windows CLI text logs contain encoding artifacts; screenshots are the rendering evidence. These limits and the agent trace failure must accompany any later publishing decision.

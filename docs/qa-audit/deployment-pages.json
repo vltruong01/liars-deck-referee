@@ -1,0 +1,14 @@
+{
+  "pagesStatus": "built",
+  "url": "https://vltruong01.github.io/liars-deck-referee/",
+  "source": {
+    "branch": "gh-pages",
+    "path": "/"
+  },
+  "httpsEnforced": true,
+  "buildStatus": "built",
+  "commit": "202b0a1577e5609f6c4abfb26fc7af1c3c21cdfc",
+  "error": {
+    "message": null
+  }
+}
