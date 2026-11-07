@@ -14,3 +14,4 @@
 - [x] 3.2 Refresh offline archive, commit/push/deploy only after critical checks pass, then verify public artifact and browser gameplay; record release evidence.
 
 - [x] 3.3 Verify remote source and Pages before deleting the exact local project directory requested by the user.
+- [ ] 3.4 Delete the requested local project directory and verify absence. BLOCKED: execution policy rejected the guarded PowerShell deletion before execution with "blocked by policy"; Test-Path still returns True. User/environment action is required.
